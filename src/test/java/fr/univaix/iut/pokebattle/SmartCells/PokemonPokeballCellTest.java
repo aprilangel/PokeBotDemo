@@ -26,5 +26,8 @@ public class PokemonPokeballCellTest {
     public void testOwner() {
     	assertEquals("@EpicSaxGuy my owner is @EpicSaxGuy", cell.ask(new Tweet("EpicSaxGuy","Pokeball!")));
     	assertEquals("@EpicSaxGuy my owner is @EpicSaxGuy", cell.ask(new Tweet("EpicSaxGuy","Who is your owner?")));
-    }
+    
+    	assertEquals("@xXx_JacquesChirac_xXx my owner is @EpicSaxGuy", cell.ask(new Tweet("xXx_JacquesChirac_xXx","Pokeball!")));
+    	assertEquals("@xXx_JacquesChirac_xXx my owner is @EpicSaxGuy", cell.ask(new Tweet("xXx_JacquesChirac_xXx","Who is your owner?")));
+  }
 }

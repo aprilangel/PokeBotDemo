@@ -15,7 +15,9 @@ public class PokemonPokeballCell implements SmartCell {
     		return cell.ask(question);
     	
     	if (question.getText().contains("Pokeball!")) {
+    		if(cell.Owner == null){
     		cell.Owner = question.getScreenName();
+    		}
     		return cell.ask(new Tweet(question.getScreenName(),"owner?"));
     	}
     		

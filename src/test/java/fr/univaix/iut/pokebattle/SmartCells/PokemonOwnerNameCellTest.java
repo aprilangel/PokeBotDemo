@@ -25,5 +25,6 @@ public class PokemonOwnerNameCellTest {
     public void testOwner() {
     	cell.Owner = "albang_";
         assertEquals("@EpicSaxGuy my owner is @albang_", cell.ask(new Tweet("EpicSaxGuy","Who is your owner?")));
+        assertEquals("@EpicSaxGuy my owner is @albang_", cell.ask(new Tweet("EpicSaxGuy","Who is your Owner?")));
     }
 }
