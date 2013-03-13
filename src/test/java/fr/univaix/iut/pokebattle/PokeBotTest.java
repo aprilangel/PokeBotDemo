@@ -16,6 +16,11 @@ public class PokeBotTest {
     public void testSalut() {
         assertEquals("Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("Salut")));
         assertEquals("Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("This is not a question.")));
-        assertEquals("@sexmachine Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("sexmachine","This is not a question.")));
+   }
+    
+    @Test
+    public void testInterlocuteur() {
+        assertEquals("Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("This is sparta !")));
+        assertEquals("@sexmachine Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("sexmachine","Hello bitches")));
     }
 }

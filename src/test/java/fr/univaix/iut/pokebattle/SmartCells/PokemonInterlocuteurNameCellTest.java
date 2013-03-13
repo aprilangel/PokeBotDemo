@@ -12,12 +12,12 @@ public class PokemonInterlocuteurNameCellTest {
 	PokemonInterlocuteurNameCell cell = new PokemonInterlocuteurNameCell();
 
     @Test
-    public void testSalut() {
+    public void testNoName() {
         assertEquals(null, cell.ask(new Tweet("Salut!")));
     }
 
     @Test
-    public void testNotSalut() {
+    public void testWithName() {
         assertEquals("@godlike Carpe Carpe Magicarpe !", cell.ask(new Tweet("godlike","WHO IS AFRAID OF THE BIG BLACK ?")));
     }
 
