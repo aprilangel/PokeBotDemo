@@ -4,6 +4,7 @@ import fr.univaix.iut.pokebattle.PokeBot;
 import fr.univaix.iut.pokebattle.SmartCell;
 import fr.univaix.iut.pokebattle.Tweet;
 
+
 public class PokemonAttackCell implements SmartCell {
 		String skill;
 		String target;
@@ -31,7 +32,7 @@ public class PokemonAttackCell implements SmartCell {
 	    			catch (Exception e) {
 	    				return null;
 	    			}
-		    		
+		    		bot.IsFighting = true;
 		    		String commande = target+" #attack "+skill+"! /cc "+toname+" @"+question.getScreenName()+" @"+bot.Judge;
 		    		return commande;
 		    	}
