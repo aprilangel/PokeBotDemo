@@ -29,4 +29,13 @@ public class PokemonAttackCellTest {
 
 	}
 
+	@Test
+    public void testBool() {
+		PokeBot b = new PokeBot();
+		b.Owner = "Tenshi";
+		assertEquals(false, b.IsFighting);
+		cell.ask(b, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
+        assertEquals(true, b.IsFighting);
+    }
+	
 }
