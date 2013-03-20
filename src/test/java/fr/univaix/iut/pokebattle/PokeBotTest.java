@@ -38,6 +38,10 @@ public class PokeBotTest {
         assertEquals("@jeanpierrecoffe my owner is @jeanpierrecoffe", pokeBot.ask(new Tweet("jeanpierrecoffe","owner?")));
         assertEquals("@xXx_JacquesChirac_xXx my owner is @jeanpierrecoffe", pokeBot.ask(new Tweet("xXx_JacquesChirac_xXx","Pokeball!")));
         assertEquals("@xXx_JacquesChirac_xXx my owner is @jeanpierrecoffe", pokeBot.ask(new Tweet("xXx_JacquesChirac_xXx","owner?")));
+    }
+    @Test
+    public void testAttack() {    
+    	assertEquals("@bulbizare1 #attack #foudre! /cc @Sarkon", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
 
     }
 }
