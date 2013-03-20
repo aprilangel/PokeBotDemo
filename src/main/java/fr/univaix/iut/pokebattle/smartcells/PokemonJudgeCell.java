@@ -23,8 +23,15 @@ public class PokemonJudgeCell implements SmartCell {
 					
 					bot.PV += damage;
 					
+					if (bot.PV <= 0) 
+					{
+						bot.PV = 0;
+						return "#KO /cc @" + bot.Judge + " @" + question.getScreenName() 
+						+ " @" + bot.Owner;
+					}
+					
 					return " ";
-
+					
     			}
     			catch (Exception e) {
     				return null;
