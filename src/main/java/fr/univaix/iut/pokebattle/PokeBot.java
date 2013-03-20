@@ -15,6 +15,7 @@ public class PokeBot implements Bot {
 	public String Judge = null;
 	
     final SmartCell[] smartCells = new SmartCell[]{
+    		new PokemonWinCell(),
     		new PokemonJudgeCell(),
     		new PokemonAttackCell(),
     		new PokemonPokeballCell(),

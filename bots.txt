@@ -1,0 +1,17 @@
+****MagicarpeShiny****
+oauth.consumerKey=zLON1qhQxVFysMBMbui4UQ
+oauth.consumerSecret=jNfNeENZqb64oJOk1EZwv3opBnSCuPrjsJ4XHt9pE
+oauth.accessToken=1264604917-Ryc4uSYFAqAuO4JbC0hCYtD8G2CTXCDhYQWREHC
+oauth.accessTokenSecret=e5mLYBYp2niMCHHx9OJ8pd3PDL4xT69Wg2JCO7qCsjA
+
+****NoctaliShiny****
+oauth.consumerKey=ITyACkKap1RUPEJduQSMQ
+oauth.consumerSecret=uId0bDrsQ3h3Foewq2CAZEoa9u0BI6mTpcI9BDkb0
+oauth.accessToken=1264837256-ht5ZJB6rgSvrnkY3jKAWdTSS3v9L94m83EcIQYF
+oauth.accessTokenSecret=uB8uXyVrPOBxwAsI1Y9LfGe9s0RtsN6dZfqdSSmoTk
+
+****JulienLpers****
+oauth.consumerKey=8JYMAJAiwMcHGNj9tJY0QA
+oauth.consumerSecret=GglOBbAdMHpJcNxfl5ivgopZc2RUi9K85fy9kGedgo
+oauth.accessToken=1283381863-L0NHNnPUZKlq4HkWzeTLksx04gX8y8yz3Yvk9RI
+oauth.accessTokenSecret=huE3VfTXonzLbkOQjBXF5rBYxwgxeA7vnVlnHhjZC8
