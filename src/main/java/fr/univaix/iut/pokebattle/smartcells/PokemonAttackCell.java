@@ -16,17 +16,23 @@ public class PokemonAttackCell implements SmartCell {
 
 	    		if(question.getScreenName().equals(bot.Owner)) {
 	    			
-		    		String[] mots = question.getText().split(" ");
-		    		for (int i = 0; i < mots.length; ++i) {
-						if (mots[i].equals("#attack")){
-							skill = mots[i+1];
-							target = mots[i+2];
-							toname = mots[i+4];
-
-						}		
-					}
+	    			try {
+			    		String[] mots = question.getText().split(" ");
+			    		for (int i = 0; i < mots.length; ++i) {
+							if (mots[i].equals("#attack")){
+								skill = mots[i+1];
+								target = mots[i+2];
+								toname = mots[i+4];
+								bot.Judge = mots[i+5].substring(1);
+	
+							}		
+						}
+	    			}
+	    			catch (Exception e) {
+	    				return null;
+	    			}
 		    		
-		    		String commande = target+" #attack "+skill+"! /cc "+toname+" @"+question.getScreenName();
+		    		String commande = target+" #attack "+skill+"! /cc "+toname+" @"+question.getScreenName()+" @"+bot.Judge;
 		    		return commande;
 		    	}
 	    		
