@@ -1,16 +1,15 @@
 package fr.univaix.iut.pokebattle.smartcells;
 
+import fr.univaix.iut.pokebattle.PokeBot;
 import fr.univaix.iut.pokebattle.SmartCell;
 import fr.univaix.iut.pokebattle.Tweet;
-import java.util.*;
 
 public class PokemonAttackCell implements SmartCell {
 		String skill;
 		String target;
-		PokemonOwnerNameCell cell = new PokemonOwnerNameCell();
 		
 		
-	    public String ask(Tweet question) {			
+	    public String ask(PokeBot bot, Tweet question) {			
 
 	    	if (question.getText().contains("#attack")) {
 	    		String[] mots = question.getText().split(" ");

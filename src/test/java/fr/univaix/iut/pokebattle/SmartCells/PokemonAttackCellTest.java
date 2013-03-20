@@ -1,5 +1,6 @@
 package fr.univaix.iut.pokebattle.SmartCells;
 
+import fr.univaix.iut.pokebattle.PokeBot;
 import fr.univaix.iut.pokebattle.Tweet;
 import static org.junit.Assert.*;
 import fr.univaix.iut.pokebattle.smartcells.PokemonAttackCell;
@@ -12,12 +13,12 @@ public class PokemonAttackCellTest {
 	
     @Test
     public void testNull() {
-        assertEquals(null, cell.ask(new Tweet("Salut!")));
+        assertEquals(null, cell.ask(new PokeBot(), new Tweet("Salut!")));
     }
 	
 	@Test
 	public void testCarambar() {
-		assertEquals("@bulbizare1 #attack #foudre! /cc @Sarkon", cell.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
+		assertEquals("@bulbizare1 #attack #foudre! /cc @Sarkon", cell.ask(new PokeBot(), new Tweet("Sarkon","#attack #foudre @bulbizare1")));
 	}
 
 }

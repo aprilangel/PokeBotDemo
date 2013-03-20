@@ -9,5 +9,5 @@ public interface SmartCell {
      *         or null.
      */
 	
-    public abstract String ask(Tweet question);
+    public abstract String ask(PokeBot bot, Tweet question);
 }

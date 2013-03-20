@@ -1,5 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcells;
 
+import fr.univaix.iut.pokebattle.PokeBot;
 import fr.univaix.iut.pokebattle.SmartCell;
 import fr.univaix.iut.pokebattle.Tweet;
 
@@ -8,7 +9,7 @@ import fr.univaix.iut.pokebattle.Tweet;
 	 */
 public class PokemonInterlocuteurNameCell implements SmartCell {
 
-    public String ask(Tweet question) {
+    public String ask(PokeBot bot, Tweet question) {
     	if (question.getScreenName() != null) 
     		return "@" + question.getScreenName() + " Carpe Carpe Magicarpe !";
     	return null;

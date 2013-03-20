@@ -8,9 +8,13 @@ public class PokeBot implements Bot {
      * List of SmartCells the questions go through to
      * find an answer.
      */
+	
+	public String Owner = null;
+	
     final SmartCell[] smartCells = new SmartCell[]{
     		new PokemonAttackCell(),
     		new PokemonPokeballCell(),
+    		new PokemonOwnerNameCell(),
     		new PokemonInterlocuteurNameCell(),
     		new PokemonCriesCell(),
             
@@ -25,7 +29,7 @@ public class PokeBot implements Bot {
     @Override
     public String ask(Tweet question) {
         for (SmartCell cell : smartCells) {
-            String answer = cell.ask(question);
+            String answer = cell.ask(this,question);
             if (answer != null)
                 return answer;
         }
