@@ -17,8 +17,16 @@ public class PokemonAttackCellTest {
     }
 	
 	@Test
-	public void testCarambar() {
-		assertEquals("@Sarkon I have no owner", cell.ask(new PokeBot(), new Tweet("Sarkon","#attack #foudre @bulbizare1")));
+	public void testAttack() {
+		PokeBot bot = new PokeBot();
+		assertEquals("@Sarkon I have no owner", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
+		
+		bot.Owner = "Tenshi";
+    	
+    	assertEquals("@Sarkon my owner is @Tenshi", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
+    	
+    	assertEquals("@NoctaliShiny #attack #foudre! /cc @aStrangeCookie @Tenshi", cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny")));
+
 	}
 
 }
