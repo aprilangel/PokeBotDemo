@@ -15,11 +15,12 @@ public class PokeBot implements Bot {
 	public String Judge = null;
 	
     final SmartCell[] smartCells = new SmartCell[]{
+    		new PokemonJudgeCell(),
     		new PokemonAttackCell(),
     		new PokemonPokeballCell(),
     		new PokemonOwnerNameCell(),
     		new PokemonInterlocuteurNameCell(),
-    		new PokemonCriesCell(),
+    		new PokemonCriesCell()
             
     };
 
@@ -34,7 +35,11 @@ public class PokeBot implements Bot {
         for (SmartCell cell : smartCells) {
             String answer = cell.ask(this,question);
             if (answer != null)
-                return answer;
+            {
+            	if (answer.equals(" "))
+            		return null;
+            	return answer;
+            }
         }
         return null;
     }
