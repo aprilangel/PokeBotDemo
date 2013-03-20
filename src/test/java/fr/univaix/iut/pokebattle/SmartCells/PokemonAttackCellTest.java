@@ -18,7 +18,7 @@ public class PokemonAttackCellTest {
 	
 	@Test
 	public void testCarambar() {
-		assertEquals("@bulbizare1 #attack #foudre! /cc @Sarkon", cell.ask(new PokeBot(), new Tweet("Sarkon","#attack #foudre @bulbizare1")));
+		assertEquals("@NoctaliShiny #attack #foudre! /cc @aStrangeCookie @Tenshi", cell.ask(new PokeBot(), new Tweet("Tenshi","#attack #foudre @NoctaliShiny")));
 	}
 
 }
