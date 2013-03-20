@@ -41,7 +41,6 @@ public class PokeBotTest {
     }
     @Test
     public void testAttack() {    
-    	assertEquals("@bulbizare1 #attack #foudre! /cc @Sarkon", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
-
+    	assertEquals("@Sarkon I have no owner", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
     }
 }
