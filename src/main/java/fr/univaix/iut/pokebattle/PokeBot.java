@@ -8,7 +8,7 @@ public class PokeBot implements Bot {
      * List of SmartCells the questions go through to
      * find an answer.
      */
-	
+	public boolean IsFighting = false;
 	public String Owner = null;
 	public int PV = 100;
 	public int PVmax = 100;
