@@ -10,6 +10,8 @@ public class PokeBot implements Bot {
      */
 	
 	public String Owner = null;
+	public int PV = 100;
+	public int PVmax = 100;
 	
     final SmartCell[] smartCells = new SmartCell[]{
     		new PokemonAttackCell(),
