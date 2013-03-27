@@ -8,8 +8,8 @@
         <property name="eclipselink.target-database" value="MySQL" />
         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/PokebattleDB"/>
         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-        <property name="javax.persistence.jdbc.user"  value="monUser"/>
-        <property name="javax.persistence.jdbc.password"  value="monPassword"/>
+        <property name="javax.persistence.jdbc.user"  value="root"/>
+        <property name="javax.persistence.jdbc.password"  value="mysql"/>
         <property name="eclipselink.logging.level" value="INFO" />
         <property name="eclipselink.ddl-generation"  value="create-tables"/>
     </properties>
