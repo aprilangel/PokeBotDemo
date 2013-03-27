@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 
 import com.google.gson.Gson;
 
-import scala.App;
 import fr.univaix.iut.pokebattle.bot.PokeBot;
 import fr.univaix.iut.pokebattle.pokedex.DataObjectAttack;
 import fr.univaix.iut.pokebattle.pokedex.DataObjectPokemon;
@@ -69,7 +68,7 @@ public class PokemonAttackCell implements SmartCell {
 	    				}
 	    				
 	    			}
-		    		return target+" o_O ? /cc "+toname+" @"+question.getScreenName()+" @"+bot.Judge;
+		    		return toname+" o_O ? /cc "+"@"+question.getScreenName()+" @"+bot.Judge+" "+target;
 		    	}
 	    		
 	    		else if (bot.Owner == null)
