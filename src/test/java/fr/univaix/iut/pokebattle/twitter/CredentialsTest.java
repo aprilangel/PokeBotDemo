@@ -11,9 +11,9 @@ public class CredentialsTest {
     public void testLoadCredentialsGivenAValidPropertiesFileShouldReturnAValidCredentials() throws Exception {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("./twitter4j.properties");
         Credentials credentials = Credentials.loadCredentials(inputStream);
-        assertThat(credentials.getConsumerKey()).isEqualTo("*******");
-        assertThat(credentials.getConsumerSecret()).isEqualTo("*******");
-        assertThat(credentials.getToken()).isEqualTo("*******");
-        assertThat(credentials.getTokenSecret()).isEqualTo("*******");
+        assertThat(credentials.getConsumerKey()).isEqualTo("zLON1qhQxVFysMBMbui4UQ");
+        assertThat(credentials.getConsumerSecret()).isEqualTo("jNfNeENZqb64oJOk1EZwv3opBnSCuPrjsJ4XHt9pE");
+        assertThat(credentials.getToken()).isEqualTo("1264604917-Ryc4uSYFAqAuO4JbC0hCYtD8G2CTXCDhYQWREHC");
+        assertThat(credentials.getTokenSecret()).isEqualTo("e5mLYBYp2niMCHHx9OJ8pd3PDL4xT69Wg2JCO7qCsjA");
     }
 }
