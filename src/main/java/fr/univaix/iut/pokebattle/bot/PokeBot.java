@@ -21,6 +21,7 @@ public class PokeBot implements Bot {
 	public int PV = 100;
 	public int PVmax = 100;
 	public String Judge = null;
+	public String espece = "Magicarpe";
 	
     final SmartCell[] smartCells = new SmartCell[]{
     		new PokemonWinCell(),
