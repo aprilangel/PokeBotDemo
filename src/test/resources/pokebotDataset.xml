@@ -1,0 +1,6 @@
+<dataset>
+    <POKEBOT NAME="PikachuShiny" ESPECE="Pikachu" OWNER="NULL" JUDGE="NULL" 
+    PV="100" PVMAX="100" ISFIGHTING="false"/>
+    <POKEBOT NAME="MagicarpeShiny" ESPECE="Magicarpe" OWNER="NULL" JUDGE="NULL" 
+    PV="100" PVMAX="100" ISFIGHTING="false"/>
+</dataset>
