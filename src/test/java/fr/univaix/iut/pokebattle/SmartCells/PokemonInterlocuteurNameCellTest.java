@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import fr.univaix.iut.pokebattle.bot.PokeBot;
-import fr.univaix.iut.pokebattle.smartcells.PokemonInterlocuteurNameCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonInterlocuteurNameCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonInterlocuteurNameCellTest {

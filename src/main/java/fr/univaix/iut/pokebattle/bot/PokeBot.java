@@ -1,13 +1,13 @@
 package fr.univaix.iut.pokebattle.bot;
 
+import fr.univaix.iut.pokebattle.smartcell.PokemonAttackCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonCriesCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonInterlocuteurNameCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonJudgeCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonOwnerNameCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonPokeballCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonWinCell;
 import fr.univaix.iut.pokebattle.smartcell.SmartCell;
-import fr.univaix.iut.pokebattle.smartcells.PokemonAttackCell;
-import fr.univaix.iut.pokebattle.smartcells.PokemonCriesCell;
-import fr.univaix.iut.pokebattle.smartcells.PokemonInterlocuteurNameCell;
-import fr.univaix.iut.pokebattle.smartcells.PokemonJudgeCell;
-import fr.univaix.iut.pokebattle.smartcells.PokemonOwnerNameCell;
-import fr.univaix.iut.pokebattle.smartcells.PokemonPokeballCell;
-import fr.univaix.iut.pokebattle.smartcells.PokemonWinCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 
