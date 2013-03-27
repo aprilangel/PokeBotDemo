@@ -9,5 +9,6 @@ https://dev.twitter.com/apps après avoir créé une application.
 Git on Windows : http://code.google.com/p/msysgit/downloads/list
 
 Commandes utiles a l'IUT :
-`wget https://raw.github.com/pcreux/git_config/master/gitconfig -O ~/.gitconfig
-wget https://raw.github.com/pcreux/git_config/master/githelpers -O ~/.githelpersgit config --global credential.helper 'cache --timeout=3600'`
+`wget https://raw.github.com/pcreux/git_config/master/gitconfig -O ~/.gitconfig`
+`wget https://raw.github.com/pcreux/git_config/master/githelpers -O ~/.githelpers`
+`git config --global credential.helper 'cache --timeout=3600'`
