@@ -47,7 +47,7 @@ public class PokeBotTest {
     	assertEquals("@Tenshi my owner is @Tenshi", pokeBot.ask(new Tweet("Tenshi","Pokeball!")));
     	assertEquals("@Sarkon my owner is @Tenshi", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", pokeBot.ask(new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
-    	assertEquals("@NoctaliShiny o_O ? /cc @aStrangeCookie @Tenshi @PhoenixWright", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+    	assertEquals("@aStrangeCookie o_O ? /cc @Tenshi @PhoenixWright @NoctaliShiny", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
     	assertEquals("PhoenixWright",pokeBot.Judge);
 
 
@@ -56,7 +56,7 @@ public class PokeBotTest {
 	public void testJudge() {
 		assertEquals("@Sarkon Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("Sarkon","-10pv /cc @pcreux")));
 		assertEquals("@Tenshi my owner is @Tenshi", pokeBot.ask(new Tweet("Tenshi","Pokeball!")));
-		assertEquals("@NoctaliShiny o_O ? /cc @aStrangeCookie @Tenshi @PhoenixWright", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals("@aStrangeCookie o_O ? /cc @Tenshi @PhoenixWright @NoctaliShiny", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 		assertEquals("@PhoenixWright Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("PhoenixWright","-10pv /cc @pcreux")));
 		assertEquals("PhoenixWright",pokeBot.Judge);
 		assertEquals("Tenshi",pokeBot.Owner);
