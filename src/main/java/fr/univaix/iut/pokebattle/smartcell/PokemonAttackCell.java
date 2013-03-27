@@ -68,7 +68,7 @@ public class PokemonAttackCell implements SmartCell {
 	    				}
 	    				
 	    			}
-		    		return toname+" o_O ? /cc "+"@"+question.getScreenName()+" @"+bot.Judge+" "+target;
+		    		return "@"+question.getScreenName()+" o_O ? /cc "+toname+" @"+bot.Judge+" "+target;
 		    	}
 	    		
 	    		else if (bot.Owner == null)
