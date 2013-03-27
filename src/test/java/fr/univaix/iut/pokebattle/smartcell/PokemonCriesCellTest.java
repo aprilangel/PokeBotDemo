@@ -1,10 +1,9 @@
-package fr.univaix.iut.pokebattle.SmartCells;
+package fr.univaix.iut.pokebattle.smartcell;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
 import fr.univaix.iut.pokebattle.smartcells.PokemonCriesCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -14,12 +13,12 @@ public class PokemonCriesCellTest {
 
     @Test
     public void testSalut() {
-        assertEquals("Carpe Carpe Magicarpe !", cell.ask(new PokeBot(), new Tweet("Salut!")));
+        assertEquals("@nedseb Pika pika", cell.ask(null /* TODO */,new Tweet("nedseb", "Salut!")));
     }
 
     @Test
     public void testNotSalut() {
-        assertEquals("Carpe Carpe Magicarpe !", cell.ask(new PokeBot(), new Tweet("au revoir")));
+        assertEquals("@nedseb Pika pika", cell.ask(null /* TODO */,new Tweet("nedseb", "au revoir")));
     }
 
 }

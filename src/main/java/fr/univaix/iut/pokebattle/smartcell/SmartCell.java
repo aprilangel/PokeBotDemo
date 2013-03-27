@@ -1,4 +1,7 @@
-package fr.univaix.iut.pokebattle;
+package fr.univaix.iut.pokebattle.smartcell;
+
+import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public interface SmartCell {
 	/**

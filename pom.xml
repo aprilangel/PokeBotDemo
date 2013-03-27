@@ -14,11 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
-        <!-- Fill these in via https://dev.twitter.com/apps -->
-        <consumer.key>TODO</consumer.key>
-        <consumer.secret>TODO</consumer.secret>
-        <access.token>TODO</access.token>
-        <access.token.secret>TODO</access.token.secret>
     </properties>
 
     <dependencies>
@@ -30,6 +25,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.5.6</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
@@ -37,12 +38,52 @@
         </dependency>
 
         <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.4.9</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.8.2.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.8.2.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
+
+        <dependency>
             <groupId>fr.univaix.iut.pokebattle</groupId>
             <artifactId>tuse-core</artifactId>
             <version>0.0.2-SNAPSHOT</version>
         </dependency>
-
     </dependencies>
+
     <repositories>
         <repository>
             <id>PokeBattleRepo</id>
@@ -54,23 +95,12 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>EclipseLink Repo</id>
+            <url>http://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <configuration>
-                    <mainClass>fr.univaix.iut.pokebattle.TwitterBot</mainClass>
-                    <arguments>
-                        <argument>${consumer.key}</argument>
-                        <argument>${consumer.secret}</argument>
-                        <argument>${access.token}</argument>
-                        <argument>${access.token.secret}</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

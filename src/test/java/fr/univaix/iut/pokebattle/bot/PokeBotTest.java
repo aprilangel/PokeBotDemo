@@ -1,13 +1,15 @@
-package fr.univaix.iut.pokebattle;
+package fr.univaix.iut.pokebattle.bot;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 /**
  * Integration tests checking the PokeBot
  * behavior. We just test some cases to make sure that the
- * PokeBot is using SmartCells properly.
+ * PokeBot is using smartcell properly.
  */
 public class PokeBotTest {
     PokeBot pokeBot = new PokeBot();
@@ -46,6 +48,8 @@ public class PokeBotTest {
     	assertEquals("@Sarkon my owner is @Tenshi", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
     	assertEquals("@NoctaliShiny #attack #foudre! /cc @aStrangeCookie @Tenshi @PhoenixWright", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
     	assertEquals("PhoenixWright",pokeBot.Judge);
+
+
     }
 	@Test
 	public void testJudge() {
