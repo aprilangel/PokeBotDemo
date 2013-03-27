@@ -10,7 +10,6 @@ target/
 .classpath.txt
 .project
 # Package Files #
-*.jar
 *.war
 *.ear
 *.swp
