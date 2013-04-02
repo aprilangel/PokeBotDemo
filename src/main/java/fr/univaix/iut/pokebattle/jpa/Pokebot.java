@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Pokebot {
     public static final String FIND_ALL = "findAllPokemon";
     @Id
-    private String name;
+    private String nom;
 
     private String espece;
     private String owner;
@@ -17,17 +17,44 @@ public class Pokebot {
     private int pv = 100;
     private int pvmax = 100;
     private String isFighting = "false";
+	private int exp = 0;
+    private int level = 1;
+    
+    public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getIsFighting() {
+		return isFighting;
+	}
+
+	public void setIsFighting(String isFighting) {
+		this.isFighting = isFighting;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
    
-    protected Pokebot() {
-
-    }
-
-    public Pokebot(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
+	public Pokebot(String name) {
+        this.nom = name;
     }
 
 	public String getOwner() {
@@ -83,9 +110,12 @@ public class Pokebot {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((espece == null) ? 0 : espece.hashCode());
-		result = prime * result + ((isFighting == null) ? 0 : isFighting.hashCode());
+		result = prime * result + exp;
+		result = prime * result
+				+ ((isFighting == null) ? 0 : isFighting.hashCode());
 		result = prime * result + ((judge == null) ? 0 : judge.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + level;
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
 		result = prime * result + pv;
 		result = prime * result + pvmax;
@@ -106,6 +136,8 @@ public class Pokebot {
 				return false;
 		} else if (!espece.equals(other.espece))
 			return false;
+		if (exp != other.exp)
+			return false;
 		if (isFighting == null) {
 			if (other.isFighting != null)
 				return false;
@@ -116,10 +148,12 @@ public class Pokebot {
 				return false;
 		} else if (!judge.equals(other.judge))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (level != other.level)
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!nom.equals(other.nom))
 			return false;
 		if (owner == null) {
 			if (other.owner != null)
@@ -135,10 +169,13 @@ public class Pokebot {
 
 	@Override
 	public String toString() {
-		return "Pokebot [name=" + name + ", espece=" + espece + ", owner="
+		return "Pokebot [nom=" + nom + ", espece=" + espece + ", owner="
 				+ owner + ", judge=" + judge + ", pv=" + pv + ", pvmax="
-				+ pvmax + ", isFighting=" + isFighting + "]";
+				+ pvmax + ", isFighting=" + isFighting + ", exp=" + exp
+				+ ", level=" + level + "]";
 	}
+
+
 
 
     

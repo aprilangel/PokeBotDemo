@@ -45,7 +45,7 @@ public class DAOPokebotJPA implements DAOPokebot {
         tx.begin();
         entityManager.persist(obj);
         tx.commit();
-        return entityManager.find(Pokebot.class, obj.getName());
+        return entityManager.find(Pokebot.class, obj.getNom());
     }
 
     @Override
