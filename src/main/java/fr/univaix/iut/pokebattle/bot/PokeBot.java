@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import fr.univaix.iut.pokebattle.jpa.DAOPokebot;
 import fr.univaix.iut.pokebattle.jpa.DAOPokebotJPA;
 import fr.univaix.iut.pokebattle.jpa.Pokebot;
 import fr.univaix.iut.pokebattle.smartcell.PokemonAttackCell;
@@ -33,7 +34,7 @@ public class PokeBot implements Bot {
 	EntityManagerFactory emf = null;
     EntityManager em = null;
 	public Pokebot data = null;
-	DAOPokebotJPA jpa = null;
+	DAOPokebot jpa = null;
 	
 	public PokeBot (String nom)
 	{
