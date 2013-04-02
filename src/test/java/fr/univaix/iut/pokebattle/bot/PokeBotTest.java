@@ -12,7 +12,7 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
  * PokeBot is using smartcell properly.
  */
 public class PokeBotTest {
-    PokeBot pokeBot = new PokeBot();
+    PokeBot pokeBot = new PokeBot("MagicarpeShiny");
 
     @Test
     public void testSalut() {
@@ -48,7 +48,7 @@ public class PokeBotTest {
     	assertEquals("@Sarkon my owner is @Tenshi", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", pokeBot.ask(new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
-    	assertEquals("PhoenixWright",pokeBot.Judge);
+    	assertEquals("PhoenixWright",pokeBot.getJudge());
 
 
     }
@@ -58,10 +58,10 @@ public class PokeBotTest {
 		assertEquals("@Tenshi my owner is @Tenshi", pokeBot.ask(new Tweet("Tenshi","Pokeball!")));
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
     	assertEquals("@PhoenixWright Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("PhoenixWright","-10pv /cc @pcreux")));
-		assertEquals("PhoenixWright",pokeBot.Judge);
-		assertEquals("Tenshi",pokeBot.Owner);
+		assertEquals("PhoenixWright",pokeBot.getJudge());
+		assertEquals("Tenshi",pokeBot.getOwner());
 		assertEquals(null, pokeBot.ask(new Tweet("PhoenixWright","-10pv /cc @Tenshi")));
-    	assertEquals(90,pokeBot.PV);
+    	assertEquals(90,pokeBot.getPv());
 
 	}
 }

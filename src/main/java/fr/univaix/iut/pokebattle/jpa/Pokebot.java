@@ -16,7 +16,7 @@ public class Pokebot {
     private String judge;
     private int pv = 100;
     private int pvmax = 100;
-    private String isFighting = "false";
+    private int isFighting = 0;
 	private int exp = 0;
     private int level = 1;
     
@@ -28,11 +28,11 @@ public class Pokebot {
 		this.nom = nom;
 	}
 
-	public String getIsFighting() {
+	public int getIsFighting() {
 		return isFighting;
 	}
 
-	public void setIsFighting(String isFighting) {
+	public void setIsFighting(int isFighting) {
 		this.isFighting = isFighting;
 	}
 
@@ -81,14 +81,6 @@ public class Pokebot {
 		this.pv = pv;
 	}
 
-	public String isFighting() {
-		return isFighting;
-	}
-
-	public void setFighting(String isFighting) {
-		this.isFighting = isFighting;
-	}
-
 	public String getEspece() {
 		return espece;
 	}
@@ -105,14 +97,15 @@ public class Pokebot {
 		this.pvmax = pvmax;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((espece == null) ? 0 : espece.hashCode());
 		result = prime * result + exp;
-		result = prime * result
-				+ ((isFighting == null) ? 0 : isFighting.hashCode());
+		result = prime * result + isFighting;
 		result = prime * result + ((judge == null) ? 0 : judge.hashCode());
 		result = prime * result + level;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
@@ -138,10 +131,7 @@ public class Pokebot {
 			return false;
 		if (exp != other.exp)
 			return false;
-		if (isFighting == null) {
-			if (other.isFighting != null)
-				return false;
-		} else if (!isFighting.equals(other.isFighting))
+		if (isFighting != other.isFighting)
 			return false;
 		if (judge == null) {
 			if (other.judge != null)

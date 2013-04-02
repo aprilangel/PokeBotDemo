@@ -8,7 +8,7 @@ public class PokemonJudgeCell implements SmartCell {
 		
 	    public String ask(PokeBot bot, Tweet question) {
 	    	
-	    	if (question.getScreenName() != null && question.getScreenName().equals(bot.Judge)) {
+	    	if (question.getScreenName() != null && question.getScreenName().equals(bot.getJudge())) {
 	    		
 	    		try {
 		    		String[] mots = question.getText().split(" ");
@@ -17,17 +17,19 @@ public class PokemonJudgeCell implements SmartCell {
 					
 					String ownercheck = mots[2].substring(1);
 					
-					if (!ownercheck.equals(bot.Owner))
+					if (!ownercheck.equals(bot.getOwner()))
 						return null;
 					
-					bot.PV += damage;
 					
-					if (bot.PV <= 0) 
+					
+					if (bot.getPv() <= damage) 
 					{
-						bot.PV = 0;
-						return "#KO /cc @" + bot.Judge + " @" + question.getScreenName() 
-						+ " @" + bot.Owner;
+						bot.setPv(0);
+						return "#KO /cc @" + bot.getJudge() + " @" + question.getScreenName() 
+						+ " @" + bot.getOwner();
 					}
+					else
+						bot.setPv(bot.getPv()-damage);
 					
 					return " ";
 					

@@ -14,23 +14,23 @@ public class PokemonJudgeCellTest {
 	
     @Test
     public void testNull() {
-        assertEquals(null, cell.ask(new PokeBot(), new Tweet("Salut!")));
+        assertEquals(null, cell.ask(new PokeBot("MagicarpeShiny"), new Tweet("Salut!")));
     }
 	
 	@Test
 	public void testJudge() {
-		PokeBot bot = new PokeBot();
+		PokeBot bot = new PokeBot("MagicarpeShiny");
 		assertEquals(null, cell.ask(bot, new Tweet("Sarkon","-10pv /cc @pcreux")));
 		
-		bot.Judge = "PhoenixWright";
+		bot.setJudge("PhoenixWright");
     	
     	assertEquals(null, cell.ask(bot, new Tweet("PhoenixWright","-10pv /cc @pcreux")));
     	
-    	bot.Owner = "IAmGod";
+    	bot.setOwner("IAmGod");
     	
     	assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","-10pv /cc @IAmGod")));
     	
-    	assertEquals(90,bot.PV);
+    	assertEquals(90,bot.getPv());
 
 	}
 

@@ -58,14 +58,14 @@ public class DAOPokebotJPATest {
     @Test
     public void testFindAll() throws Exception {
         List<Pokebot> pokemons = dao.findAll();
-        assertThat(pokemons.get(0).getName()).isEqualTo("PikachuShiny");
-        assertThat(pokemons.get(1).getName()).isEqualTo("MagicarpeShiny");
+        assertThat(pokemons.get(0).getNom()).isEqualTo("PikachuShiny");
+        assertThat(pokemons.get(1).getNom()).isEqualTo("MagicarpeShiny");
     }
 
     @Test
     public void testGetById() throws Exception {
-        assertThat(dao.getById("PikachuShiny").getName()).isEqualTo("PikachuShiny");
-        assertThat(dao.getById("MagicarpeShiny").getName()).isEqualTo("MagicarpeShiny");
+        assertThat(dao.getById("PikachuShiny").getNom()).isEqualTo("PikachuShiny");
+        assertThat(dao.getById("MagicarpeShiny").getNom()).isEqualTo("MagicarpeShiny");
     }
 
     @Test
@@ -78,7 +78,7 @@ public class DAOPokebotJPATest {
     public void testInsert() throws Exception {
         Pokebot raichu = new Pokebot("RaichuLol");
         dao.insert(raichu);
-        assertThat(dao.getById("RaichuLol").getName()).isEqualTo("RaichuLol");
+        assertThat(dao.getById("RaichuLol").getNom()).isEqualTo("RaichuLol");
     }
 
     @Test

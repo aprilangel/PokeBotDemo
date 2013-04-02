@@ -14,12 +14,12 @@ public class PokemonPokeballCellTest {
 
     @Test
     public void testNull() {
-        assertEquals(null, cell.ask(new PokeBot(), new Tweet("Salut!")));
+        assertEquals(null, cell.ask(new PokeBot("MagicarpeShiny"), new Tweet("Salut!")));
     }
 
     @Test
     public void testOwner() {
-    	PokeBot bot = new PokeBot ();
+    	PokeBot bot = new PokeBot("MagicarpeShiny");
     	assertEquals("@EpicSaxGuy my owner is @EpicSaxGuy", cell.ask(bot, new Tweet("EpicSaxGuy","Pokeball!")));
     	assertEquals("@xXx_JacquesChirac_xXx my owner is @EpicSaxGuy", cell.ask(bot, new Tweet("xXx_JacquesChirac_xXx","Pokeball!")));
   }

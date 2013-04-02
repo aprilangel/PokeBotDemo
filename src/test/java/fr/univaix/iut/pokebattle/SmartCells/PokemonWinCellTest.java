@@ -14,10 +14,10 @@ public class PokemonWinCellTest {
 
     @Test
     public void testBool() {
-		PokeBot b = new PokeBot();
-		b.IsFighting=true;
+		PokeBot b = new PokeBot("MagicarpeShiny");
+		b.setIsFighting(1);
 		cell.ask(b, new Tweet("PhWright","#Win"));
-        assertEquals(false, b.IsFighting);
+        assertEquals(0, b.getIsFighting());
     }
 
 }
