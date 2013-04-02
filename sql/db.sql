@@ -2,6 +2,7 @@ CREATE TABLE pokebot (
   `NOM` varchar(15) default NOT NULL,
   `ESPECE` varchar(15) default NOT NULL,
   `OWNER` varchar(15) default NULL,
+  `JUDGE`varchar(15) default NULL,
   `PV` number(3) default NOT NULL,
   `PVMAX` number(3) default NOT NULL,
   `ISFIGHTING` number(1) default 0,
