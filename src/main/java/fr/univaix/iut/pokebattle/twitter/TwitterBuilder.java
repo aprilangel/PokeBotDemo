@@ -5,10 +5,10 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterBuilder {
-    private Credentials credentials;
+    private fr.univaix.iut.pokebattle.tuse.Credentials credentials;
 
-    public TwitterBuilder(Credentials credentials) {
-        this.credentials = credentials;
+    public TwitterBuilder(fr.univaix.iut.pokebattle.tuse.Credentials credentials2) {
+        this.credentials = credentials2;
     }
 
     public Twitter build() {
