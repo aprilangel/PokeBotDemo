@@ -34,7 +34,7 @@ public class PokeBot implements Bot {
 	EntityManagerFactory emf = null;
     EntityManager em = null;
 	public Pokebot data;
-	DAOPokebot jpa = null;
+	DAOPokebotJPA jpa = null;
 	
 	public PokeBot (String nom)
 	{

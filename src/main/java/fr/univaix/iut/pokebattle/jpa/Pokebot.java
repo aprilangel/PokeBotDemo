@@ -1,24 +1,32 @@
 package fr.univaix.iut.pokebattle.jpa;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @NamedQueries({
         @NamedQuery(name = Pokebot.FIND_ALL, query = "SELECT p FROM Pokebot p"),
 })
-public class Pokebot {
-    public static final String FIND_ALL = "findAllPokemon";
+public class Pokebot implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3228507168752805839L;
+
+	public static final String FIND_ALL = "findAllPokemon";
+    
     @Id
     private String nom;
 
     private String espece;
     private String owner;
     private String judge;
-    private int pv = 100;
-    private int pvmax = 100;
-    private int isFighting = 0;
-	private int exp = 0;
-    private int level = 1;
+    private int pv;
+    private int pvmax;
+    private int isFighting;
+	private int exp;
+    private int level;
     
     public String getNom() {
 		return nom;
@@ -52,7 +60,23 @@ public class Pokebot {
 		this.level = level;
 	}
 
-	protected Pokebot() { }
+	public Pokebot() {
+		super();
+	}
+	
+	public Pokebot(String nom,String espece,String owner,String judge,int pv,int pvmax,int isFighting,int exp,int level)
+	{
+		super();
+		this.nom = nom;
+		this.espece = espece;
+		this.owner = owner;
+		this.judge = judge;
+		this.pv = pv;
+		this.pvmax = pvmax;
+		this.isFighting = isFighting;
+		this.exp = exp;
+		this.level = level;
+	}
 	
 	
 	public Pokebot(String name) {

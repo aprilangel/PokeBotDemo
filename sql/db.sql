@@ -1,6 +1,6 @@
 --	DROP TABLE pokebot;
 
-CREATE TABLE pokebot (
+CREATE TABLE Pokebot (
   NOM 		VARCHAR(15),
   ESPECE 	VARCHAR(15),
   OWNER 	VARCHAR(15),
@@ -36,7 +36,7 @@ CREATE TABLE pokebot (
 --	)
 
 
-INSERT INTO `pokebot`
+INSERT INTO `Pokebot`
 	VALUES ('MagicarpeShiny','Magicarpe',null,null,'1337','1337',0,1250000,100);
 
 --
