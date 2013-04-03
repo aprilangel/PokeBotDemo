@@ -1,8 +1,5 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import fr.univaix.iut.pokebattle.bot.PokeBot;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 

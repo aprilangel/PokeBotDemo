@@ -1,11 +1,10 @@
 package fr.univaix.iut.pokebattle.SmartCells;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import fr.univaix.iut.pokebattle.bot.PokeBot;
-import fr.univaix.iut.pokebattle.smartcell.PokemonCriesCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonStatCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -25,7 +24,7 @@ public class PokemonStatCellTest {
     
     @Test
     public void testPV() {
-    	assertEquals("100", cell.ask (new PokeBot (), new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PV ?")));
+    	assertEquals("100/100", cell.ask (new PokeBot (), new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PV ?")));
     }
     
     @Test
