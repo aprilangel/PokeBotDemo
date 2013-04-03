@@ -17,7 +17,7 @@ public class PokemonPokeballCell implements SmartCell {
 if (question.getText().contains("Pokeball!")) {
     		if(bot.Owner == null) {
 	    		bot.Owner = question.getScreenName();
-	    		String newStatus = "#pokebattle - #pokemon - Owner: @" + question.getScreenName() + " - Craignez mon courroux";
+	    		String newStatus = "#pokebattle - #pokemon - Owner: @" + question.getScreenName() + " - Level: " + bot.level;
 	    		try {
 					twitter.updateProfile("MagicarpeShiny", null, null, newStatus);
 				} 
