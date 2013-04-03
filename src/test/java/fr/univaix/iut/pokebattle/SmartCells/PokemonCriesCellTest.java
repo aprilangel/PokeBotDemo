@@ -14,7 +14,7 @@ public class PokemonCriesCellTest {
 
     @Test
     public void testSalut() {
-        assertEquals("Carpe Carpe Magicarpe !", cell.ask(new PokeBot(), new Tweet("Salut!")));
+        assertEquals("Carpe Carpe Magicarpe !", cell.ask(new PokeBot(), new Tweet("@MewBleu Salut! ")));
     }
 
     @Test
