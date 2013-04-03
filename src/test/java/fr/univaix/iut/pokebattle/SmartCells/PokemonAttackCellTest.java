@@ -29,6 +29,7 @@ public class PokemonAttackCellTest {
     private static DatabaseConnection dbUnitConnection;
     private static EntityManagerFactory entityManagerFactory;
     private static PokeBot bot;
+    
 
     @BeforeClass
     public static void initTestFixture() throws Exception {
@@ -47,6 +48,7 @@ public class PokemonAttackCellTest {
 
     @AfterClass
     public static void finishTestFixture() throws Exception {
+    	DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
         entityManager.close();
         entityManagerFactory.close();
     }
@@ -54,6 +56,7 @@ public class PokemonAttackCellTest {
     @Before
     public void setUp() throws Exception { 
         //Clean the data from previous test and insert new data test.
+    	DatabaseOperation.DELETE_ALL.execute(dbUnitConnection, dataset);
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
         bot = new PokeBot (entityManager, "MagicarpeShiny");
     }

@@ -51,6 +51,7 @@ public class PokeBotTest {
 
     @AfterClass
     public static void finishTestFixture() throws Exception {
+    	DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
         entityManager.close();
         entityManagerFactory.close();
     }
@@ -113,7 +114,7 @@ public class PokeBotTest {
 		assertEquals("@Sarkon Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("Sarkon","-10pv /cc @pcreux")));
 		assertEquals("@Tenshi my owner is @Tenshi", pokeBot.ask(new Tweet("Tenshi","Pokeball!")));
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
-    	assertEquals("@PhoenixWright Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("PhoenixWright","-10pv /cc @pcreux")));
+    	assertEquals("@PhoenixWrong Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("PhoenixWrong","-10pv /cc @pcreux")));
 		assertEquals("PhoenixWright",pokeBot.getJudge());
 		assertEquals("Tenshi",pokeBot.getOwner());
 		assertEquals(null, pokeBot.ask(new Tweet("PhoenixWright","-10pv /cc @Tenshi")));

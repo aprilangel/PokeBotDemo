@@ -1,4 +1,4 @@
-package fr.univaix.iut.pokebattle.run;
+ package fr.univaix.iut.pokebattle.run;
 
 import fr.univaix.iut.pokebattle.bot.PokeBot;
 

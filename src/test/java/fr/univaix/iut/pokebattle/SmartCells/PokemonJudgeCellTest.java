@@ -47,6 +47,7 @@ public class PokemonJudgeCellTest {
 
     @AfterClass
     public static void finishTestFixture() throws Exception {
+    	DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
         entityManager.close();
         entityManagerFactory.close();
     }
@@ -73,7 +74,7 @@ public class PokemonJudgeCellTest {
 		
 		bot.setJudge("PhoenixWright");
     	
-    	assertEquals(null, cell.ask(bot, new Tweet("PhoenixWright","-10pv /cc @pcreux")));
+    	assertEquals(null, cell.ask(bot, new Tweet("PhoenixWrong","-10pv /cc @pcreux")));
     	
     	bot.setOwner("IAmGod");
     	

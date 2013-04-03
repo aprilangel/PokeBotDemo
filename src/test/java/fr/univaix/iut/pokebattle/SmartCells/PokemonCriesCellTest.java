@@ -47,6 +47,7 @@ public class PokemonCriesCellTest {
 
     @AfterClass
     public static void finishTestFixture() throws Exception {
+    	DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
         entityManager.close();
         entityManagerFactory.close();
     }

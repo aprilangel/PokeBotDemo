@@ -13,16 +13,25 @@ public class PokemonJudgeCell implements SmartCell {
 	    		try {
 		    		String[] mots = question.getText().split(" ");
 
-					int damage = Integer.parseInt(mots[0].substring(0,mots[0].length()-2));
+		    		int damage = 0;
+		    		//String ownercheck = null;
+		    		for (int i = 0; i < mots.length - 1 ; ++i )
+					{
+		    			if (mots[i+1].equals("/cc"))
+		    			{
+		    				//ownercheck = mots[2].substring(1);
+		    				damage = Integer.parseInt(mots[i].substring(0,mots[i].length()-2));
+		    			}
+					}
 					
-					String ownercheck = mots[2].substring(1);
-					
-					if (!ownercheck.equals(bot.getOwner()))
-						return null;
 					
 					
+					//if (!ownercheck.equals(bot.getOwner()))
+					//	return null;
 					
-					if (bot.getPv() <= damage) 
+					
+					
+					if (bot.getPv() + damage <= 0) 
 					{
 						bot.setPv(0);
 						return "#KO /cc @" + bot.getJudge() + " @" + question.getScreenName() 
