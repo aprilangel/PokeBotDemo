@@ -72,7 +72,6 @@ public class PokeBot implements Bot {
 	}
 
 	public void setIsFighting(int isFighting) {
-		if (isFighting >= 1) isFighting = 1;
 		data.setIsFighting(isFighting);
 		jpa.update(data);
 	}

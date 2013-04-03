@@ -46,10 +46,10 @@ public class Credentials {
         this.tokenSecret = tokenSecret;
     }
 
-    public static Credentials loadCredentials(InputStream propertiesFile) throws IOException {
+    public static fr.univaix.iut.pokebattle.tuse.Credentials loadCredentials(InputStream propertiesFile) throws IOException {
         Properties properties = new Properties();
         properties.load(propertiesFile);
-        Credentials credentials = new Credentials();
+        fr.univaix.iut.pokebattle.tuse.Credentials credentials = new fr.univaix.iut.pokebattle.tuse.Credentials();
         credentials.setConsumerKey(properties.getProperty("oauth.consumerKey"));
         credentials.setConsumerSecret(properties.getProperty("oauth.consumerSecret"));
         credentials.setToken(properties.getProperty("oauth.accessToken"));

@@ -12,7 +12,7 @@ public class BotRunner {
     static public void runBot(Bot bot, String credentialsFileName) {
         try {
             InputStream inputStream = getResourceAsStream(credentialsFileName);
-            Credentials credentials = Credentials.loadCredentials(inputStream);
+            fr.univaix.iut.pokebattle.tuse.Credentials credentials = Credentials.loadCredentials(inputStream);
             TwitterBot twitterBot = new TwitterBot(bot, credentials);
             twitterBot.startBot();
         } catch (InterruptedException e) {

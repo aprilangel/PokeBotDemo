@@ -29,8 +29,9 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
  */
 public class PokeBotTest {
     
+
 	private static PokeBot pokeBot;
-	private static EntityManager entityManager;
+/*	private static EntityManager entityManager;
     private static FlatXmlDataSet dataset;
     private static DatabaseConnection dbUnitConnection;
     private static EntityManagerFactory entityManagerFactory;
@@ -66,6 +67,7 @@ public class PokeBotTest {
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
     }
     
+    */
     
     
     @Test
