@@ -61,10 +61,11 @@ public class PokemonStatCell implements SmartCell {
 	    		
 	    		String TypeStatAttack = m1.group(1);
 	    		
-	    		Pattern p2 = Pattern.compile("#" + m1.group(1) + "#([^ ]+) ");
+	    		Pattern p2 = Pattern.compile(TypeStatAttack + " " + "#([^ ]+) ");
 		    	Matcher m2 = p2.matcher(question.getText());
-		    	
-		    	if (m2.find())
+		    	String Skill = m2.group(1);
+		    	return Skill;
+		    	/* if (m2.find())
 		    	{
 			    	for (int i = 0; i < Attack.length ; ++i)
 					{
@@ -91,8 +92,8 @@ public class PokemonStatCell implements SmartCell {
 		    		else if (TypeStatAttack.equals("Precision"))
 		    			return Precision;
 		    		else return "Magi Magi ?";
-		    	}
-		    	return null;
+		    	} 
+		    	return null; */
 	    	}
 	    	return null;
 
