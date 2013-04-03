@@ -13,10 +13,12 @@ import twitter4j.UserStreamListener;
 public class TwitterUserStreamEasyBuilder {
     private final static Logger logger = LoggerFactory.getLogger(TwitterBot.class);
     private Twitter twitter;
+    private fr.univaix.iut.pokebattle.tuse.Credentials credentials;
     final Bot bot;
 
-    public TwitterUserStreamEasyBuilder(Twitter twitter, final Bot bot) {
+    public TwitterUserStreamEasyBuilder(Twitter twitter, fr.univaix.iut.pokebattle.tuse.Credentials credentials, final Bot bot) {
         this.twitter = twitter;
+        this.credentials = credentials;
         this.bot = bot;
     }
 
@@ -32,7 +34,7 @@ public class TwitterUserStreamEasyBuilder {
                 }
             }
         };
-        return new TwitterUserStreamEasy(listener);
+        return new TwitterUserStreamEasy(listener, credentials);
     }
 
     private void processNewQuestion(Status status, Bot bot) throws TwitterException {

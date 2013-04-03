@@ -11,9 +11,9 @@ public class TwitterBot {
     TwitterUserStreamEasy twitterUserStreamEasy;
     Twitter twitter;
 
-    public TwitterBot(final Bot bot, Credentials credentials) {
+    public TwitterBot(final Bot bot, fr.univaix.iut.pokebattle.tuse.Credentials credentials) {
         this.twitter = new TwitterBuilder(credentials).build();
-        this.twitterUserStreamEasy = new TwitterUserStreamEasyBuilder(twitter, bot).build();
+        this.twitterUserStreamEasy = new TwitterUserStreamEasyBuilder(twitter, credentials, bot).build();
     }
 
     public void startBot() throws InterruptedException, ControlStreamException, IOException {
