@@ -6,6 +6,7 @@ import fr.univaix.iut.pokebattle.smartcell.PokemonInterlocuteurNameCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonJudgeCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonOwnerNameCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonPokeballCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonStatCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonWinCell;
 import fr.univaix.iut.pokebattle.smartcell.SmartCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
@@ -22,8 +23,12 @@ public class PokeBot implements Bot {
 	public int PVmax = 100;
 	public String Judge = null;
 	public String espece = "Magicarpe";
+	public String level = "1"; 
+	public String XP = "0";
+	
 	
     final SmartCell[] smartCells = new SmartCell[]{
+    		new PokemonStatCell(),
     		new PokemonWinCell(),
     		new PokemonJudgeCell(),
     		new PokemonAttackCell(),
