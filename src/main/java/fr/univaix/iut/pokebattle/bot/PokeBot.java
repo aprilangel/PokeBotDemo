@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import fr.univaix.iut.pokebattle.jpa.DAOPokebot;
 import fr.univaix.iut.pokebattle.jpa.DAOPokebotJPA;
 import fr.univaix.iut.pokebattle.jpa.Pokebot;
 import fr.univaix.iut.pokebattle.smartcell.PokemonAttackCell;
@@ -19,6 +18,7 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 
 public class PokeBot implements Bot {
+	
 
 	/*
 	 * Anciennes variables, maintenant inutiles car remplacées par le fr.univaix.iut.pokebattle.jpa.Pokebot
@@ -29,6 +29,7 @@ public class PokeBot implements Bot {
 	public int PVmax = 100;
 	public String Judge = null;
 	public String espece = "Magicarpe";
+	
 	*/
 	
 	EntityManagerFactory emf = null;

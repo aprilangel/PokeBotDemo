@@ -18,8 +18,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import fr.univaix.iut.pokebattle.jpa.DAOPokebot;
-import fr.univaix.iut.pokebattle.jpa.DAOPokebotJPA;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 /**
@@ -30,12 +28,12 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 public class PokeBotTest {
     
 
-	private static PokeBot pokeBot;
-/*	private static EntityManager entityManager;
+	private static EntityManager entityManager;
     private static FlatXmlDataSet dataset;
     private static DatabaseConnection dbUnitConnection;
     private static EntityManagerFactory entityManagerFactory;
-    
+    private static PokeBot pokeBot;
+
     @BeforeClass
     public static void initTestFixture() throws Exception {
         // Get the entity manager for the tests.
@@ -49,10 +47,6 @@ public class PokeBotTest {
         dataset = new FlatXmlDataSetBuilder().build(Thread.currentThread()
                 .getContextClassLoader()
                 .getResourceAsStream("pokebotDataset.xml"));
-        
-        
-        
-        pokeBot = new PokeBot(entityManager, "MagikarpShiny");
     }
 
     @AfterClass
@@ -62,12 +56,11 @@ public class PokeBotTest {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws Exception { 
         //Clean the data from previous test and insert new data test.
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
+        pokeBot = new PokeBot (entityManager, "MagicarpeShiny");
     }
-    
-    */
     
     
     @Test
@@ -85,11 +78,13 @@ public class PokeBotTest {
     @Test
     public void testOwner() {
         assertEquals("Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("Cuillère")));
+        pokeBot.setOwner(null);
         assertEquals("@jeanpierrecoffe I have no owner", pokeBot.ask(new Tweet("jeanpierrecoffe","owner?")));
     }
     
     @Test
     public void testPokeball() {
+    	pokeBot.setOwner(null);
         assertEquals("Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("Cuillère")));
         assertEquals("@jeanpierrecoffe I have no owner", pokeBot.ask(new Tweet("jeanpierrecoffe","owner?")));
         assertEquals("@jeanpierrecoffe my owner is @jeanpierrecoffe", pokeBot.ask(new Tweet("jeanpierrecoffe","Pokeball!")));
@@ -98,7 +93,9 @@ public class PokeBotTest {
         assertEquals("@xXx_JacquesChirac_xXx my owner is @jeanpierrecoffe", pokeBot.ask(new Tweet("xXx_JacquesChirac_xXx","owner?")));
     }
     @Test
-    public void testAttack() {    
+    public void testAttack() {
+    	pokeBot.setOwner(null);
+    	pokeBot.setJudge(null);
     	assertEquals("@Sarkon I have no owner", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
     	assertEquals("@Tenshi my owner is @Tenshi", pokeBot.ask(new Tweet("Tenshi","Pokeball!")));
     	assertEquals("@Sarkon my owner is @Tenshi", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
@@ -110,6 +107,9 @@ public class PokeBotTest {
     }
 	@Test
 	public void testJudge() {
+		pokeBot.setOwner(null);
+		pokeBot.setJudge(null);
+		pokeBot.setPv(100);
 		assertEquals("@Sarkon Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("Sarkon","-10pv /cc @pcreux")));
 		assertEquals("@Tenshi my owner is @Tenshi", pokeBot.ask(new Tweet("Tenshi","Pokeball!")));
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));

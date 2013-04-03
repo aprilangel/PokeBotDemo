@@ -36,7 +36,7 @@ CREATE TABLE Pokebot (
 --	)
 
 
-INSERT INTO `Pokebot`
+INSERT INTO `POKEBOT`
 	VALUES ('MagicarpeShiny','Magicarpe',null,null,'1337','1337',0,1250000,100);
 
 --

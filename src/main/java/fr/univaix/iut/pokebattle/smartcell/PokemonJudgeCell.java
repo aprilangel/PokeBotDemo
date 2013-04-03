@@ -29,7 +29,7 @@ public class PokemonJudgeCell implements SmartCell {
 						+ " @" + bot.getOwner();
 					}
 					else
-						bot.setPv(bot.getPv()-damage);
+						bot.setPv(bot.getPv()+damage);
 					
 					return " ";
 					
