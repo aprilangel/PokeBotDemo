@@ -42,7 +42,7 @@ public class PokemonAttackCell implements SmartCell {
 	        
 	    public String ask(final PokeBot bot, Tweet question) {
 	    	
-	    	final Timer t = new Timer(3600000, null);
+	    	final Timer t = new Timer(3000, null);
 	    	t.addActionListener(new ActionListener () {
 				public void actionPerformed(ActionEvent ae) {
 				   if (bot.PV >= (bot.PVmax - bot.PVmax/10))
