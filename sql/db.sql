@@ -34,7 +34,7 @@ CREATE TABLE pokebot (
 
 
 INSERT INTO `pokebot`
-	VALUES ('MagikarpShiny','Magicarpe',null,'1337','1337',0,1250000,100);
+	VALUES ('MagicarpeShiny','Magicarpe',null,'1337','1337',0,1250000,100);
 
 INSERT INTO `pokebot`
 	VALUES ('NoctaliShiny','Noctali',null,'1337','1337',0,1000000,100);
