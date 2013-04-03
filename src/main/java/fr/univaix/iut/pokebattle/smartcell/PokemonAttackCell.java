@@ -1,7 +1,10 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import javax.swing.Timer;
 
 import com.google.gson.Gson;
 
@@ -37,7 +40,20 @@ public class PokemonAttackCell implements SmartCell {
 	        }
 		}
 	        
-	    public String ask(PokeBot bot, Tweet question) {
+	    public String ask(final PokeBot bot, Tweet question) {
+	    	
+	    	final Timer t = new Timer(3000, null);
+	    	t.addActionListener(new ActionListener () {
+				public void actionPerformed(ActionEvent ae) {
+				   if (bot.PV >= (bot.PVmax - bot.PVmax/10))
+					   bot.PV = bot.PVmax;
+				   else
+				   {
+					   bot.PV += bot.PVmax/10;
+					   t.restart();
+				   }
+				}
+			});
 	    	
 	    	if (question.getText().contains("#attack")) {
 
@@ -59,6 +75,8 @@ public class PokemonAttackCell implements SmartCell {
 	    				return null;
 	    			}			
 	    			bot.IsFighting = true;
+	    			t.restart();
+	    			
 	    			for (int i = 0; i < Attack.length ; ++i)
 	    			{
 	    				

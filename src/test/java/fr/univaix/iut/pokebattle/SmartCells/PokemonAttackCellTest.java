@@ -38,4 +38,21 @@ public class PokemonAttackCellTest {
         assertEquals(true, b.IsFighting);
     }
 	
+	@Test
+	public void testRegen() throws InterruptedException {
+		PokeBot b = new PokeBot();
+		b.Owner = "Tenshi";
+		b.PVmax = 100;
+		b.PV = 85;
+		assertEquals(85, b.PV);
+		cell.ask(b, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
+		assertEquals(85, b.PV);
+		Thread.sleep(3500);
+		assertEquals(95, b.PV);
+		Thread.sleep(3500);
+		assertEquals(100, b.PV);
+		Thread.sleep(3500);
+		assertEquals(100, b.PV);
+	}
+	
 }
