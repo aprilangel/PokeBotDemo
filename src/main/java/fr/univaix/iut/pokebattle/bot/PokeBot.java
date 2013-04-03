@@ -25,6 +25,9 @@ public class PokeBot implements Bot {
 	public String espece = "Magicarpe";
 	public String level = "1"; 
 	public String XP = "0";
+	public String PP = "35";
+	public String Puissance = "35";
+	public String Precision = "95";
 	
 	
     final SmartCell[] smartCells = new SmartCell[]{
