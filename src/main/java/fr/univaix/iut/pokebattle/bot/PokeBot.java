@@ -23,8 +23,8 @@ public class PokeBot implements Bot {
 	public int PVmax = 100;
 	public String Judge = null;
 	public String espece = "Magicarpe";
-	public int level = 1; 
-	public int XP = 0;
+	public String level = "1"; 
+	public String XP = "0";
 	
 	
     final SmartCell[] smartCells = new SmartCell[]{

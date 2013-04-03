@@ -17,12 +17,13 @@ public class PokemonStatCell implements SmartCell {
 	    	if(m.matches())
 	    	{
 	    		String TypeStat = m.group(2);
-	    		if (TypeStat.equals("level"))
-	    			return null;
-	    		else if (TypeStat.equals("XP"))
-	    			return null;
-	    		else if (TypeStat.equals("PV"))
-	    			return null;
+	    		if (TypeStat.contains("level"))
+	    			return bot.level;
+	    		else if (TypeStat.contains("XP"))
+	    			return bot.XP;
+	    		else if (TypeStat.contains("PV"))
+	    			return bot.PV + "/" + bot.PVmax;
+	    		else return "Magi Magi ?";
 	    	}
 	        return null;
     
