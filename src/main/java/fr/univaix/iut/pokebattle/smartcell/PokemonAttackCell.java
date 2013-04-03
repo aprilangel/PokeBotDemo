@@ -84,7 +84,7 @@ public class PokemonAttackCell implements SmartCell {
 	    			catch (Exception e) {
 	    				return null;
 	    			}			
-	    			bot.setIsFighting(1);
+	    			bot.setFighting(toname);
 	    			for (int i = 0; i < Attack.length ; ++i)
 	    			{
 	    				

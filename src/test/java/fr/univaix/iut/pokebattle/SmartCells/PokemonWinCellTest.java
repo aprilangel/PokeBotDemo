@@ -64,9 +64,9 @@ public class PokemonWinCellTest {
 
     @Test
     public void testBool() {
-		bot.setIsFighting(1);
+		bot.setFighting("AHAHAH");
 		cell.ask(bot, new Tweet("PhWright","#Win"));
-        assertEquals(0, bot.getIsFighting());
+        assertEquals(null, bot.getFighting());
     }
 
 }

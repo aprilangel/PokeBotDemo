@@ -121,4 +121,21 @@ public class PokeBotTest {
     	assertEquals(90,pokeBot.getPv());
 
 	}
+	
+	@Test
+	public void testKO() {
+		pokeBot.setOwner(null);
+		pokeBot.setJudge(null);
+		pokeBot.setPv(100);
+		assertEquals("@Sarkon Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("Sarkon","-10pv /cc @pcreux")));
+		pokeBot.setJudge("PhoenixWright");
+    	assertEquals("@PhoenixWrong Carpe Carpe Magicarpe !", pokeBot.ask(new Tweet("PhoenixWrong","-10pv /cc @pcreux")));
+    	pokeBot.setOwner("IAmGod");
+    	assertEquals(null, pokeBot.ask(new Tweet("PhoenixWright","-10pv /cc @IAmGod")));
+    	assertEquals(90,pokeBot.getPv());
+    	pokeBot.setFighting("@VilainMéchant");
+    	assertEquals("#KO /cc @PhoenixWright @VilainMéchant @IAmGod", pokeBot.ask(new Tweet("PhoenixWright","-1337pv /cc @IAmGod")));
+    	assertEquals(0,pokeBot.getPv());
+
+	}
 }

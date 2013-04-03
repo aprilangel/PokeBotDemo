@@ -22,9 +22,9 @@ public class Pokebot implements Serializable {
     private String espece;
     private String owner;
     private String judge;
+    private String fighting;
     private int pv;
     private int pvmax;
-    private int isFighting;
 	private int exp;
     private int level;
     
@@ -36,12 +36,12 @@ public class Pokebot implements Serializable {
 		this.nom = nom;
 	}
 
-	public int getIsFighting() {
-		return isFighting;
+	public String getFighting() {
+		return fighting;
 	}
 
-	public void setIsFighting(int isFighting) {
-		this.isFighting = isFighting;
+	public void setFighting(String fighting) {
+		this.fighting = fighting;
 	}
 
 	public int getExp() {
@@ -64,7 +64,7 @@ public class Pokebot implements Serializable {
 		super();
 	}
 	
-	public Pokebot(String nom,String espece,String owner,String judge,int pv,int pvmax,int isFighting,int exp,int level)
+	public Pokebot(String nom,String espece,String owner,String judge,int pv,int pvmax,String fighting,int exp,int level)
 	{
 		super();
 		this.nom = nom;
@@ -73,7 +73,7 @@ public class Pokebot implements Serializable {
 		this.judge = judge;
 		this.pv = pv;
 		this.pvmax = pvmax;
-		this.isFighting = isFighting;
+		this.fighting = fighting;
 		this.exp = exp;
 		this.level = level;
 	}
@@ -131,7 +131,7 @@ public class Pokebot implements Serializable {
 		int result = 1;
 		result = prime * result + ((espece == null) ? 0 : espece.hashCode());
 		result = prime * result + exp;
-		result = prime * result + isFighting;
+		result = prime * result + ((fighting == null) ? 0 : fighting.hashCode());
 		result = prime * result + ((judge == null) ? 0 : judge.hashCode());
 		result = prime * result + level;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
@@ -157,7 +157,10 @@ public class Pokebot implements Serializable {
 			return false;
 		if (exp != other.exp)
 			return false;
-		if (isFighting != other.isFighting)
+		if (fighting == null) {
+			if (other.fighting != null)
+				return false;
+		} else if (!fighting.equals(other.fighting))
 			return false;
 		if (judge == null) {
 			if (other.judge != null)
@@ -187,7 +190,7 @@ public class Pokebot implements Serializable {
 	public String toString() {
 		return "Pokebot [nom=" + nom + ", espece=" + espece + ", owner="
 				+ owner + ", judge=" + judge + ", pv=" + pv + ", pvmax="
-				+ pvmax + ", isFighting=" + isFighting + ", exp=" + exp
+				+ pvmax + ", isFighting=" + fighting + ", exp=" + exp
 				+ ", level=" + level + "]";
 	}
 

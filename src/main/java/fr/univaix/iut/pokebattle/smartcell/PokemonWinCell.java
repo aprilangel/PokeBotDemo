@@ -10,7 +10,7 @@ public class PokemonWinCell implements SmartCell {
 	    public String ask(PokeBot bot, Tweet question) {
 	    	
 	    	if (question.getText().contains("#Win")) {
-	    		bot.setIsFighting(0);
+	    		bot.setFighting(null);
 	    		return " ";
 	    	}	
 	    	return null;

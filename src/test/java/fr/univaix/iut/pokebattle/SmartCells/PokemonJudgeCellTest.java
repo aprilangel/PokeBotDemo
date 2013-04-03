@@ -83,5 +83,29 @@ public class PokemonJudgeCellTest {
     	assertEquals(90,bot.getPv());
 
 	}
+	
+	@Test
+	public void testKO() {
+		bot.setPv(100);
+		
+		assertEquals(null, cell.ask(bot, new Tweet("Sarkon","-10pv /cc @pcreux")));
+		
+		bot.setJudge("PhoenixWright");
+    	
+    	assertEquals(null, cell.ask(bot, new Tweet("PhoenixWrong","-10pv /cc @pcreux")));
+    	
+    	bot.setOwner("IAmGod");
+    	
+    	assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","-10pv /cc @IAmGod")));
+    	
+    	assertEquals(90,bot.getPv());
+    	
+    	bot.setFighting("@VilainMéchant");
+    	
+    	assertEquals("#KO /cc @PhoenixWright @VilainMéchant @IAmGod", cell.ask(bot, new Tweet("PhoenixWright","-1337pv /cc @IAmGod")));
+    	
+    	assertEquals(0,bot.getPv());
+
+	}
 
 }

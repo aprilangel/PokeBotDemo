@@ -34,7 +34,7 @@ public class PokemonJudgeCell implements SmartCell {
 					if (bot.getPv() + damage <= 0) 
 					{
 						bot.setPv(0);
-						return "#KO /cc @" + bot.getJudge() + " @" + question.getScreenName() 
+						return "#KO /cc @" + bot.getJudge() + " " + bot.getFighting()
 						+ " @" + bot.getOwner();
 					}
 					else

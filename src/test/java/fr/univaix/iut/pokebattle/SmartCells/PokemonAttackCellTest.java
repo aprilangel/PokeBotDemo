@@ -84,9 +84,9 @@ public class PokemonAttackCellTest {
 	@Test
     public void testBool() {
 		bot.setOwner("Tenshi");
-		assertEquals(0, bot.getIsFighting());
+		assertEquals(null, bot.getFighting());
 		cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
-        assertEquals(1, bot.getIsFighting());
+        assertEquals("@aStrangeCookie", bot.getFighting());
     }
 	
 }

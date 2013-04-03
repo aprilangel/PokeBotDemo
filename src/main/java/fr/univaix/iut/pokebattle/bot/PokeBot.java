@@ -68,12 +68,12 @@ public class PokeBot implements Bot {
 		jpa.update(data);
 	}
 
-	public int getIsFighting() {
-		return data.getIsFighting();
+	public String getFighting() {
+		return data.getFighting();
 	}
 
-	public void setIsFighting(int isFighting) {
-		data.setIsFighting(isFighting);
+	public void setFighting(String Fighting) {
+		data.setFighting(Fighting);
 		jpa.update(data);
 	}
 
