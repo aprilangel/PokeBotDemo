@@ -52,7 +52,9 @@ public class Pokebot {
 		this.level = level;
 	}
 
-   
+	protected Pokebot() { }
+	
+	
 	public Pokebot(String name) {
         this.nom = name;
     }

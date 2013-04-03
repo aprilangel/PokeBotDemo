@@ -33,7 +33,7 @@ public class PokeBot implements Bot {
 	
 	EntityManagerFactory emf = null;
     EntityManager em = null;
-	public Pokebot data = null;
+	public Pokebot data;
 	DAOPokebot jpa = null;
 	
 	public PokeBot (String nom)
@@ -41,6 +41,15 @@ public class PokeBot implements Bot {
 		emf = Persistence.createEntityManagerFactory("pokebattlePU");
         em = emf.createEntityManager();
         jpa = new DAOPokebotJPA(em);
+        data = jpa.getById(nom);
+	}
+	
+	// For test purpose
+	public PokeBot (EntityManager emarg, String nom)
+	{
+
+        this.em = emarg;
+        jpa = new DAOPokebotJPA(emarg);
         data = jpa.getById(nom);
 	}
 		

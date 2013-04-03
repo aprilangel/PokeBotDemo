@@ -1,6 +1,6 @@
 <dataset>
-    <POKEBOT NAME="PikachuShiny" ESPECE="Pikachu" OWNER="NULL" JUDGE="NULL" 
-    PV="100" PVMAX="100" ISFIGHTING="false"/>
-    <POKEBOT NAME="MagicarpeShiny" ESPECE="Magicarpe" OWNER="NULL" JUDGE="NULL" 
-    PV="100" PVMAX="100" ISFIGHTING="false"/>
+    <POKEBOT NOM="PikachuShiny" ESPECE="Pikachu" OWNER="NULL" JUDGE="NULL" 
+    PV="100" PVMAX="100" ISFIGHTING="0" EXP="0" LEVEL="0"/>
+    <POKEBOT NOM="MagicarpeShiny" ESPECE="Magicarpe" OWNER="NULL" JUDGE="NULL" 
+    PV="100" PVMAX="100" ISFIGHTING="0" EXP="0" LEVEL="0"/>
 </dataset>
