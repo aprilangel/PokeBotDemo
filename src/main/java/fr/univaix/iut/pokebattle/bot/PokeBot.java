@@ -20,28 +20,12 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 public class PokeBot implements Bot {
 	
 
-	/*
-	 * Anciennes variables, maintenant inutiles car remplacées par le fr.univaix.iut.pokebattle.jpa.Pokebot
-	 * 
-	public boolean IsFighting = false;
-	public String Owner = null;
-	public int PV = 100;
-	public int PVmax = 100;
-	public String Judge = null;
-	public String espece = "Magicarpe";
-	public String level = "1"; 
-	public String XP = "0";
-	public String PP = "35";
-	public String Puissance = "35";
-	public String Precision = "95";
-	 *
-	 */
-
+	// Variables de communication JPA
+	private EntityManagerFactory emf = null;
+    private EntityManager em = null;
+	private Pokebot data;
+	private DAOPokebotJPA jpa = null;
 	
-	EntityManagerFactory emf = null;
-    EntityManager em = null;
-	public Pokebot data;
-	DAOPokebotJPA jpa = null;
 	
 	public PokeBot (String nom)
 	{
@@ -49,7 +33,7 @@ public class PokeBot implements Bot {
         em = emf.createEntityManager();
         jpa = new DAOPokebotJPA(em);
         data = jpa.getById(nom);
-	}
+	} // Pokebot ()
 	
 	// For test purpose
 	public PokeBot (EntityManager emarg, String nom)
@@ -58,13 +42,12 @@ public class PokeBot implements Bot {
         this.em = emarg;
         jpa = new DAOPokebotJPA(emarg);
         data = jpa.getById(nom);
-	}
+	} // Pokebot
 		
+	
 	/*
 	 * Getter et setters pour communiquer entre la base de données et les modifications du Pokebot
 	 */
-	
-	
 	public String getNom() {
 		return data.getNom();
 	}
@@ -78,8 +61,8 @@ public class PokeBot implements Bot {
 		return data.getFighting();
 	}
 
-	public void setFighting(String Fighting) {
-		data.setFighting(Fighting);
+	public void setFighting(String fighting) {
+		data.setFighting(fighting);
 		jpa.update(data);
 	}
 
@@ -150,8 +133,8 @@ public class PokeBot implements Bot {
 		return data.getAtk1();
 	}
 
-	public void setAtk1(String Atk1) {
-		data.setAtk1(Atk1);
+	public void setAtk1(String atk1) {
+		data.setAtk1(atk1);
 		jpa.update(data);
 	}
 	
@@ -159,8 +142,8 @@ public class PokeBot implements Bot {
 		return data.getAtk2();
 	}
 
-	public void setAtk2(String Atk2) {
-		data.setAtk2(Atk2);
+	public void setAtk2(String atk2) {
+		data.setAtk2(atk2);
 		jpa.update(data);
 	}
 	
@@ -168,8 +151,8 @@ public class PokeBot implements Bot {
 		return data.getAtk3();
 	}
 
-	public void setAtk3(String Atk3) {
-		data.setAtk3(Atk3);
+	public void setAtk3(String atk3) {
+		data.setAtk3(atk3);
 		jpa.update(data);
 	}
 
@@ -177,8 +160,8 @@ public class PokeBot implements Bot {
 		return data.getAtk4();
 	}
 
-	public void setAtk4(String Atk4) {
-		data.setAtk4(Atk4);
+	public void setAtk4(String atk4) {
+		data.setAtk4(atk4);
 		jpa.update(data);
 	}
 	 
@@ -222,7 +205,7 @@ public class PokeBot implements Bot {
      * List of smartcell the questions go through to
      * find an answer.
      */
-    final SmartCell[] smartCells = new SmartCell[]
+    private final SmartCell[] smartCells = new SmartCell[]
     {
     		new PokemonJudgeCell(),
     		new PokemonStatCell(),
@@ -246,6 +229,7 @@ public class PokeBot implements Bot {
             String answer = cell.ask(this,question);
             if (answer != null)
             {
+            	// Réponse spéciale quand le Pokémon ne dois pas répondre
             	if (answer.equals(" ")) {
             		return null;
             	}
