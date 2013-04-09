@@ -9,12 +9,14 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 public class PokemonOwnerNameCell implements SmartCell {
 	
    public String ask(PokeBot bot, Tweet question) {
-    	if (question.getText().contains("owner?") || question.getText().contains("Owner?")) 
-    		if (bot.getOwner() != null)
-    			return "@" + question.getScreenName() + " my owner is @" + bot.getOwner();
-    		else
-    			return "@" + question.getScreenName() + " I have no owner";
-    	return null;
-    }
+	   
+	   // Dis moi gentil pokémon, qui c'est ton maitre ?
+	   if (question.getText().contains("owner?") || question.getText().contains("Owner?")) 
+		   if (bot.getOwner() != null)
+			   return "@" + question.getScreenName() + " my owner is @" + bot.getOwner();
+		   else
+			   return "@" + question.getScreenName() + " I have no owner";
+	   return null;
+   	}
     
 }

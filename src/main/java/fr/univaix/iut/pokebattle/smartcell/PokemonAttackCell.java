@@ -37,36 +37,40 @@ public class PokemonAttackCell implements SmartCell {
 		        for(int i = 0; i < obj.length; ++i)
 		        {
 		        	
-		        	// TODO
-		        	// A MODIFIER : On bloque sur Magicarpe la, faudra utiliser bot.getEspece();
-		        	
-		        	if (obj[i].getNom().equals("Magicarpe"))
+		        	if (obj[i].getNom().equals(bot.getEspece()))
 		        	{
 		        		Attack = obj[i].getAttaques();
 		        		break;
 		        	}
+		        	
 		        }
+		        
 	    	}
 
 	    	
 	    	final Timer t = new Timer(3000, null);
-	    	t.addActionListener(new ActionListener () {
-				public void actionPerformed(ActionEvent ae) {
-				   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax()/10))
-					   bot.setPv(bot.getPvmax());
-				   else
-				   {
-					   bot.setPv(bot.getPv()+bot.getPvmax()/10);
-					   t.restart();
-				   }
+	    	t.addActionListener(
+	    		new ActionListener () 
+		    	{
+					public void actionPerformed(ActionEvent ae) 
+					{
+					   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax()/10))
+						   bot.setPv(bot.getPvmax());
+					   else
+					   {
+						   bot.setPv(bot.getPv()+bot.getPvmax()/10);
+						   t.restart();
+					   }
+					}
 				}
-			});
+	    	);
 	    	
 	    	// Gerer les #attack
 	    	if (question.getText().contains("#attack")) {
 
 	    		if(question.getScreenName().equals(bot.getOwner())) {
 	    			
+	    			// Extraction des différents mots
 	    			try {
 	    				
 	    				/* TODO
@@ -85,7 +89,6 @@ public class PokemonAttackCell implements SmartCell {
 	    				
 	    				*/
 	    				
-	    				
 			    		String[] mots = question.getText().split(" ");
 			    		for (int i = 0; i < mots.length; ++i) {
 							if (mots[i].equals("#attack")){
@@ -102,28 +105,40 @@ public class PokemonAttackCell implements SmartCell {
 	    				return null;
 	    			}			
 
+	    			// Si on a pas planté, on est en combat contre toname
 	    			bot.setFighting(toname);
+	    			
+	    			// Combat donc reset de la regen
 	    			t.restart();
 	    			
+	    			// Vérification de l'existence de l'attaque
 	    			for (int i = 0; i < Attack.length ; ++i)
 	    			{
-	    				
+	    				// Si l'attaque existe
 	    				if (Attack[i].getNom().equals(skill.substring(1)))
 	    				{
 	    					return  target+" #attack "+skill+"! /cc "+toname+" @"+question.getScreenName()+" @"+bot.getJudge();
 	    				}
 	    				
 	    			}
+	    			
+	    			// Sinon
 		    		return "@"+question.getScreenName()+" o_O ? /cc "+toname+" @"+bot.getJudge()+" "+target;
 		    	}
 	    		
+	    		// Si le pokemon n'as pas d'owner
 	    		else if (bot.getOwner() == null)
 	    			return "@" + question.getScreenName() + " I have no owner";
 	    		
+	    		// Si ce n'est pas l'owner qui demande l'attaque
 	    		else
 	    			return "@" + question.getScreenName() + " my owner is @" + bot.getOwner();
 
-	    	}	
+	    	}
+	    	
+	    	// Ce n'est pas une #attack
 	    	return null;
-	    }
-}
+	    	
+	    } // ask()
+	    
+} // PokemonAttackCell

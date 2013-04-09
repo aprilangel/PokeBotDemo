@@ -15,9 +15,16 @@ public class PokemonPokeballCell implements SmartCell {
 	
     public String ask(PokeBot bot, Tweet question) {
 
+    	// Tentative de capture ?
     	if (question.getText().contains("Pokeball!")) {
+    		
+    		// Le pokémon ne dois pas déjà avoir son maître
     		if(bot.getOwner() == null) {
+    			
+    			// Enregistrement de l'owner
 	    		bot.setOwner(question.getScreenName());
+	    		
+	    		// Mise a jour du status
 	    		String newStatus = "#pokebattle - #pokemon - Owner: @" + question.getScreenName() + " - Level: " + bot.getLevel();
 
 	    		try {
@@ -28,6 +35,8 @@ public class PokemonPokeballCell implements SmartCell {
 					e.printStackTrace();
 				}
     		}
+    		
+    		// Le vol, c'est mal
     		return "@" + question.getScreenName() + " my owner is @" + bot.getOwner();
     	}
     		

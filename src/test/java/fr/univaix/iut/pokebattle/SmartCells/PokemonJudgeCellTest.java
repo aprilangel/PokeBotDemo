@@ -107,5 +107,15 @@ public class PokemonJudgeCellTest {
     	assertEquals(0,bot.getPv());
 
 	}
+	
+    @Test
+    public void testWin() {
+		bot.setFighting("AHAHAH");
+		bot.setJudge("PhoenixWright");
+		cell.ask(bot, new Tweet("PhWright","#Win"));
+        assertEquals("AHAHAH", bot.getFighting());
+		cell.ask(bot, new Tweet("PhoenixWright","#Win"));
+        assertEquals(null, bot.getFighting());
+    }
 
 }

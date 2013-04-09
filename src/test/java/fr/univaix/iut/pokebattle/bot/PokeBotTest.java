@@ -138,4 +138,28 @@ public class PokeBotTest {
     	assertEquals(0,pokeBot.getPv());
 
 	}
+	
+	@Test
+	public void testStatLevel() {
+		pokeBot.setLevel(1);
+		assertEquals("1", pokeBot.ask( new Tweet ("@MagicarpeShiny Quel est ton #stat #level ?")));
+	}
+	
+    @Test
+    public void testStatXP() {
+    	pokeBot.setExp(0);
+    	assertEquals("0", pokeBot.ask( new Tweet ("@MagicarpeShiny Quel est ton #stat #XP ?")));
+    }
+    
+    @Test
+    public void testStatPV() {
+    	pokeBot.setPv(100);
+    	pokeBot.setPvmax(100);
+    	assertEquals("100/100", pokeBot.ask( new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PV ?")));
+    }
+    
+    @Test
+    public void testStatInconnu() {
+    	assertEquals("Magi Magi ?", pokeBot.ask( new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PP ?")));
+    }
 }

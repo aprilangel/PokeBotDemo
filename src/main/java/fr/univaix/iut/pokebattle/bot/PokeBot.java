@@ -13,7 +13,6 @@ import fr.univaix.iut.pokebattle.smartcell.PokemonJudgeCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonOwnerNameCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonPokeballCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonStatCell;
-import fr.univaix.iut.pokebattle.smartcell.PokemonWinCell;
 import fr.univaix.iut.pokebattle.smartcell.SmartCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -151,9 +150,9 @@ public class PokeBot implements Bot {
      * find an answer.
      */
     final SmartCell[] smartCells = new SmartCell[]
-    		{
-    		new PokemonWinCell(),
+    {
     		new PokemonJudgeCell(),
+    		new PokemonStatCell(),
     		new PokemonAttackCell(),
     		new PokemonPokeballCell(),
     		new PokemonOwnerNameCell(),
