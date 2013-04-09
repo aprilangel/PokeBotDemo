@@ -4,12 +4,50 @@ public class DataObjectAttack {
     public String getNom() {
 		return nom;
 	}
-
-	String niveau;
+	
     String nom;
     String puissance;
     String precision;
     String pp;
+    
+	String niveau;
+    public String getNiveau() {
+		return niveau;
+	}
+
+	public void setNiveau(String niveau) {
+		this.niveau = niveau;
+	}
+
+	public String getPuissance() {
+		return puissance;
+	}
+
+	public void setPuissance(String puissance) {
+		this.puissance = puissance;
+	}
+
+	public String getPrecision() {
+		return precision;
+	}
+
+	public void setPrecision(String precision) {
+		this.precision = precision;
+	}
+
+	public String getPp() {
+		return pp;
+	}
+
+	public void setPp(String pp) {
+		this.pp = pp;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
 
     public DataObjectAttack(String niveau, String nom, String puissance, String precision, 
                             String pp) {

@@ -18,7 +18,6 @@ public class Pokebot implements Serializable {
     
     @Id
     private String nom;
-
     private String espece;
     private String owner;
     private String judge;
@@ -27,8 +26,80 @@ public class Pokebot implements Serializable {
     private int pvmax;
 	private int exp;
     private int level;
+    private String atk1;
+    private String atk2;
+    private String atk3;
+    private String atk4;
+    private int pp1;
+    private int pp2;
+    private int pp3;
+    private int pp4;
     
-    public String getNom() {
+    public String getAtk1() {
+		return atk1;
+	}
+
+	public void setAtk1(String atk1) {
+		this.atk1 = atk1;
+	}
+
+	public String getAtk2() {
+		return atk2;
+	}
+
+	public void setAtk2(String atk2) {
+		this.atk2 = atk2;
+	}
+
+	public String getAtk3() {
+		return atk3;
+	}
+
+	public void setAtk3(String atk3) {
+		this.atk3 = atk3;
+	}
+
+	public String getAtk4() {
+		return atk4;
+	}
+
+	public void setAtk4(String atk4) {
+		this.atk4 = atk4;
+	}
+
+	public int getPp1() {
+		return pp1;
+	}
+
+	public void setPp1(int pp1) {
+		this.pp1 = pp1;
+	}
+
+	public int getPp2() {
+		return pp2;
+	}
+
+	public void setPp2(int pp2) {
+		this.pp2 = pp2;
+	}
+
+	public int getPp3() {
+		return pp3;
+	}
+
+	public void setPp3(int pp3) {
+		this.pp3 = pp3;
+	}
+
+	public int getPp4() {
+		return pp4;
+	}
+
+	public void setPp4(int pp4) {
+		this.pp4 = pp4;
+	}
+
+	public String getNom() {
 		return nom;
 	}
 
@@ -123,19 +194,26 @@ public class Pokebot implements Serializable {
 		this.pvmax = pvmax;
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((atk1 == null) ? 0 : atk1.hashCode());
+		result = prime * result + ((atk2 == null) ? 0 : atk2.hashCode());
+		result = prime * result + ((atk3 == null) ? 0 : atk3.hashCode());
+		result = prime * result + ((atk4 == null) ? 0 : atk4.hashCode());
 		result = prime * result + ((espece == null) ? 0 : espece.hashCode());
 		result = prime * result + exp;
-		result = prime * result + ((fighting == null) ? 0 : fighting.hashCode());
+		result = prime * result
+				+ ((fighting == null) ? 0 : fighting.hashCode());
 		result = prime * result + ((judge == null) ? 0 : judge.hashCode());
 		result = prime * result + level;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
+		result = prime * result + pp1;
+		result = prime * result + pp2;
+		result = prime * result + pp3;
+		result = prime * result + pp4;
 		result = prime * result + pv;
 		result = prime * result + pvmax;
 		return result;
@@ -150,6 +228,26 @@ public class Pokebot implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Pokebot other = (Pokebot) obj;
+		if (atk1 == null) {
+			if (other.atk1 != null)
+				return false;
+		} else if (!atk1.equals(other.atk1))
+			return false;
+		if (atk2 == null) {
+			if (other.atk2 != null)
+				return false;
+		} else if (!atk2.equals(other.atk2))
+			return false;
+		if (atk3 == null) {
+			if (other.atk3 != null)
+				return false;
+		} else if (!atk3.equals(other.atk3))
+			return false;
+		if (atk4 == null) {
+			if (other.atk4 != null)
+				return false;
+		} else if (!atk4.equals(other.atk4))
+			return false;
 		if (espece == null) {
 			if (other.espece != null)
 				return false;
@@ -179,6 +277,14 @@ public class Pokebot implements Serializable {
 				return false;
 		} else if (!owner.equals(other.owner))
 			return false;
+		if (pp1 != other.pp1)
+			return false;
+		if (pp2 != other.pp2)
+			return false;
+		if (pp3 != other.pp3)
+			return false;
+		if (pp4 != other.pp4)
+			return false;
 		if (pv != other.pv)
 			return false;
 		if (pvmax != other.pvmax)
@@ -189,10 +295,14 @@ public class Pokebot implements Serializable {
 	@Override
 	public String toString() {
 		return "Pokebot [nom=" + nom + ", espece=" + espece + ", owner="
-				+ owner + ", judge=" + judge + ", pv=" + pv + ", pvmax="
-				+ pvmax + ", isFighting=" + fighting + ", exp=" + exp
-				+ ", level=" + level + "]";
+				+ owner + ", judge=" + judge + ", fighting=" + fighting
+				+ ", pv=" + pv + ", pvmax=" + pvmax + ", exp=" + exp
+				+ ", level=" + level + ", atk1=" + atk1 + ", atk2=" + atk2
+				+ ", atk3=" + atk3 + ", atk4=" + atk4 + ", pp1=" + pp1
+				+ ", pp2=" + pp2 + ", pp3=" + pp3 + ", pp4=" + pp4 + "]";
 	}
+
+
 
 
 

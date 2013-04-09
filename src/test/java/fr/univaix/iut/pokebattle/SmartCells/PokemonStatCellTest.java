@@ -64,25 +64,61 @@ public class PokemonStatCellTest {
 	@Test
 	public void testLevel() {
 		bot.setLevel(1);
-		assertEquals("1", cell.ask (bot, new Tweet ("@MagicarpeShiny Quel est ton #stat #level ?")));
+		assertEquals("1", cell.ask (bot, 
+				new Tweet ("@MagicarpeShiny Quel est ton #stat #level ?")));
 	}
 	
     @Test
     public void testXP() {
     	bot.setExp(0);
-    	assertEquals("0", cell.ask (bot, new Tweet ("@MagicarpeShiny Quel est ton #stat #XP ?")));
+    	assertEquals("0", cell.ask (bot, 
+    			new Tweet ("@MagicarpeShiny Quel est ton #stat #XP ?")));
     }
     
     @Test
     public void testPV() {
     	bot.setPv(100);
     	bot.setPvmax(100);
-    	assertEquals("100/100", cell.ask (bot, new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PV ?")));
+    	assertEquals("100/100", cell.ask (bot, 
+    			new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PV ?")));
     }
     
     @Test
     public void testInconnu() {
-    	assertEquals("Magi Magi ?", cell.ask (bot, new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PP ?")));
+
+    	assertEquals("Magi Magi ?", cell.ask (bot, 
+    			new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PL ?")));
+    }
+    
+    
+//Tests pour les attaques
+    
+    
+    @Test
+    public void testPP() {
+    	assertEquals("25/40", cell.ask (bot, 
+    			new Tweet ("@MagicarpeShiny Combien as-tu de #statAttack #PP #Trempette ?")));
+    }
+    
+    @Test
+    public void testPuissance() {
+    	assertEquals("35", cell.ask (bot, 
+    			new Tweet ("@MagicarpeShiny Combien as-tu de #statAttack #Puissance #Charge ?")));
+    }
+    
+    @Test
+    public void testPrecision() {
+    	assertEquals("95", cell.ask (bot, 
+    			new Tweet ("@MagicarpeShiny Combien as-tu de #statAttack #Precision #Charge ?")));
+    }
+    
+    @Test
+    public void testInconnu2() {
+    	assertEquals("Magi Magi ?", cell.ask (bot, 
+    			new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PP ?")));
+
     }
 
+    
+// Fin des tests
 }
