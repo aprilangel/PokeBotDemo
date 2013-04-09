@@ -14,10 +14,10 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonStatCell implements SmartCell {
 	
-	DataObjectAttack[] Attack;
-	String PPmax;
-	String Puissance;
-	String Precision;
+	private DataObjectAttack[] attack;
+	private String ppmax;
+	private String puissance;
+	private String precision;
 	
 	public PokemonStatCell() {
 		Gson gson = new Gson();
@@ -32,7 +32,7 @@ public class PokemonStatCell implements SmartCell {
 		{
 			if (obj[i].getNom().equals("Magicarpe"))
 			{
-				Attack = obj[i].getAttaques();
+				attack = obj[i].getAttaques();
 				break;
 			}
 		}
@@ -50,15 +50,15 @@ public class PokemonStatCell implements SmartCell {
     	if(m.find())
     	{
     		// Extraction de la stat demandée
-    		String TypeStat = m.group(1);
+    		String typeStat = m.group(1);
     		
-    		if (TypeStat.equals("level")) {
+    		if (typeStat.equals("level")) {
     			return ""+bot.getLevel();
     		}
-    		else if (TypeStat.equals("XP")) {
+    		else if (typeStat.equals("XP")) {
     			return ""+bot.getExp();
     		}
-    		else if (TypeStat.equals("PV")) {
+    		else if (typeStat.equals("PV")) {
     			return bot.getPv() + "/" + bot.getPvmax();
     		}
     		// Stat inconnue
@@ -71,37 +71,41 @@ public class PokemonStatCell implements SmartCell {
     	if(m1.find())
     	{
     		
-    		String TypeStatAttack = m1.group(1);
+    		String typeStatattack = m1.group(1);
 
-	    	String Skill = m1.group(2);
+	    	String skill = m1.group(2);
 	    	
 	    	
     	
-	    	for (int i = 0; i < Attack.length ; ++i)
+	    	for (int i = 0; i < attack.length ; ++i)
 			{
 				
-				if (Attack[i].getNom().equals(Skill))
+				if (attack[i].getNom().equals(skill))
 				{
-					PPmax = Attack[i].getPp();
-					Puissance = Attack[i].getPuissance();
-					Precision = Attack[i].getPrecision();
+					ppmax = attack[i].getPp();
+					puissance = attack[i].getPuissance();
+					precision = attack[i].getPrecision();
 				}
 			}
-	    	if (TypeStatAttack.equals("PP"))
+	    	if (typeStatattack.equals("PP"))
 	    	{
-		    	if(Skill.equals(bot.getAtk1())) return bot.getPp1() + "/" + PPmax;
+		    	if(skill.equals(bot.getAtk1())) { return bot.getPp1() + "/" + ppmax; }
 		    	
-		    	if(Skill.equals(bot.getAtk2())) return bot.getPp2() + "/" + PPmax;
+		    	if(skill.equals(bot.getAtk2())) { return bot.getPp2() + "/" + ppmax; }
 		    	
-		    	if(Skill.equals(bot.getAtk3())) return bot.getPp3() + "/" + PPmax;
+		    	if(skill.equals(bot.getAtk3())) { return bot.getPp3() + "/" + ppmax; }
 		        
-		    	if(Skill.equals(bot.getAtk4())) return bot.getPp4() + "/" + PPmax;
+		    	if(skill.equals(bot.getAtk4())) { return bot.getPp4() + "/" + ppmax; }
 	    	}
-    		else if (TypeStatAttack.equals("Puissance"))
-    			return Puissance;
-    		else if (TypeStatAttack.equals("Precision"))
-    			return Precision;
-    		else return "Magi Magi ?";
+    		else if (typeStatattack.equals("Puissance")) {
+    			return puissance;
+    		}
+    		else if (typeStatattack.equals("Precision")) {
+    			return precision;
+    		}
+    		else {
+    			return "Magi Magi ?";
+    		}
 	    		
 	}
 	return null;

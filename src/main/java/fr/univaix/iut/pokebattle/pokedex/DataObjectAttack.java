@@ -1,16 +1,19 @@
 package fr.univaix.iut.pokebattle.pokedex;
 
 public class DataObjectAttack {
+
+	// Variables
+    private String nom;
+    private String puissance;
+    private String precision;
+    private String pp;
+    private String niveau;
+    
+    // Getters and setters
     public String getNom() {
 		return nom;
 	}
-	
-    String nom;
-    String puissance;
-    String precision;
-    String pp;
     
-	String niveau;
     public String getNiveau() {
 		return niveau;
 	}

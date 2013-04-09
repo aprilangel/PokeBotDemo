@@ -2,21 +2,18 @@ package fr.univaix.iut.pokebattle.smartcell;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import javax.swing.Timer;
-import com.google.gson.Gson;
 import fr.univaix.iut.pokebattle.bot.PokeBot;
-import fr.univaix.iut.pokebattle.pokedex.DataObjectAttack;
-import fr.univaix.iut.pokebattle.pokedex.DataObjectPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 
 public class PokemonAttackCell implements SmartCell {
-		String skill;
-		String target;
-		String toname;
+		private String skill;
+		private String target;
+		private String toname;
 		
+		// Constante de divison pour la régen de pv (ici, 1/10 des PV Max)
+		private final int k_REGEN = 10;
 		
         
 	    public String ask(final PokeBot bot, Tweet question) {
@@ -27,12 +24,12 @@ public class PokemonAttackCell implements SmartCell {
 		    	{
 					public void actionPerformed(ActionEvent ae) 
 					{
-					   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax()/10)) {
+					   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax() / k_REGEN)) {
 						   bot.setPv(bot.getPvmax());
 					   }
 					   else
 					   {
-						   bot.setPv(bot.getPv()+bot.getPvmax()/10);
+						   bot.setPv(bot.getPv()+bot.getPvmax() / k_REGEN);
 						   t.restart();
 					   }
 					}
@@ -48,20 +45,8 @@ public class PokemonAttackCell implements SmartCell {
 	    			try {
 	    				
 	    				/* TODO
-	    				 * A corriger
 	    				 * Méthode des Pattern meilleur mais ne fonctionne pas
-	    				
-	    				Pattern PNames = Pattern.compile("@([^ ]+)");
-	    				Pattern PHash = Pattern.compile("@([^ ]+)");
-	    				Matcher MNames = PNames.matcher(question.getText());
-	    				Matcher MHash = PHash.matcher(question.getText());
-	    				
-	    				target = MNames.group(1);
-	    				toname = MNames.group(2);
-	    				bot.setJudge(MNames.group(3));
-	    				skill = MHash.group(2);
-	    				
-	    				*/
+	    				 */
 	    				
 			    		String[] mots = question.getText().split(" ");
 			    		for (int i = 0; i < mots.length; ++i) {

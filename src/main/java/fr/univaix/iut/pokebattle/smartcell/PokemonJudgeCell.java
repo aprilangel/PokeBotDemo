@@ -29,20 +29,14 @@ public class PokemonJudgeCell implements SmartCell {
 		    		String[] mots = question.getText().split(" ");
 
 		    		int damage = 0;
-		    		//String ownercheck = null;
 		    		for (int i = 0; i < mots.length - 1 ; ++i )
 					{
 		    			if (mots[i+1].equals("/cc"))
 		    			{
-		    				//ownercheck = mots[2].substring(1);
 		    				damage = Integer.parseInt(mots[i].substring(0,mots[i].length()-2));
 		    			}
 					}
 					
-					
-					
-					//if (!ownercheck.equals(bot.getOwner()))
-					//	return null;
 					
 					
 					// Est-ce que notre vaillant pokémon va t'il succomber a ses blessures ?
@@ -55,8 +49,10 @@ public class PokemonJudgeCell implements SmartCell {
 					
 					// Ou va t'il survivre ?
 					else
+					{
 						bot.setPv(bot.getPv()+damage);
-					
+					}
+						
 					// Renvoyer null reviens a dire que c'est pas a cette cell de s'occuper du message
 					// Dans notre cas, c'est bien cette cell, mais on a rien a répondre
 					// Donc on renvoie ce message qui sera interprété comme "Ne pas répondre"
