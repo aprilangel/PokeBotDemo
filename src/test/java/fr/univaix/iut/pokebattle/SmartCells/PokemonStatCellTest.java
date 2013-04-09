@@ -19,10 +19,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import fr.univaix.iut.pokebattle.bot.PokeBot;
-import fr.univaix.iut.pokebattle.smartcell.PokemonCriesCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonStatCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
-public class PokemonCriesCellTest {
+public class PokemonStatCellTest {
 
 	private static EntityManager entityManager;
     private static FlatXmlDataSet dataset;
@@ -58,18 +58,31 @@ public class PokemonCriesCellTest {
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
         bot = new PokeBot (entityManager, "MagicarpeShiny");
     }
-    PokemonCriesCell cell = new PokemonCriesCell();
-
+    
+    PokemonStatCell cell = new PokemonStatCell();
+	
+	@Test
+	public void testLevel() {
+		bot.setLevel(1);
+		assertEquals("1", cell.ask (bot, new Tweet ("@MagicarpeShiny Quel est ton #stat #level ?")));
+	}
+	
     @Test
-    public void testSalut() {
-        assertEquals("Carpe Carpe Magicarpe !", cell.ask(bot, new Tweet("Salut!")));
-		assertEquals("Carpe Carpe Magicarpe !", cell.ask(bot, new Tweet("@MewBleu Salut!")));
-		
+    public void testXP() {
+    	bot.setExp(0);
+    	assertEquals("0", cell.ask (bot, new Tweet ("@MagicarpeShiny Quel est ton #stat #XP ?")));
     }
-
+    
     @Test
-    public void testNotSalut() {
-        assertEquals("Carpe Carpe Magicarpe !", cell.ask(bot, new Tweet("au revoir")));
+    public void testPV() {
+    	bot.setPv(100);
+    	bot.setPvmax(100);
+    	assertEquals("100/100", cell.ask (bot, new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PV ?")));
+    }
+    
+    @Test
+    public void testInconnu() {
+    	assertEquals("Magi Magi ?", cell.ask (bot, new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PP ?")));
     }
 
 }

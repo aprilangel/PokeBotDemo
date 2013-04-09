@@ -14,10 +14,12 @@ public class PokemonPokeballCell implements SmartCell {
 	Twitter twitter = TwitterFactory.getSingleton();
 	
     public String ask(PokeBot bot, Tweet question) {
+
     	if (question.getText().contains("Pokeball!")) {
     		if(bot.getOwner() == null) {
 	    		bot.setOwner(question.getScreenName());
-	    		String newStatus = "#pokebattle - #pokemon - Owner: @" + question.getScreenName() + " - Craignez mon courroux";
+	    		String newStatus = "#pokebattle - #pokemon - Owner: @" + question.getScreenName() + " - Level: " + bot.getLevel();
+
 	    		try {
 					twitter.updateProfile("MagicarpeShiny", null, null, newStatus);
 				} 

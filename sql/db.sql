@@ -36,6 +36,7 @@ CREATE TABLE Pokebot (
 --	)
 
 
+<<<<<<< HEAD
 INSERT INTO `POKEBOT`
 	VALUES ('MagicarpeShiny','Magicarpe',null,null,'1337','1337',0,1250000,100);
 
@@ -43,3 +44,10 @@ INSERT INTO `POKEBOT`
 --	INSERT INTO `pokebot`
 --	VALUES ('NoctaliShiny','Noctali',null,'1337','1337',0,1000000,100);
 --
+=======
+INSERT INTO `pokebot`
+	VALUES ('MagicarpeShiny','Magicarpe',null,'1337','1337',0,1250000,100);
+
+INSERT INTO `pokebot`
+	VALUES ('NoctaliShiny','Noctali',null,'1337','1337',0,1000000,100);
+>>>>>>> master

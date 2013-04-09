@@ -1,9 +1,11 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import javax.swing.Timer;
 import com.google.gson.Gson;
-
 import fr.univaix.iut.pokebattle.bot.PokeBot;
 import fr.univaix.iut.pokebattle.pokedex.DataObjectAttack;
 import fr.univaix.iut.pokebattle.pokedex.DataObjectPokemon;
@@ -18,7 +20,7 @@ public class PokemonAttackCell implements SmartCell {
 		DataObjectAttack[] Attack = null;
 		
         
-	    public String ask(PokeBot bot, Tweet question) {
+	    public String ask(final PokeBot bot, Tweet question) {
 	    	
 	    	// Initialiser les attaques si on ne les as pas !
 	    	if (Attack == null)
@@ -27,6 +29,7 @@ public class PokemonAttackCell implements SmartCell {
 
 		        BufferedReader br = new BufferedReader(
 		                               new InputStreamReader(PokemonAttackCell.class.getClassLoader().getResourceAsStream("pokedex.json")));
+
 
 		        //convert the json string back to object
 		        DataObjectPokemon[] obj = gson.fromJson(br, DataObjectPokemon[].class);
@@ -44,6 +47,20 @@ public class PokemonAttackCell implements SmartCell {
 		        	}
 		        }
 	    	}
+
+	    	
+	    	final Timer t = new Timer(3000, null);
+	    	t.addActionListener(new ActionListener () {
+				public void actionPerformed(ActionEvent ae) {
+				   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax()/10))
+					   bot.setPv(bot.getPvmax());
+				   else
+				   {
+					   bot.setPv(bot.getPv()+bot.getPvmax()/10);
+					   t.restart();
+				   }
+				}
+			});
 	    	
 	    	// Gerer les #attack
 	    	if (question.getText().contains("#attack")) {
@@ -84,7 +101,10 @@ public class PokemonAttackCell implements SmartCell {
 	    			catch (Exception e) {
 	    				return null;
 	    			}			
+
 	    			bot.setFighting(toname);
+	    			t.restart();
+	    			
 	    			for (int i = 0; i < Attack.length ; ++i)
 	    			{
 	    				

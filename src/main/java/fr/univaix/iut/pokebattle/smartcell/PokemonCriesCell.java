@@ -9,7 +9,14 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 public class PokemonCriesCell implements SmartCell {
 
     public String ask(PokeBot bot, Tweet question) {
-        return "Carpe Carpe Magicarpe !";
+    	/* Pattern p = Pattern.compile("([^ ]+) ");
+    	Matcher m = p.matcher(question.getText());
+    	if(m.find())
+    	{
+    		String nomPokemon = m.group(1);
+    		return nomPokemon;
+    	} */
+    	return "Carpe Carpe Magicarpe !";
     }
 
 }
