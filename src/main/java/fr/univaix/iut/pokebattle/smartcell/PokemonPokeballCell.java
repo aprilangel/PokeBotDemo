@@ -3,7 +3,7 @@ package fr.univaix.iut.pokebattle.smartcell;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 	/**
@@ -13,7 +13,7 @@ public class PokemonPokeballCell implements SmartCell {
 
 	Twitter twitter = TwitterFactory.getSingleton();
 	
-    public String ask(PokeBot bot, Tweet question) {
+    public String ask(JPAPokemon bot, Tweet question) {
 
     	// Tentative de capture ?
     	if (question.getText().contains("Pokeball!")) {

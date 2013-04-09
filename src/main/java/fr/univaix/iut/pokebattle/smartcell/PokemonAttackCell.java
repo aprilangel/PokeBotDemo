@@ -3,7 +3,7 @@ package fr.univaix.iut.pokebattle.smartcell;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 
@@ -16,7 +16,7 @@ public class PokemonAttackCell implements SmartCell {
 		private final int k_REGEN = 10;
 		
         
-	    public String ask(final PokeBot bot, Tweet question) {
+	    public String ask(final JPAPokemon bot, Tweet question) {
     	
 	    	final Timer t = new Timer(3000, null);
 	    	t.addActionListener(

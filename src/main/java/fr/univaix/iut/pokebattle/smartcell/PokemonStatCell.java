@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 import com.google.gson.Gson;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.pokedex.DataObjectAttack;
 import fr.univaix.iut.pokebattle.pokedex.DataObjectPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
@@ -38,7 +38,7 @@ public class PokemonStatCell implements SmartCell {
 		}
 	}
 	
-	public String ask(PokeBot bot, Tweet question) {
+	public String ask(JPAPokemon bot, Tweet question) {
 		
 	
 

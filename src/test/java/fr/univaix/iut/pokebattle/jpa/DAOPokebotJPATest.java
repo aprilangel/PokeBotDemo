@@ -60,7 +60,7 @@ public class DAOPokebotJPATest {
         List<Pokebot> pokemons = dao.findAll();
         assertThat(pokemons.get(0).getNom()).isEqualTo("PikachuShiny");
         assertThat(pokemons.get(1).getNom()).isEqualTo("MagicarpeShiny");
-    }
+    } 
 
     @Test
     public void testGetById() throws Exception {

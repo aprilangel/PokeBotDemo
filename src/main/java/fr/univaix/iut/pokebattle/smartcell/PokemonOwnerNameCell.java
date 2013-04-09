@@ -1,6 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 /**
@@ -8,7 +8,7 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 	 */
 public class PokemonOwnerNameCell implements SmartCell {
 	
-   public String ask(PokeBot bot, Tweet question) {
+   public String ask(JPAPokemon bot, Tweet question) {
 	   
 	   // Dis moi gentil pokémon, qui c'est ton maitre ?
 	   if (question.getText().contains("owner?") || question.getText().contains("Owner?")) { 

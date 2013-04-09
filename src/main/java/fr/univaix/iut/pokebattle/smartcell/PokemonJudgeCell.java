@@ -1,12 +1,12 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonJudgeCell implements SmartCell {
 
 		
-	    public String ask(PokeBot bot, Tweet question) {
+	    public String ask(JPAPokemon bot, Tweet question) {
 	    	
 	    	if (question.getScreenName() != null && question.getScreenName().equals(bot.getJudge())) {
 	    		
