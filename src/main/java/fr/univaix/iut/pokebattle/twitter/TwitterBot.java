@@ -9,7 +9,8 @@ import java.io.IOException;
 
 public class TwitterBot {
     TwitterUserStreamEasy twitterUserStreamEasy;
-    Twitter twitter;
+    Twitter twitter; 
+    
 
     public TwitterBot(final Bot bot, fr.univaix.iut.pokebattle.tuse.Credentials credentials) {
         this.twitter = new TwitterBuilder(credentials).build();

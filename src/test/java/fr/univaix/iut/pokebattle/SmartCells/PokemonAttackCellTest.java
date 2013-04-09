@@ -2,6 +2,20 @@ package fr.univaix.iut.pokebattle.SmartCells;
 
 import static org.junit.Assert.assertEquals;
 
+import java.sql.Connection;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import org.dbunit.database.DatabaseConnection;
+import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.operation.DatabaseOperation;
+import org.eclipse.persistence.internal.jpa.EntityManagerImpl;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import fr.univaix.iut.pokebattle.bot.PokeBot;
@@ -10,19 +24,57 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonAttackCellTest {
 
+	private static EntityManager entityManager;
+    private static FlatXmlDataSet dataset;
+    private static DatabaseConnection dbUnitConnection;
+    private static EntityManagerFactory entityManagerFactory;
+    private static PokeBot bot;
+    
+
+    @BeforeClass
+    public static void initTestFixture() throws Exception {
+        // Get the entity manager for the tests.
+        entityManagerFactory = Persistence.createEntityManagerFactory("pokebattlePU");
+        entityManager = entityManagerFactory.createEntityManager();
+
+        Connection connection = ((EntityManagerImpl) (entityManager.getDelegate())).getServerSession().getAccessor().getConnection();
+
+        dbUnitConnection = new DatabaseConnection(connection);
+        //Loads the data set from a file
+        dataset = new FlatXmlDataSetBuilder().build(Thread.currentThread()
+                .getContextClassLoader()
+                .getResourceAsStream("pokebotDataset.xml"));
+    }
+
+    @AfterClass
+    public static void finishTestFixture() throws Exception {
+    	DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
+        entityManager.close();
+        entityManagerFactory.close();
+    }
+
+    @Before
+    public void setUp() throws Exception { 
+        //Clean the data from previous test and insert new data test.
+    	DatabaseOperation.DELETE_ALL.execute(dbUnitConnection, dataset);
+        DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
+        bot = new PokeBot (entityManager, "MagicarpeShiny");
+    }
+	
+	
 	PokemonAttackCell cell = new PokemonAttackCell();
 	
     @Test
     public void testNull() {
-        assertEquals(null, cell.ask(new PokeBot(), new Tweet("Salut!")));
+        assertEquals(null, cell.ask(bot, new Tweet("Salut!")));
     }
 	
 	@Test
 	public void testAttack() {
-		PokeBot bot = new PokeBot();
+		bot.setOwner(null);
 		assertEquals("@Sarkon I have no owner", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
 		
-		bot.Owner = "Tenshi";
+		bot.setOwner("Tenshi");
     	
     	assertEquals("@Sarkon my owner is @Tenshi", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
@@ -31,28 +83,27 @@ public class PokemonAttackCellTest {
 
 	@Test
     public void testBool() {
-		PokeBot b = new PokeBot();
-		b.Owner = "Tenshi";
-		assertEquals(false, b.IsFighting);
-		cell.ask(b, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
-        assertEquals(true, b.IsFighting);
+		bot.setOwner("Tenshi");
+		bot.setFighting(null);
+		assertEquals(null, bot.getFighting());
+		cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
+        assertEquals("@aStrangeCookie", bot.getFighting());
     }
 	
 	@Test
 	public void testRegen() throws InterruptedException {
-		PokeBot b = new PokeBot();
-		b.Owner = "Tenshi";
-		b.PVmax = 100;
-		b.PV = 85;
-		assertEquals(85, b.PV);
-		cell.ask(b, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
-		assertEquals(85, b.PV);
+		bot.setOwner("Tenshi");
+		bot.setPvmax(100);
+		bot.setPv(85);
+		assertEquals(85, bot.getPv());
+		cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
+		assertEquals(85, bot.getPv());
 		Thread.sleep(3500);
-		assertEquals(95, b.PV);
+		assertEquals(95, bot.getPv());
 		Thread.sleep(3500);
-		assertEquals(100, b.PV);
+		assertEquals(100, bot.getPv());
 		Thread.sleep(3500);
-		assertEquals(100, b.PV);
+		assertEquals(100, bot.getPv());
 	}
 	
 }

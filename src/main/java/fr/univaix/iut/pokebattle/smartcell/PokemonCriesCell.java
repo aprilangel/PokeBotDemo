@@ -16,6 +16,8 @@ public class PokemonCriesCell implements SmartCell {
     		String nomPokemon = m.group(1);
     		return nomPokemon;
     	} */
+    	
+    	// Cri de guerre du Magicarpe viril et vaillant !
     	return "Carpe Carpe Magicarpe !";
     }
 
