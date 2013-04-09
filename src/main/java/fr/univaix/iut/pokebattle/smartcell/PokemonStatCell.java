@@ -54,48 +54,37 @@ public class PokemonStatCell implements SmartCell {
 	    		else return "Magi Magi ?";
 	    	}
 	    	
-    		Pattern p1 = Pattern.compile("#statAttack #([^ ]+) ");
+    		Pattern p1 = Pattern.compile("#statAttack #([^ ]+) #([^ ]+)");
 	    	Matcher m1 = p1.matcher(question.getText());
 	    	if(m1.find())
 	    	{
 	    		
 	    		String TypeStatAttack = m1.group(1);
-	    		
-	    		Pattern p2 = Pattern.compile(TypeStatAttack + " " + "#([^ ]+) ");
-		    	Matcher m2 = p2.matcher(question.getText());
-		    	String Skill = m2.group(1);
-		    	return Skill;
-		    	/* if (m2.find())
-		    	{
-			    	for (int i = 0; i < Attack.length ; ++i)
+
+		    	String Skill = m1.group(2);
+		    	
+		    	
+	    	
+		    	for (int i = 0; i < Attack.length ; ++i)
+				{
+					
+					if (Attack[i].getNom().equals(Skill))
 					{
-						
-						if (Attack[i].getNom().equals(m2.group(1)))
-						{
-							PPmax = Attack[i].getPp();
-						}
-						
-						if (Attack[i].getNom().equals(m2.group(1)))
-						{
-							Puissance = Attack[i].getPuissance();
-						}
-						
-						if (Attack[i].getNom().equals(m2.group(1)))
-						{
-							Precision = Attack[i].getPrecision();
-						}
+						PPmax = Attack[i].getPp();
+						Puissance = Attack[i].getPuissance();
+						Precision = Attack[i].getPrecision();
 					}
-		    		if (TypeStatAttack.equals("PP"))
-		    			return bot.PP + "/" + PPmax;
-		    		else if (TypeStatAttack.equals("Puissance"))
-		    			return Puissance;
-		    		else if (TypeStatAttack.equals("Precision"))
-		    			return Precision;
-		    		else return "Magi Magi ?";
-		    	} 
-		    	return null; */
-	    	}
-	    	return null;
+				}
+	    		if (TypeStatAttack.equals("PP"))
+	    			return bot.PP + "/" + PPmax;
+	    		else if (TypeStatAttack.equals("Puissance"))
+	    			return Puissance;
+	    		else if (TypeStatAttack.equals("Precision"))
+	    			return Precision;
+	    		else return "Magi Magi ?";
+	    	
+    	}
+    	return null;
 
 	}
 }
