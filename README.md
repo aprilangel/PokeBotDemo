@@ -5,6 +5,7 @@ Bot pokemon de démonstration contruit en utilisant TwitterUserStreamEasy et Twi
 il faut compléter le fichier `src/main/resource/twitter4j.properties` avec les clef que vous trouverez sur la page
 https://dev.twitter.com/apps après avoir créé une application.
 
+Sujet : http://bit.ly/iut-5
 
 Git on Windows : http://code.google.com/p/msysgit/downloads/list
 
