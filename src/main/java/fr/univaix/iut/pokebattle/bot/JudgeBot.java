@@ -25,8 +25,9 @@ public class JudgeBot implements Bot {
     public String ask(Tweet question) {
         for (SmartCell cell : smartCells) {
             String answer = cell.ask(null /* TODO */, question);
-            if (answer != null)
+            if (answer != null) {
                 return answer;
+            }
         }
         return null;
     }

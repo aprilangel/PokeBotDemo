@@ -173,8 +173,9 @@ public class PokeBot implements Bot {
             String answer = cell.ask(this,question);
             if (answer != null)
             {
-            	if (answer.equals(" "))
+            	if (answer.equals(" ")) {
             		return null;
+            	}
             	return answer;
             }
         }

@@ -143,46 +143,63 @@ public class Pokebot implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Pokebot other = (Pokebot) obj;
 		if (espece == null) {
-			if (other.espece != null)
+			if (other.espece != null) {
 				return false;
-		} else if (!espece.equals(other.espece))
+			}
+		} else if (!espece.equals(other.espece)) {
 			return false;
-		if (exp != other.exp)
+		}
+		if (exp != other.exp) {
 			return false;
+		}
 		if (fighting == null) {
-			if (other.fighting != null)
+			if (other.fighting != null) {
 				return false;
-		} else if (!fighting.equals(other.fighting))
+			}
+		} else if (!fighting.equals(other.fighting)) {
 			return false;
+		}
 		if (judge == null) {
-			if (other.judge != null)
+			if (other.judge != null) {
 				return false;
-		} else if (!judge.equals(other.judge))
+			}
+		} else if (!judge.equals(other.judge)) {
 			return false;
-		if (level != other.level)
+		}
+		if (level != other.level) {
 			return false;
+		}
 		if (nom == null) {
-			if (other.nom != null)
+			if (other.nom != null) {
 				return false;
-		} else if (!nom.equals(other.nom))
+			}
+		} else if (!nom.equals(other.nom)) {
 			return false;
+		}
 		if (owner == null) {
-			if (other.owner != null)
+			if (other.owner != null) {
 				return false;
-		} else if (!owner.equals(other.owner))
+			}
+		} else if (!owner.equals(other.owner)) {
 			return false;
-		if (pv != other.pv)
+		}
+		if (pv != other.pv) {
 			return false;
-		if (pvmax != other.pvmax)
+		}
+		if (pvmax != other.pvmax) {
 			return false;
+		}
 		return true;
 	}
 
