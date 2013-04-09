@@ -27,8 +27,9 @@ public class PokemonAttackCell implements SmartCell {
 		    	{
 					public void actionPerformed(ActionEvent ae) 
 					{
-					   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax()/10))
+					   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax()/10)) {
 						   bot.setPv(bot.getPvmax());
+					   }
 					   else
 					   {
 						   bot.setPv(bot.getPv()+bot.getPvmax()/10);
@@ -109,13 +110,13 @@ public class PokemonAttackCell implements SmartCell {
 	    		}
    		
 	    		// Si le pokemon n'as pas d'owner
-	    		else if (bot.getOwner() == null)
+	    		else if (bot.getOwner() == null) {
 	    			return "@" + question.getScreenName() + " I have no owner";
-	    		
+	    		}
 	    		// Si ce n'est pas l'owner qui demande l'attaque
-	    		else
+	    		else {
 	    			return "@" + question.getScreenName() + " my owner is @" + bot.getOwner();
-
+	    		}
 	    	}
 	    	
 	    	// Ce n'est pas une #attack

@@ -67,23 +67,23 @@ public class DataObjectPokemon {
 		return attaques;
 	}
 
-	String nom;
-    String espece;
-    float taille;
-    float poids;
-    float fmratio;
-    String effortval;
-    String type1;
-    String type2;
-    int expval;
-    int expmax;
-    int captureval;
-    String capspe1;
-    String capspe2;
-    String couleur;
-    int forme;
+	private String nom;
+	private String espece;
+	private float taille;
+	private float poids;
+	private float fmratio;
+	private String effortval;
+	private String type1;
+	private String type2;
+	private int expval;
+	private int expmax;
+	private int captureval;
+	private String capspe1;
+	private String capspe2;
+	private String couleur;
+	private int forme;
 
-    DataObjectAttack[] attaques;
+	private DataObjectAttack[] attaques;
 
     public DataObjectPokemon(){
     }
@@ -109,7 +109,13 @@ public class DataObjectPokemon {
         this.capspe2 = capspe2;
         this.couleur = couleur;
         this.forme = forme;
-        this.attaques = attaques;
+        if (attaques == null) {
+        	this.attaques = new DataObjectAttack[0];
+        }
+        else
+        {
+        	this.attaques = Arrays.copyOf(attaques, attaques.length);
+        }
     }
 
     @Override

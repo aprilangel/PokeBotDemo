@@ -11,8 +11,9 @@ public class PokemonInterlocuteurNameCell implements SmartCell {
     public String ask(PokeBot bot, Tweet question) {
     	
     	// Renvoyer le nom de la personne qui nous parle si il existe
-    	if (question.getScreenName() != null) 
+    	if (question.getScreenName() != null) {
     		return "@" + question.getScreenName() + " Carpe Carpe Magicarpe !";
+    	}
     	return null;
     }
     

@@ -52,18 +52,19 @@ public class PokemonStatCell implements SmartCell {
     		// Extraction de la stat demandée
     		String TypeStat = m.group(1);
     		
-    		if (TypeStat.equals("level"))
+    		if (TypeStat.equals("level")) {
     			return ""+bot.getLevel();
-    		
-    		else if (TypeStat.equals("XP"))
+    		}
+    		else if (TypeStat.equals("XP")) {
     			return ""+bot.getExp();
-    		
-    		else if (TypeStat.equals("PV"))
+    		}
+    		else if (TypeStat.equals("PV")) {
     			return bot.getPv() + "/" + bot.getPvmax();
-    		
+    		}
     		// Stat inconnue
-    		else 
+    		else {
     			return "Magi Magi ?";
+    		}
     	}
     	Pattern p1 = Pattern.compile("#statAttack #([^ ]+) #([^ ]+)");
     	Matcher m1 = p1.matcher(question.getText());
