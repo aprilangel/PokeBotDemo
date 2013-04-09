@@ -232,32 +232,37 @@ public class Pokebot implements Serializable {
 		}
 		Pokebot other = (Pokebot) obj;
 		if (atk1 == null) {
-			if (other.atk1 != null)
+			if (other.atk1 != null) {
 				return false;
+			}
 		} 
-		else if (!atk1.equals(other.atk1))
+		else if (!atk1.equals(other.atk1)) {
 			return false;
+		}
 		if (atk2 == null) {
-			if (other.atk2 != null)
+			if (other.atk2 != null) {
 				return false;
+			}
 		} 
-		else if (!atk2.equals(other.atk2))
+		else if (!atk2.equals(other.atk2)) {
 			return false;
-		
+		}
 		if (atk3 == null) {
-			if (other.atk3 != null)
+			if (other.atk3 != null) {
 				return false;
+			}
 		} 
-		else if (!atk3.equals(other.atk3))
+		else if (!atk3.equals(other.atk3)) {
 			return false;
-		
+		}
 		if (atk4 == null) {
-			if (other.atk4 != null)
+			if (other.atk4 != null) {
 				return false;
+			}
 		} 
-		else if (!atk4.equals(other.atk4))
+		else if (!atk4.equals(other.atk4)) {
 			return false;
-		
+		}
 		if (espece == null) {
 			if (other.espece != null) {
 				return false;
@@ -307,18 +312,18 @@ public class Pokebot implements Serializable {
 			return false;
 		}
 		
-		if (pp1 != other.pp1)
+		if (pp1 != other.pp1) {
 			return false;
-		
-		if (pp2 != other.pp2)
+		}
+		if (pp2 != other.pp2) {
 			return false;
-		
-		if (pp3 != other.pp3)
+		}
+		if (pp3 != other.pp3) {
 			return false;
-		
-		if (pp4 != other.pp4)
+		}
+		if (pp4 != other.pp4) {
 			return false;
-		
+		}
 		if (pv != other.pv) {
 			return false;
 		}
