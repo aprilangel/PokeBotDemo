@@ -1,14 +1,17 @@
-CREATE TABLE pokebot (
-  `NOM` varchar(15) default NOT NULL,
-  `ESPECE` varchar(15) default NOT NULL,
-  `OWNER` varchar(15) default NULL,
-  `PV` number(3) default NOT NULL,
-  `PVMAX` number(3) default NOT NULL,
-  `ISFIGHTING` number(1) default 0,
-  `EXP` number(9) default 0,
-  `LEVEL` number(3) default 1,
-  PRIMARY KEY (`NOM`)
-)
+--	DROP TABLE pokebot;
+
+CREATE TABLE Pokebot (
+  NOM 		VARCHAR(15),
+  ESPECE 	VARCHAR(15),
+  OWNER 	VARCHAR(15),
+  JUDGE		VARCHAR(15),
+  PV 		INT(3),
+  PVMAX 	INT(3),
+  ISFIGHTING 	INT(1),
+  EXP 		INT(9),
+  LEVEL 	INT(3),
+  PRIMARY KEY (NOM)
+);
 
 
 --	** Si on ne veux plus utiliser le pokedex **
@@ -33,8 +36,18 @@ CREATE TABLE pokebot (
 --	)
 
 
+<<<<<<< HEAD
+INSERT INTO `POKEBOT`
+	VALUES ('MagicarpeShiny','Magicarpe',null,null,'1337','1337',0,1250000,100);
+
+--
+--	INSERT INTO `pokebot`
+--	VALUES ('NoctaliShiny','Noctali',null,'1337','1337',0,1000000,100);
+--
+=======
 INSERT INTO `pokebot`
 	VALUES ('MagicarpeShiny','Magicarpe',null,'1337','1337',0,1250000,100);
 
 INSERT INTO `pokebot`
 	VALUES ('NoctaliShiny','Noctali',null,'1337','1337',0,1000000,100);
+>>>>>>> master

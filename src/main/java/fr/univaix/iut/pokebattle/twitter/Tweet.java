@@ -1,7 +1,7 @@
 package fr.univaix.iut.pokebattle.twitter;
 
 public class Tweet {
-    private String text;
+	private String text;
     private String screenName;
 
     public Tweet(String text) {

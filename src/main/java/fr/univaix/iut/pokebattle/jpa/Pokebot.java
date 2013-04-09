@@ -1,33 +1,86 @@
 package fr.univaix.iut.pokebattle.jpa;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @NamedQueries({
         @NamedQuery(name = Pokebot.FIND_ALL, query = "SELECT p FROM Pokebot p"),
 })
-public class Pokebot {
-    public static final String FIND_ALL = "findAllPokemon";
+public class Pokebot implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3228507168752805839L;
+
+	public static final String FIND_ALL = "findAllPokemon";
+    
     @Id
-    private String name;
+    private String nom;
 
     private String espece;
     private String owner;
     private String judge;
-    private int pv = 100;
-    private int pvmax = 100;
-    private String isFighting = "false";
-   
-    protected Pokebot() {
+    private String fighting;
+    private int pv;
+    private int pvmax;
+	private int exp;
+    private int level;
+    
+    public String getNom() {
+		return nom;
+	}
 
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    public Pokebot(String name) {
-        this.name = name;
-    }
+	public String getFighting() {
+		return fighting;
+	}
 
-    public String getName() {
-        return name;
+	public void setFighting(String fighting) {
+		this.fighting = fighting;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public Pokebot() {
+		super();
+	}
+	
+	public Pokebot(String nom,String espece,String owner,String judge,int pv,int pvmax,String fighting,int exp,int level)
+	{
+		super();
+		this.nom = nom;
+		this.espece = espece;
+		this.owner = owner;
+		this.judge = judge;
+		this.pv = pv;
+		this.pvmax = pvmax;
+		this.fighting = fighting;
+		this.exp = exp;
+		this.level = level;
+	}
+	
+	
+	public Pokebot(String name) {
+        this.nom = name;
     }
 
 	public String getOwner() {
@@ -54,14 +107,6 @@ public class Pokebot {
 		this.pv = pv;
 	}
 
-	public String isFighting() {
-		return isFighting;
-	}
-
-	public void setFighting(String isFighting) {
-		this.isFighting = isFighting;
-	}
-
 	public String getEspece() {
 		return espece;
 	}
@@ -78,14 +123,18 @@ public class Pokebot {
 		this.pvmax = pvmax;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((espece == null) ? 0 : espece.hashCode());
-		result = prime * result + ((isFighting == null) ? 0 : isFighting.hashCode());
+		result = prime * result + exp;
+		result = prime * result + ((fighting == null) ? 0 : fighting.hashCode());
 		result = prime * result + ((judge == null) ? 0 : judge.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + level;
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
 		result = prime * result + pv;
 		result = prime * result + pvmax;
@@ -106,20 +155,24 @@ public class Pokebot {
 				return false;
 		} else if (!espece.equals(other.espece))
 			return false;
-		if (isFighting == null) {
-			if (other.isFighting != null)
+		if (exp != other.exp)
+			return false;
+		if (fighting == null) {
+			if (other.fighting != null)
 				return false;
-		} else if (!isFighting.equals(other.isFighting))
+		} else if (!fighting.equals(other.fighting))
 			return false;
 		if (judge == null) {
 			if (other.judge != null)
 				return false;
 		} else if (!judge.equals(other.judge))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (level != other.level)
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!nom.equals(other.nom))
 			return false;
 		if (owner == null) {
 			if (other.owner != null)
@@ -135,10 +188,13 @@ public class Pokebot {
 
 	@Override
 	public String toString() {
-		return "Pokebot [name=" + name + ", espece=" + espece + ", owner="
+		return "Pokebot [nom=" + nom + ", espece=" + espece + ", owner="
 				+ owner + ", judge=" + judge + ", pv=" + pv + ", pvmax="
-				+ pvmax + ", isFighting=" + isFighting + "]";
+				+ pvmax + ", isFighting=" + fighting + ", exp=" + exp
+				+ ", level=" + level + "]";
 	}
+
+
 
 
     

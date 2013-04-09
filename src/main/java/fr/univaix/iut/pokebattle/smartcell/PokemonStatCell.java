@@ -10,20 +10,31 @@ public class PokemonStatCell implements SmartCell {
     
 	public String ask(PokeBot bot, Tweet question) {
 		
-	    	Pattern p = Pattern.compile("#stat #([^ ]+) ");
-	    	Matcher m = p.matcher(question.getText());
-	    	if(m.find())
-	    	{
-	    		String TypeStat = m.group(1);
-	    		if (TypeStat.equals("level"))
-	    			return bot.level;
-	    		else if (TypeStat.equals("XP"))
-	    			return bot.XP;
-	    		else if (TypeStat.equals("PV"))
-	    			return bot.PV + "/" + bot.PVmax;
-	    		else return "Magi Magi ?";
-	    	}
-	        return null;
+		// Extraction des mots
+    	Pattern p = Pattern.compile("#stat #([^ ]+) ");
+    	Matcher m = p.matcher(question.getText());
+    	
+    	// Si le message contient #stats #<stat demandée>
+    	if(m.find())
+    	{
+    		// Extraction de la stat demandée
+    		String TypeStat = m.group(1);
+    		
+    		if (TypeStat.equals("level"))
+    			return ""+bot.getLevel();
+    		
+    		else if (TypeStat.equals("XP"))
+    			return ""+bot.getExp();
+    		
+    		else if (TypeStat.equals("PV"))
+    			return bot.getPv() + "/" + bot.getPvmax();
+    		
+    		// Stat inconnue
+    		else 
+    			return "Magi Magi ?";
+    	}
+    	
+        return null;
 
 	}
 }
