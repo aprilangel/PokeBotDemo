@@ -1,6 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 /**
@@ -8,7 +8,7 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 	 */
 public class PokemonInterlocuteurNameCell implements SmartCell {
 
-    public String ask(PokeBot bot, Tweet question) {
+    public String ask(JPAPokemon bot, Tweet question) {
     	
     	// Renvoyer le nom de la personne qui nous parle si il existe
     	if (question.getScreenName() != null) {

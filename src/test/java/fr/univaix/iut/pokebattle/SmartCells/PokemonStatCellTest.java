@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.smartcell.PokemonStatCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -28,7 +28,7 @@ public class PokemonStatCellTest {
     private static FlatXmlDataSet dataset;
     private static DatabaseConnection dbUnitConnection;
     private static EntityManagerFactory entityManagerFactory;
-    private static PokeBot bot;
+    private static JPAPokemon bot;
 
     @BeforeClass
     public static void initTestFixture() throws Exception {
@@ -56,7 +56,7 @@ public class PokemonStatCellTest {
     public void setUp() throws Exception { 
         //Clean the data from previous test and insert new data test.
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
-        bot = new PokeBot (entityManager, "MagicarpeShiny");
+        bot = new JPAPokemon (entityManager, "MagicarpeShiny");
     }
     
     PokemonStatCell cell = new PokemonStatCell();

@@ -1,6 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public interface SmartCell {
@@ -12,5 +12,5 @@ public interface SmartCell {
      *         or null.
      */
 	
-    public abstract String ask(PokeBot bot, Tweet question);
+    public abstract String ask(JPAPokemon jpa, Tweet question);
 }

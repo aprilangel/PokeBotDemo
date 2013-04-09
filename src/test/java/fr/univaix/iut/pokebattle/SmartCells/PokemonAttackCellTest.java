@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.smartcell.PokemonAttackCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -28,7 +28,7 @@ public class PokemonAttackCellTest {
     private static FlatXmlDataSet dataset;
     private static DatabaseConnection dbUnitConnection;
     private static EntityManagerFactory entityManagerFactory;
-    private static PokeBot bot;
+    private static JPAPokemon bot;
     
 
     @BeforeClass
@@ -58,7 +58,7 @@ public class PokemonAttackCellTest {
         //Clean the data from previous test and insert new data test.
     	DatabaseOperation.DELETE_ALL.execute(dbUnitConnection, dataset);
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
-        bot = new PokeBot (entityManager, "MagicarpeShiny");
+        bot = new JPAPokemon (entityManager, "MagicarpeShiny");
     }
 	
 	
@@ -78,7 +78,7 @@ public class PokemonAttackCellTest {
     	
     	assertEquals("@Sarkon my owner is @Tenshi", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
-    	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", bot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+    	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 	}
 
 	@Test
