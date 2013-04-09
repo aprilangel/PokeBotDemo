@@ -31,8 +31,12 @@ public class PokeBot implements Bot {
 	public String espece = "Magicarpe";
 	public String level = "1"; 
 	public String XP = "0";
+	public String PP = "35";
+	public String Puissance = "35";
+	public String Precision = "95";
 	 *
 	 */
+
 	
 	EntityManagerFactory emf = null;
     EntityManager em = null;
@@ -142,8 +146,77 @@ public class PokeBot implements Bot {
 		jpa.update(data);
 	}
 	
-	
+	public String getAtk1() {
+		return data.getAtk1();
+	}
 
+	public void setAtk1(String Atk1) {
+		data.setAtk1(Atk1);
+		jpa.update(data);
+	}
+	
+	public String getAtk2() {
+		return data.getAtk2();
+	}
+
+	public void setAtk2(String Atk2) {
+		data.setAtk2(Atk2);
+		jpa.update(data);
+	}
+	
+	public String getAtk3() {
+		return data.getAtk3();
+	}
+
+	public void setAtk3(String Atk3) {
+		data.setAtk3(Atk3);
+		jpa.update(data);
+	}
+
+	public String getAtk4() {
+		return data.getAtk4();
+	}
+
+	public void setAtk4(String Atk4) {
+		data.setAtk4(Atk4);
+		jpa.update(data);
+	}
+	 
+	public int getPp1() {
+		return data.getPp1();
+	}
+
+	public void setPp1(int pp1) {
+		data.setPp1(pp1);
+		jpa.update(data);
+	}
+	
+	public int getPp2() {
+		return data.getPp2();
+	}
+
+	public void setPp2(int pp2) {
+		data.setPp2(pp2);
+		jpa.update(data);
+	}
+	
+	public int getPp3() {
+		return data.getPp3();
+	}
+
+	public void setPp3(int pp3) {
+		data.setPp3(pp3);
+		jpa.update(data);
+	}
+
+	public int getPp4() {
+		return data.getPp4();
+	}
+
+	public void setPp4(int pp4) {
+		data.setPp4(pp4);
+		jpa.update(data);
+	}
 	
     /**
      * List of smartcell the questions go through to

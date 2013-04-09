@@ -17,37 +17,10 @@ public class PokemonAttackCell implements SmartCell {
 		String target;
 		String toname;
 		
-		DataObjectAttack[] Attack = null;
 		
         
 	    public String ask(final PokeBot bot, Tweet question) {
-	    	
-	    	// Initialiser les attaques si on ne les as pas !
-	    	if (Attack == null)
-	    	{
-				Gson gson = new Gson();
-
-		        BufferedReader br = new BufferedReader(
-		                               new InputStreamReader(PokemonAttackCell.class.getClassLoader().getResourceAsStream("pokedex.json")));
-
-
-		        //convert the json string back to object
-		        DataObjectPokemon[] obj = gson.fromJson(br, DataObjectPokemon[].class);
-		        
-		        for(int i = 0; i < obj.length; ++i)
-		        {
-		        	
-		        	if (obj[i].getNom().equals(bot.getEspece()))
-		        	{
-		        		Attack = obj[i].getAttaques();
-		        		break;
-		        	}
-		        	
-		        }
-		        
-	    	}
-
-	    	
+    	
 	    	final Timer t = new Timer(3000, null);
 	    	t.addActionListener(
 	    		new ActionListener () 
@@ -93,7 +66,7 @@ public class PokemonAttackCell implements SmartCell {
 			    		String[] mots = question.getText().split(" ");
 			    		for (int i = 0; i < mots.length; ++i) {
 							if (mots[i].equals("#attack")){
-								skill = mots[i+1];
+								skill = mots[i+1].substring(1);
 								target = mots[i+2];
 								toname = mots[i+4];
 								bot.setJudge(mots[i+5].substring(1));
@@ -113,20 +86,29 @@ public class PokemonAttackCell implements SmartCell {
 	    			t.restart();
 	    			
 	    			// Vérification de l'existence de l'attaque
-	    			for (int i = 0; i < Attack.length ; ++i)
-	    			{
-	    				// Si l'attaque existe
-	    				if (Attack[i].getNom().equals(skill.substring(1)))
-	    				{
-	    					return  target+" #attack "+skill+"! /cc "+toname+" @"+question.getScreenName()+" @"+bot.getJudge();
-	    				}
-	    				
+	    			if(skill.equals(bot.getAtk1()))
+	    			{				
+	    				bot.setPp1(bot.getPp1()-1);
 	    			}
-	    			
-	    			// Sinon
-		    		return "@"+question.getScreenName()+" o_O ? /cc "+toname+" @"+bot.getJudge()+" "+target;
-		    	}
-	    		
+	    			else if(skill.equals(bot.getAtk2()))
+	    			{				
+	    				bot.setPp2(bot.getPp2()-1);
+	    			}	    				
+	    			else if(skill.equals(bot.getAtk3()))
+	    			{				
+	    				bot.setPp3(bot.getPp3()-1);
+	    			}	    			
+	    			else if(skill.equals(bot.getAtk4()))
+	    			{				
+	    				bot.setPp4(bot.getPp4()-1);
+	    			}
+	    			else
+	    			{
+	    				return "@"+question.getScreenName()+" o_O ? /cc "+toname+" @"+bot.getJudge()+" "+target;
+	    			}
+	    		return  target+" #attack #"+skill+"! /cc "+toname+" @"+question.getScreenName()+" @"+bot.getJudge();
+	    		}
+   		
 	    		// Si le pokemon n'as pas d'owner
 	    		else if (bot.getOwner() == null) {
 	    			return "@" + question.getScreenName() + " I have no owner";
