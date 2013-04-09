@@ -96,8 +96,8 @@ public class PokemonStatCellTest {
     
     @Test
     public void testPP() {
-    	assertEquals("35/35", cell.ask (bot, 
-    			new Tweet ("@MagicarpeShiny Combien as-tu de #statAttack #PP #Charge ?")));
+    	assertEquals("25/40", cell.ask (bot, 
+    			new Tweet ("@MagicarpeShiny Combien as-tu de #statAttack #PP #Trempette ?")));
     }
     
     @Test

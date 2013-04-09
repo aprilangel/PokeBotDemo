@@ -1,6 +1,7 @@
 <dataset>
     <POKEBOT NOM="PikachuShiny" ESPECE="Pikachu"
-    PV="100" PVMAX="100" EXP="0" LEVEL="1"/>
+    PV="100" PVMAX="100" EXP="0" LEVEL="1"
+    PP1="17" ATK1="Éclair"/>
     <POKEBOT NOM="MagicarpeShiny" ESPECE="Magicarpe" 
     PV="100" PVMAX="100" EXP="0" LEVEL="1"
     PP1="25" ATK1="Trempette"/>

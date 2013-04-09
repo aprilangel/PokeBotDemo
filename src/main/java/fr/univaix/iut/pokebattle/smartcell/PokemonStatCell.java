@@ -88,13 +88,13 @@ public class PokemonStatCell implements SmartCell {
 			}
 	    	if (TypeStatAttack.equals("PP"))
 	    	{
-	    	if(Skill.equals(bot.getAtk1())) return bot.getAtk1() + "/" + PPmax;
-	    	
-	    	if(Skill.equals(bot.getAtk2())) return bot.getAtk2() + "/" + PPmax;
-	    	
-	    	if(Skill.equals(bot.getAtk3())) return bot.getAtk3() + "/" + PPmax;
-	        
-	    	if(Skill.equals(bot.getAtk4())) return bot.getAtk4() + "/" + PPmax;
+		    	if(Skill.equals(bot.getAtk1())) return bot.getPp1() + "/" + PPmax;
+		    	
+		    	if(Skill.equals(bot.getAtk2())) return bot.getPp2() + "/" + PPmax;
+		    	
+		    	if(Skill.equals(bot.getAtk3())) return bot.getPp3() + "/" + PPmax;
+		        
+		    	if(Skill.equals(bot.getAtk4())) return bot.getPp4() + "/" + PPmax;
 	    	}
     		else if (TypeStatAttack.equals("Puissance"))
     			return Puissance;

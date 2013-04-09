@@ -89,15 +89,15 @@ public class PokemonAttackCell implements SmartCell {
 	    			{				
 	    				bot.setPp1(bot.getPp1()-1);
 	    			}
-	    			if(skill.equals(bot.getAtk2()))
+	    			else if(skill.equals(bot.getAtk2()))
 	    			{				
 	    				bot.setPp2(bot.getPp2()-1);
 	    			}	    				
-	    			if(skill.equals(bot.getAtk3()))
+	    			else if(skill.equals(bot.getAtk3()))
 	    			{				
 	    				bot.setPp3(bot.getPp3()-1);
 	    			}	    			
-	    			if(skill.equals(bot.getAtk4()))
+	    			else if(skill.equals(bot.getAtk4()))
 	    			{				
 	    				bot.setPp4(bot.getPp4()-1);
 	    			}
