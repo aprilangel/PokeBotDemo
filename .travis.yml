@@ -1,4 +1,4 @@
 before_script:
-  - mysql -e 'create database PokebattleDB;
+  - mysql -e 'create database PokebattleDB;'
 
 language: java
