@@ -31,7 +31,24 @@ public class PokemonCenterCell implements SmartCell {
     			bot.setNurse(question.getScreenName());
     			return "@" + question.getScreenName() + " let's heal /cc @" + bot.getOwner();
     		}
-    	}	
+    	}
+    	
+    	p = Pattern.compile("is restored to full health");
+    	m = p.matcher(question.getText());
+    	
+    	if(m.find())
+    	{
+    		if (bot.getNurse() != question.getScreenName()) {
+    			return "@" + question.getScreenName() + " you cannot heal me /cc @" + bot.getOwner();
+    		}
+    		else {
+    			bot.setNurse(null);
+    			bot.setPv(bot.getPvmax());
+    			return "@" + question.getScreenName() + " I feel good! /cc @" + bot.getOwner();
+    		}
+    	}
+    	
+    	
 	return null;
 
 

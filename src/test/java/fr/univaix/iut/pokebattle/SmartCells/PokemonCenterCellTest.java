@@ -96,4 +96,27 @@ public class PokemonCenterCellTest {
     	assertEquals(null, bot.getNurse());
     }
 	 
+    @Test
+    public void testHealingDone() {
+    	bot.setOwner("Tenshi");
+    	bot.setNurse("MamaLuigi");
+    	bot.setFighting(null);
+    	bot.setPv(71);
+    	bot.setPvmax(100);
+       	assertEquals("@MamaLuigi I feel good! /cc @Tenshi", cell.ask(bot, new Tweet("MamaLuigi","is restored to full health /cc @Tenshi")));
+       	assertEquals(null, bot.getNurse());
+       	assertEquals(100, bot.getPv());
+    }
+    
+    @Test
+    public void testHighNurse() {
+    	bot.setOwner("Tenshi");
+    	bot.setNurse("Medic");
+    	bot.setFighting(null);
+    	bot.setPv(71);
+    	bot.setPvmax(100);
+       	assertEquals("@ScoutIsSpy you cannot heal me /cc @Tenshi", cell.ask(bot, new Tweet("ScoutIsSpy","is restored to full health /cc @Tenshi")));
+       	assertEquals("Medic", bot.getNurse());
+       	assertEquals(71, bot.getPv());
+    }
 }
