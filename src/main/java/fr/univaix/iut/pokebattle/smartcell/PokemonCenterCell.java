@@ -25,7 +25,7 @@ public class PokemonCenterCell implements SmartCell {
     			return "@" + question.getScreenName() + " only cowards flee from fight! /cc @" + bot.getOwner();
     		}
     		else if (bot.getNurse() != null) {
-    			return "@" + question.getScreenName() + " Already in a #pokecenter /cc @" + bot.getOwner();
+    			return "@" + question.getScreenName() + " already in a #pokecenter /cc @" + bot.getOwner();
     		}
     		else {
     			bot.setNurse(question.getScreenName());

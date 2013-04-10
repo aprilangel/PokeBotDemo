@@ -80,6 +80,14 @@ public class PokemonAttackCellTest {
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 	}
+	
+	@Test
+	public void testNurseAttack() {
+		bot.setOwner("Tenshi");
+		bot.setNurse("InfirmiereTravis");
+		assertEquals("@Tenshi I am healing right now", cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals("@Tenshi I am healing right now", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+	}
 
 	@Test
     public void testBool() {

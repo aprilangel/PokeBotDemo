@@ -88,6 +88,15 @@ public class JPAPokemon {
 		jpa.update(data);
 	}
 
+	public String getNurse() {
+		return data.getNurse();
+	}
+
+	public void setNurse(String nurse) {
+		data.setNurse(nurse);
+		jpa.update(data);
+	}
+	
 	public int getPv() {
 		return data.getPv();
 	}

@@ -71,7 +71,29 @@ public class PokemonCenterCellTest {
 	
     @Test
     public void testGoHeal() {
-        assertEquals(null, cell.ask(bot, new Tweet("InfirmiereTravis","")));
+    	bot.setOwner("Tenshi");
+    	bot.setNurse(null);
+    	bot.setFighting(null);
+        assertEquals("@InfirmiereTravis let's heal /cc @Tenshi", cell.ask(bot, new Tweet("InfirmiereTravis","come in the #pokecenter /cc @Tenshi")));
+        assertEquals("InfirmiereTravis", bot.getNurse());
     }
-	
+    
+    @Test
+    public void testAlreadyHeal() {
+    	bot.setOwner("Tenshi");
+    	bot.setNurse("DolanNurse");
+    	bot.setFighting(null);
+    	assertEquals("@DolanPlz already in a #pokecenter /cc @Tenshi", cell.ask(bot, new Tweet("DolanPlz","come in the #pokecenter /cc @Tenshi")));
+    	assertEquals("DolanNurse", bot.getNurse());
+    }
+    
+    @Test
+    public void testBattleNoHeal() {
+    	bot.setOwner("Tenshi");
+    	bot.setNurse(null);
+    	bot.setFighting("LilianeBettencourt");
+    	assertEquals("@Azerty only cowards flee from fight! /cc @Tenshi", cell.ask(bot, new Tweet("Azerty","come in the #pokecenter /cc @Tenshi")));
+    	assertEquals(null, bot.getNurse());
+    }
+	 
 }
