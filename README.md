@@ -15,3 +15,15 @@ wget https://raw.github.com/pcreux/git_config/master/gitconfig -O ~/.gitconfig
 wget https://raw.github.com/pcreux/git_config/master/githelpers -O ~/.githelpers
 git config --global credential.helper 'cache --timeout=3600'
 ```
+  
+TODO :  
+ - Etienne : Corriger le StatCell : `#statAttack #Puissance #ILikeTrains` renvoie des erreurs bizarres.
+ - Angel : Bug PokeCentenr
+ - Alexandre : Faire/Finir un script d'initialisation pour le SQL
+ - `FIGHTING` se bloque après la mort
+ - Corriger des violations Sonar
+ - TESTER ! TESTER ! TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER !!!!!!!!!!!!!
+ - Come with me bitch, we're gonna have a nice time in da PokeCenter !
+ - StatCell : Remplacer `bot.getAtk1()` par `skill` dans ces lignes : `return "@"+question.getScreenName()+" "+bot.getAtk1()+" - Puissance : "+puissance;`
+
+
