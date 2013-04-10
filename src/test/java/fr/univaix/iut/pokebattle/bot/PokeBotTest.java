@@ -130,12 +130,30 @@ public class PokeBotTest {
 		pokeBot.testJPA().setOwner("Tenshi");
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 	}
-	
+
 	@Test
 	public void testAttackKnown() {	
 		pokeBot.testJPA().setOwner("Tenshi");
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 	}
+	
+	@Test
+    public void testNoMorePP() {
+		pokeBot.testJPA().setPp1(0);
+		pokeBot.testJPA().setOwner("Tenshi");
+		assertEquals(0, pokeBot.testJPA().getPp1());
+		assertEquals("#Trempette n'a plus de PP. @Tenshi #PokeBattle", pokeBot.ask( new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals(0, pokeBot.testJPA().getPp1());
+	}
+	
+	@Test
+	public void testPPReduction() {
+		pokeBot.testJPA().setPp1(12);
+		pokeBot.testJPA().setOwner("Tenshi");
+		assertEquals(12, pokeBot.testJPA().getPp1());
+		assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright #PokeBattle", pokeBot.ask( new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals(11, pokeBot.testJPA().getPp1());
+    }
     	
 	@Test
 	public void testAttackJudge() {

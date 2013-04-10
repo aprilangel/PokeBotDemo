@@ -88,6 +88,24 @@ public class PokemonAttackCellTest {
 	}
 	
 	@Test
+    public void testNoMorePP() {
+		bot.setPp1(0);
+		bot.setOwner("Tenshi");
+		assertEquals(0, bot.getPp1());
+		assertEquals("#Trempette n'a plus de PP. @Tenshi", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals(0, bot.getPp1());
+	}
+	
+	@Test
+	public void testPPReduction() {
+		bot.setPp1(12);
+		bot.setOwner("Tenshi");
+		assertEquals(12, bot.getPp1());
+		assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals(11, bot.getPp1());
+    }
+	
+	@Test
 	public void testAttackKnown() {	
 		bot.setOwner("Tenshi");
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
@@ -108,4 +126,7 @@ public class PokemonAttackCellTest {
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 		assertEquals("PhoenixWright",bot.getJudge());
 	}
+
+
+	
 }
