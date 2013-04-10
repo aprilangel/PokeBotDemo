@@ -20,10 +20,10 @@ public class PokemonJudgeCell implements SmartCell {
 		        	Pattern p = Pattern.compile("#Win \\+([^ ]+)+xp");
 		        	Matcher m = p.matcher(question.getText());
 		        	
-		        	// Si le message contient #stats #<stat demandée>
+		        	// Si le message contient #Win +[INSERT NUMBER HERE]xp
 		        	if(m.find())
 		        	{
-		        		// Extraction de la stat demandée
+		        		// Extraction de la valeur d'xp
 		        		String ValeurXp = m.group(1);
 		        		
 		        		bot.setExp(bot.getExp()+Integer.parseInt(ValeurXp));
