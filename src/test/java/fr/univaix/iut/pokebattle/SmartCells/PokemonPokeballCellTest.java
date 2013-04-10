@@ -69,6 +69,11 @@ public class PokemonPokeballCellTest {
     @Test
     public void testOwner() {
     	assertEquals("@EpicSaxGuy my owner is @EpicSaxGuy", cell.ask(bot, new Tweet("EpicSaxGuy","Pokeball!")));
-    	assertEquals("@xXx_JacquesChirac_xXx my owner is @EpicSaxGuy", cell.ask(bot, new Tweet("xXx_JacquesChirac_xXx","Pokeball!")));
-  }
+    }
+    
+    @Test
+    public void testAlreadyOwner() {
+    	bot.setOwner("EpicSaxGuy");
+       	assertEquals("@xXx_JacquesChirac_xXx my owner is @EpicSaxGuy", cell.ask(bot, new Tweet("xXx_JacquesChirac_xXx","Pokeball!")));
+    }
 }

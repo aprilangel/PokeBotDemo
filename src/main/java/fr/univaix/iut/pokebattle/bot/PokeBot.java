@@ -72,7 +72,7 @@ public class PokeBot implements Bot {
             	if (answer.equals(" ")) {
             		return null;
             	}
-            	return answer;
+            	return answer+" #PokeBattle";
             }
         }
         return null;

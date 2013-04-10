@@ -35,6 +35,19 @@ public class Pokebot implements Serializable {
     private int pp2;
     private int pp3;
     private int pp4;
+    private long lastatk = 0;
+    
+    //Constantes
+    private final int kInt = 32;
+    
+    public long getLastAtk() {
+    	return lastatk;
+    }
+    
+    public void setLastAtk(long lastatk) {
+    	this.lastatk = lastatk;
+    }
+    
     
     public String getAtk1() {
 		return atk1;
@@ -136,21 +149,6 @@ public class Pokebot implements Serializable {
 		super();
 	}
 	
-	public Pokebot(String nom,String espece,String owner,String judge,int pv,int pvmax,String fighting,int exp,int level)
-	{
-		super();
-		this.nom = nom;
-		this.espece = espece;
-		this.owner = owner;
-		this.judge = judge;
-		this.pv = pv;
-		this.pvmax = pvmax;
-		this.fighting = fighting;
-		this.exp = exp;
-		this.level = level;
-	}
-	
-	
 	public Pokebot(String name) {
         this.nom = name;
     }
@@ -203,6 +201,8 @@ public class Pokebot implements Serializable {
 		this.pvmax = pvmax;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -217,6 +217,7 @@ public class Pokebot implements Serializable {
 				+ ((fighting == null) ? 0 : fighting.hashCode());
 		result = prime * result + ((judge == null) ? 0 : judge.hashCode());
 		result = prime * result + ((nurse == null) ? 0 : nurse.hashCode());
+		result = prime * result + (int) (lastatk ^ (lastatk >>> kInt));
 		result = prime * result + level;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
@@ -234,13 +235,17 @@ public class Pokebot implements Serializable {
 		if (this == obj) {
 			return true;
 		}
+		
 		if (obj == null) {
 			return false;
 		}
+		
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
+		
 		Pokebot other = (Pokebot) obj;
+		
 		if (atk1 == null) {
 			if (other.atk1 != null) {
 				return false;
@@ -249,6 +254,7 @@ public class Pokebot implements Serializable {
 		else if (!atk1.equals(other.atk1)) {
 			return false;
 		}
+		
 		if (atk2 == null) {
 			if (other.atk2 != null) {
 				return false;
@@ -257,6 +263,7 @@ public class Pokebot implements Serializable {
 		else if (!atk2.equals(other.atk2)) {
 			return false;
 		}
+		
 		if (atk3 == null) {
 			if (other.atk3 != null) {
 				return false;
@@ -265,6 +272,7 @@ public class Pokebot implements Serializable {
 		else if (!atk3.equals(other.atk3)) {
 			return false;
 		}
+		
 		if (atk4 == null) {
 			if (other.atk4 != null) {
 				return false;
@@ -273,6 +281,7 @@ public class Pokebot implements Serializable {
 		else if (!atk4.equals(other.atk4)) {
 			return false;
 		}
+		
 		if (espece == null) {
 			if (other.espece != null) {
 				return false;
@@ -312,37 +321,49 @@ public class Pokebot implements Serializable {
 		else if (!nurse.equals(other.nurse)) {
 			return false;
 		}
+
+		if (lastatk != other.lastatk) {
+			return false;
+		}
 		
 		if (level != other.level) {
 			return false;
 		}
+		
 		if (nom == null) {
 			if (other.nom != null) {
 				return false;
 			}
-		} else if (!nom.equals(other.nom)) {
+		} 
+		else if (!nom.equals(other.nom)) {
 			return false;
 		}
+		
 		if (owner == null) {
 			if (other.owner != null) {
 				return false;
 			}
-		} else if (!owner.equals(other.owner)) {
+		} 
+		else if (!owner.equals(other.owner)) {
 			return false;
 		}
 		
 		if (pp1 != other.pp1) {
 			return false;
 		}
+		
 		if (pp2 != other.pp2) {
 			return false;
 		}
+		
 		if (pp3 != other.pp3) {
 			return false;
 		}
+		
 		if (pp4 != other.pp4) {
 			return false;
 		}
+		
 		if (pv != other.pv) {
 			return false;
 		}
@@ -350,6 +371,7 @@ public class Pokebot implements Serializable {
 		if (pvmax != other.pvmax) {
 			return false;
 		}
+		
 		return true;
 	}
 
@@ -360,8 +382,11 @@ public class Pokebot implements Serializable {
 				+ ", pv=" + pv + ", pvmax=" + pvmax + ", exp=" + exp
 				+ ", level=" + level + ", atk1=" + atk1 + ", atk2=" + atk2
 				+ ", atk3=" + atk3 + ", atk4=" + atk4 + ", pp1=" + pp1
-				+ ", pp2=" + pp2 + ", pp3=" + pp3 + ", pp4=" + pp4 + "]";
+				+ ", pp2=" + pp2 + ", pp3=" + pp3 + ", pp4=" + pp4
+				+ ", lastatk=" + lastatk + "]";
 	}
+
+
 
 
 

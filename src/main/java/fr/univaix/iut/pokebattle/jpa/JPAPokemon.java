@@ -1,5 +1,7 @@
 package fr.univaix.iut.pokebattle.jpa;
 
+import java.util.Date;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -12,6 +14,8 @@ public class JPAPokemon {
     private EntityManager em = null;
 	private Pokebot data;
 	private DAOPokebotJPA jpa = null;
+	private final static int KREGEN = 10;
+	private final static int KHOUR = 3600000;
 	
 	public JPAPokemon (String nom)
 	{
@@ -98,6 +102,33 @@ public class JPAPokemon {
 	}
 	
 	public int getPv() {
+		
+		
+		// RegenPV
+		if (data.getLastAtk() != 0)
+		{
+			long last = data.getLastAtk();
+			long now = new Date().getTime();
+			long nbregen = (now - last)/KHOUR;
+			
+			// Plus d'une heure avant la last attack
+			if ( nbregen > 0 )
+			{
+				data.setLastAtk(data.getLastAtk()+nbregen*(data.getPvmax()/KREGEN));
+				
+				if (nbregen * (data.getPvmax()/KREGEN) >= data.getPvmax() - data.getPv() )
+				{
+					data.setPv(data.getPvmax());
+				}
+				else
+				{
+					data.setPv(data.getPv() + (data.getPvmax()/KREGEN));
+				}
+					
+				
+			}	
+		}
+		
 		return data.getPv();
 	}
 
@@ -193,6 +224,15 @@ public class JPAPokemon {
 
 	public void setPp4(int pp4) {
 		data.setPp4(pp4);
+		jpa.update(data);
+	}
+	
+	public long getLastAtk() {
+		return data.getLastAtk();
+	}
+
+	public void setLastAtk(long lastatk) {
+		data.setLastAtk(lastatk);
 		jpa.update(data);
 	}
 		

@@ -69,71 +69,76 @@ public class PokemonJudgeCellTest {
     }
 	
 	@Test
-	public void testJudge() {
+	public void testNotJudge() {
 		assertEquals(null, cell.ask(bot, new Tweet("Sarkon","-10pv /cc @pcreux")));
-		
-		bot.setJudge("PhoenixWright");
-    	
-    	assertEquals(null, cell.ask(bot, new Tweet("PhoenixWrong","-10pv /cc @pcreux")));
-    	
-    	bot.setOwner("IAmGod");
-    	
-    	assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","-10pv /cc @IAmGod")));
-    	
-    	assertEquals(90,bot.getPv());
-
 	}
 	
 	@Test
-	public void testKO() {
-		bot.setPv(100);
-		
-		assertEquals(null, cell.ask(bot, new Tweet("Sarkon","-10pv /cc @pcreux")));
-		
+	public void testJudge() {
 		bot.setJudge("PhoenixWright");
-    	
-    	assertEquals(null, cell.ask(bot, new Tweet("PhoenixWrong","-10pv /cc @pcreux")));
-    	
-    	bot.setOwner("IAmGod");
-    	
-    	assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","-10pv /cc @IAmGod")));
-    	
+		assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","-10pv /cc @IAmGod")));
     	assertEquals(90,bot.getPv());
-    	
-    	bot.setFighting("@VilainMéchant");
-    	
-    	assertEquals("#KO /cc @PhoenixWright @VilainMéchant @IAmGod", cell.ask(bot, new Tweet("PhoenixWright","-1337pv /cc @IAmGod")));
-    	
+	}
+	
+	@Test
+	public void testJudgeNotOrder() {
+		bot.setJudge("PhoenixWright");
+		assertEquals(null, cell.ask(bot, new Tweet("PhoenixWright","#ILikeTrains")));
+	}
+	
+	
+	@Test
+	public void testKOOneShot() {
+		bot.setPv(100);
+		bot.setJudge("PhoenixWright");
+		bot.setFighting("@VilainMéchant");
+		bot.setOwner("IAmGod");
+		assertEquals("#KO /cc @PhoenixWright @VilainMéchant @IAmGod", cell.ask(bot, new Tweet("PhoenixWright","-1337pv /cc @IAmGod")));
     	assertEquals(0,bot.getPv());
-
+	}
+	
+	@Test
+	public void testKOMultipleShot() {
+		bot.setPv(100);
+		bot.setJudge("PhoenixWright");
+		bot.setFighting("@VilainMéchant");
+		bot.setOwner("IAmGod");
+		assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","-42pv /cc @IAmGod")));
+		assertEquals(58,bot.getPv());
+    	assertEquals("#KO /cc @PhoenixWright @VilainMéchant @IAmGod", cell.ask(bot, new Tweet("PhoenixWright","-69pv /cc @IAmGod")));
+    	assertEquals(0,bot.getPv());
 	}
 	
     @Test
-    public void testWin() {
+    public void testNotJudgeWin() {
 		bot.setFighting("AHAHAH");
 		bot.setJudge("PhoenixWright");
 		cell.ask(bot, new Tweet("PhWright","#Win"));
         assertEquals("AHAHAH", bot.getFighting());
+    }
+    
+    @Test
+    public void testJudgeWin() {
+		bot.setFighting("AHAHAH");
+		bot.setJudge("PhoenixWright");
 		cell.ask(bot, new Tweet("PhoenixWright","#Win"));
         assertEquals(null, bot.getFighting());
     }
     
 	@Test
-	public void testXp() {
+	public void testJudgeXp() {
 		bot.setExp(0);
-		
 		bot.setJudge("PhoenixWright");
-    	
     	assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","tu es trop fort tu as #Win +69xp")));
-    	
     	assertEquals(69,bot.getExp());
-    	
-    	bot.setExp(0);
-    	
-    	assertEquals(null, cell.ask(bot, new Tweet("HubertVraimentFrais","olol tu l'as OS donc tu #Win +69xp")));
-    	
-    	assertEquals(0,bot.getExp());
-
+	}
+	
+	@Test
+	public void testNotJudgeXp() {
+		bot.setExp(0);
+		bot.setJudge("PhoenixWright");
+		assertEquals(null, cell.ask(bot, new Tweet("PhoenixWrong","olol tu l'as OS donc tu #Win +69xp")));
+		assertEquals(0,bot.getExp());
 	}
 
 }

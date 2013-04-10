@@ -1,8 +1,9 @@
-package fr.univaix.iut.pokebattle.SmartCells;
+package fr.univaix.iut.pokebattle.jpa;
 
-import static org.junit.Assert.assertEquals;
+import static org.fest.assertions.Assertions.assertThat;
 
 import java.sql.Connection;
+import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,17 +19,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
-import fr.univaix.iut.pokebattle.smartcell.PokemonOwnerNameCell;
-import fr.univaix.iut.pokebattle.twitter.Tweet;
+public class JPAPokemonTest {
 
-public class PokemonOwnerNameCellTest {
-
-	private static EntityManager entityManager;
+    private static EntityManager entityManager;
     private static FlatXmlDataSet dataset;
     private static DatabaseConnection dbUnitConnection;
     private static EntityManagerFactory entityManagerFactory;
-    private static JPAPokemon bot;
+
+    private DAOPokebot dao = new DAOPokebotJPA(entityManager);
 
     @BeforeClass
     public static void initTestFixture() throws Exception {
@@ -47,35 +45,25 @@ public class PokemonOwnerNameCellTest {
 
     @AfterClass
     public static void finishTestFixture() throws Exception {
-    	DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
         entityManager.close();
         entityManagerFactory.close();
     }
 
     @Before
-    public void setUp() throws Exception { 
+    public void setUp() throws Exception {
         //Clean the data from previous test and insert new data test.
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConnection, dataset);
-        bot = new JPAPokemon (entityManager, "MagicarpeShiny");
     }
 	
-	
-	PokemonOwnerNameCell cell = new PokemonOwnerNameCell();
-
+    JPAPokemon jpa = new JPAPokemon (entityManager, "MagicarpeShiny");
+    
     @Test
-    public void testNull() {
-        assertEquals(null, cell.ask(bot, new Tweet("Salut!")));
+    public void testRegen () {
+		long now = new Date().getTime();
+		assertThat(jpa.getLastAtk()).isEqualTo(0);
+		jpa.setPv(70);
+    	jpa.setLastAtk(now - 3700000);
+    	assertThat(jpa.getPv()).isEqualTo(80);
     }
-
-    @Test
-    public void testNoOwner() {
-    	bot.setOwner(null);
-        assertEquals("@EpicSaxGuy I have no owner", cell.ask(bot, new Tweet("EpicSaxGuy","Who is your owner?")));
-    }
-
-    @Test
-    public void testOwner() {
-    	bot.setOwner("albang_");
-        assertEquals("@EpicSaxGuy my owner is @albang_", cell.ask(bot, new Tweet("EpicSaxGuy","Who is your owner?")));
-    }
+    
 }

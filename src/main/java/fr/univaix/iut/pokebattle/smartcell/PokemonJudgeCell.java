@@ -24,14 +24,15 @@ public class PokemonJudgeCell implements SmartCell {
 		        	if(m.find())
 		        	{
 		        		// Extraction de la valeur d'xp
-		        		String ValeurXp = m.group(1);
+		        		String valeurXp = m.group(1);
 		        		
-		        		bot.setExp(bot.getExp()+Integer.parseInt(ValeurXp));
+		        		bot.setExp(bot.getExp()+Integer.parseInt(valeurXp));
 		        		return " ";
 		        	}
 		        	return " ";
 		    	}
-	    		// Autres messages que le Juge peux dire
+	    		
+		    	// Autres messages que le Juge peux dire
 	    		try {
 	    			/*
 	    			 * TODO
@@ -42,6 +43,12 @@ public class PokemonJudgeCell implements SmartCell {
 	    			
 	    			// Extraction des différents mots
 		    		String[] mots = question.getText().split(" ");
+		    		
+		    		// Phrase trop courte
+		    		if (mots.length < 3)
+		    		{
+		    			return null;
+		    		}
 
 		    		int damage = 0;
 		    		for (int i = 0; i < mots.length - 1 ; ++i )
@@ -51,8 +58,7 @@ public class PokemonJudgeCell implements SmartCell {
 		    				damage = Integer.parseInt(mots[i].substring(0,mots[i].length()-2));
 		    			}
 					}
-					
-					
+		    		
 					
 					// Est-ce que notre vaillant pokémon va t'il succomber a ses blessures ?
 					if (bot.getPv() + damage <= 0) 

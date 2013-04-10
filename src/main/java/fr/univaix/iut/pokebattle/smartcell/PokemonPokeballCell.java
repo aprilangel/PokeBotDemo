@@ -1,5 +1,7 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+import java.io.PrintStream;
+
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -32,7 +34,8 @@ public class PokemonPokeballCell implements SmartCell {
 				} 
 	    		catch (TwitterException e) 
 	    		{
-	    			System.err.println("Error in PokemonPokeballCell.java : \n"+e);
+	    			PrintStream log = System.out;
+	                log.println("Error in PokemonPokeballCell.java : \n"+e);
 				}
     		}
     		
