@@ -3,7 +3,7 @@
 import fr.univaix.iut.pokebattle.bot.PokeBot;
 
 public class PokemonMain {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         BotRunner.runBot(new PokeBot("MagicarpeShiny"), "twitter4j.properties");
     }
 }

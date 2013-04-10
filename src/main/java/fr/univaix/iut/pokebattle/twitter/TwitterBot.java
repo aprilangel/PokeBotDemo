@@ -8,8 +8,8 @@ import twitter4j.Twitter;
 import java.io.IOException;
 
 public class TwitterBot {
-    TwitterUserStreamEasy twitterUserStreamEasy;
-    Twitter twitter; 
+    private TwitterUserStreamEasy twitterUserStreamEasy;
+    private Twitter twitter; 
     
 
     public TwitterBot(final Bot bot, fr.univaix.iut.pokebattle.tuse.Credentials credentials) {

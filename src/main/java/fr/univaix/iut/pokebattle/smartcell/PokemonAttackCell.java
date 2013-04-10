@@ -13,7 +13,7 @@ public class PokemonAttackCell implements SmartCell {
 		private String toname;
 		
 		// Constante de divison pour la régen de pv (ici, 1/10 des PV Max)
-		private final int k_REGEN = 10;
+		private final int kREGEN = 10;
 		
         
 	    public String ask(final JPAPokemon bot, Tweet question) {
@@ -24,12 +24,12 @@ public class PokemonAttackCell implements SmartCell {
 		    	{
 					public void actionPerformed(ActionEvent ae) 
 					{
-					   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax() / k_REGEN)) {
+					   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax() / kREGEN)) {
 						   bot.setPv(bot.getPvmax());
 					   }
 					   else
 					   {
-						   bot.setPv(bot.getPv()+bot.getPvmax() / k_REGEN);
+						   bot.setPv(bot.getPv()+bot.getPvmax() / kREGEN);
 						   t.restart();
 					   }
 					}

@@ -9,18 +9,18 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class BotRunner {
-    static public void runBot(Bot bot, String credentialsFileName) {
+    static void runBot(Bot bot, String credentialsFileName) {
         try {
             InputStream inputStream = getResourceAsStream(credentialsFileName);
             fr.univaix.iut.pokebattle.tuse.Credentials credentials = Credentials.loadCredentials(inputStream);
             TwitterBot twitterBot = new TwitterBot(bot, credentials);
             twitterBot.startBot();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println("Error in BotRunner.java : \n"+e);
         } catch (ControlStreamException e) {
-            e.printStackTrace();
+        	System.err.println("Error in BotRunner.java : \n"+e);
         } catch (IOException e) {
-            e.printStackTrace();
+        	System.err.println("Error in BotRunner.java : \n"+e);
         }
     }
 

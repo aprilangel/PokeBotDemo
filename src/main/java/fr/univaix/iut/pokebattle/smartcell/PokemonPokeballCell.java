@@ -11,7 +11,7 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 	 */
 public class PokemonPokeballCell implements SmartCell {
 
-	Twitter twitter = TwitterFactory.getSingleton();
+	private Twitter twitter = TwitterFactory.getSingleton();
 	
     public String ask(JPAPokemon bot, Tweet question) {
 
@@ -32,7 +32,7 @@ public class PokemonPokeballCell implements SmartCell {
 				} 
 	    		catch (TwitterException e) 
 	    		{
-					e.printStackTrace();
+	    			System.err.println("Error in PokemonPokeballCell.java : \n"+e);
 				}
     		}
     		

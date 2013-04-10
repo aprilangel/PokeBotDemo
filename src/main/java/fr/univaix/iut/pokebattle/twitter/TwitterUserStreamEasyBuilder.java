@@ -15,7 +15,7 @@ public class TwitterUserStreamEasyBuilder {
     private final static Logger logger = LoggerFactory.getLogger(TwitterBot.class);
     private Twitter twitter;
     private fr.univaix.iut.pokebattle.tuse.Credentials credentials;
-    final Bot bot;
+    final private Bot bot;
 
     public TwitterUserStreamEasyBuilder(Twitter twitter, fr.univaix.iut.pokebattle.tuse.Credentials credentials, final Bot bot) {
         this.twitter = twitter;
@@ -31,7 +31,7 @@ public class TwitterUserStreamEasyBuilder {
                 try {
                     processNewQuestion(status, bot);
                 } catch (TwitterException e) {
-                    e.printStackTrace();
+                	System.err.println("Error in TwitterUserStreamEasyBuilder.java : \n"+e);
                 }
             }
         };
