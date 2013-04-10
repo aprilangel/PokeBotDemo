@@ -1,5 +1,1 @@
-before_script:
-  - mysql -e 'create database PokebattleDB;'
-  - mysqladmin -u root -h localhost password "mysql"
-
 language: java
