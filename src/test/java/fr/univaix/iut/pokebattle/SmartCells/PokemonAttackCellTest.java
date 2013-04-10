@@ -70,40 +70,36 @@ public class PokemonAttackCellTest {
     }
 	
 	@Test
-	public void testAttack() {
+	public void testAttackNoOwner() {
 		bot.setOwner(null);
 		assertEquals("@Sarkon I have no owner", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
-		
+	}
+	
+	@Test
+	public void testAttackWrongOwner() {	
 		bot.setOwner("Tenshi");
-    	
     	assertEquals("@Sarkon my owner is @Tenshi", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
-    	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+	}
+	
+	@Test
+	public void testAttackUnknown() {	
+		bot.setOwner("Tenshi");
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+	}
+	
+	@Test
+	public void testAttackKnown() {	
+		bot.setOwner("Tenshi");
+    	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 	}
 
 	@Test
-    public void testBool() {
+    public void testFighting() {
 		bot.setOwner("Tenshi");
 		bot.setFighting(null);
 		assertEquals(null, bot.getFighting());
 		cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
         assertEquals("@aStrangeCookie", bot.getFighting());
     }
-	
-	@Test
-	public void testRegen() throws InterruptedException {
-		bot.setOwner("Tenshi");
-		bot.setPvmax(100);
-		bot.setPv(85);
-		assertEquals(85, bot.getPv());
-		cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
-		assertEquals(85, bot.getPv());
-		Thread.sleep(3500);
-		assertEquals(95, bot.getPv());
-		Thread.sleep(3500);
-		assertEquals(100, bot.getPv());
-		Thread.sleep(3500);
-		assertEquals(100, bot.getPv());
-	}
 	
 }
