@@ -29,7 +29,7 @@ public class PokemonAttackCell implements SmartCell {
 					   }
 					   else
 					   {
-						   bot.setPv(bot.getPv()+bot.getPvmax() / kREGEN);
+						   bot.setPv(bot.getPv()+ (bot.getPvmax() / kREGEN));
 						   t.restart();
 					   }
 					}
