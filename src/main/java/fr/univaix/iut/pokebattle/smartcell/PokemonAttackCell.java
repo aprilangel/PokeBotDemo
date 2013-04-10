@@ -2,6 +2,8 @@ package fr.univaix.iut.pokebattle.smartcell;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.Timer;
 import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
@@ -18,24 +20,6 @@ public class PokemonAttackCell implements SmartCell {
         
 	    public String ask(final JPAPokemon bot, Tweet question) {
     	
-	    	final Timer t = new Timer(3000, null);
-	    	t.addActionListener(
-	    		new ActionListener () 
-		    	{
-					public void actionPerformed(ActionEvent ae) 
-					{
-					   if (bot.getPv() >= (bot.getPvmax() - bot.getPvmax() / kREGEN)) {
-						   bot.setPv(bot.getPvmax());
-					   }
-					   else
-					   {
-						   bot.setPv(bot.getPv()+ (bot.getPvmax() / kREGEN));
-						   t.restart();
-					   }
-					}
-				}
-	    	);
-	    	
 	    	// Gerer les #attack
 	    	if (question.getText().contains("#attack")) {
 
@@ -64,11 +48,13 @@ public class PokemonAttackCell implements SmartCell {
 	    				return null;
 	    			}			
 
+	    			// Récuperer la date de la dernière attaque
+	    			long lDateTime = new Date().getTime();
+	    		    bot.setLastAtk(lDateTime);
+	    			
+	    			
 	    			// Si on a pas planté, on est en combat contre toname
 	    			bot.setFighting(toname);
-	    			
-	    			// Combat donc reset de la regen
-	    			t.restart();
 	    			
 	    			// Vérification de l'existence de l'attaque
 	    			if(skill.equals(bot.getAtk1()))

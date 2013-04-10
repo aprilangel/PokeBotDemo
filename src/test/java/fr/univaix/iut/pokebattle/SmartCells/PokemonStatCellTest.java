@@ -83,6 +83,8 @@ public class PokemonStatCellTest {
     			new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PV ?")));
     }
     
+    
+    
     @Test
     public void testInconnu() {
 

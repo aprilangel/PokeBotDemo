@@ -98,20 +98,4 @@ public class PokemonAttackCellTest {
         assertEquals("@aStrangeCookie", bot.getFighting());
     }
 	
-	@Test
-	public void testRegen() throws InterruptedException {
-		bot.setOwner("Tenshi");
-		bot.setPvmax(100);
-		bot.setPv(85);
-		assertEquals(85, bot.getPv());
-		cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright"));
-		assertEquals(85, bot.getPv());
-		Thread.sleep(3200);
-		assertEquals(95, bot.getPv());
-		Thread.sleep(3200);
-		assertEquals(100, bot.getPv());
-		Thread.sleep(3200);
-		assertEquals(100, bot.getPv());
-	}
-	
 }

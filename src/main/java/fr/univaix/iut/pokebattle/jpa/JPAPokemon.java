@@ -1,5 +1,7 @@
 package fr.univaix.iut.pokebattle.jpa;
 
+import java.util.Date;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -89,6 +91,33 @@ public class JPAPokemon {
 	}
 
 	public int getPv() {
+		
+		
+		// RegenPV
+		if (data.getLastAtk() != 0)
+		{
+			long last = data.getLastAtk();
+			long now = new Date().getTime();
+			
+			// Plus d'une heure avant la last attack
+			if ( (now - last)/3600000 > 0 )
+			{
+				long nbregen = (now - last)/3600000;
+				data.setLastAtk(data.getLastAtk()+nbregen*(data.getPvmax()/10));
+				
+				if (nbregen * (data.getPvmax()/10) >= data.getPvmax() - data.getPv() )
+				{
+					data.setPv(data.getPvmax());
+				}
+				else
+				{
+					data.setPv(data.getPv() + (data.getPvmax()/10));
+				}
+					
+				
+			}	
+		}
+		
 		return data.getPv();
 	}
 
@@ -184,6 +213,15 @@ public class JPAPokemon {
 
 	public void setPp4(int pp4) {
 		data.setPp4(pp4);
+		jpa.update(data);
+	}
+	
+	public long getLastAtk() {
+		return data.getLastAtk();
+	}
+
+	public void setLastAtk(long lastatk) {
+		data.setLastAtk(lastatk);
 		jpa.update(data);
 	}
 		

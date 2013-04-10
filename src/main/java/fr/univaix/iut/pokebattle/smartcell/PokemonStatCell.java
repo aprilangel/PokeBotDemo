@@ -2,6 +2,7 @@ package fr.univaix.iut.pokebattle.smartcell;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
