@@ -126,7 +126,8 @@ public class PokeBotTest {
     }
     
 	@Test
-	public void testAttackUnknown() {	
+	public void testAttackUnknown() {
+		pokeBot.testJPA().setNurse(null);
 		pokeBot.testJPA().setOwner("Tenshi");
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 	}
@@ -284,6 +285,65 @@ public class PokeBotTest {
     	pokeBot.testJPA().setPp1(25);
     	assertEquals("@Sarkon Trempette - PP : 25/40 #PokeBattle", pokeBot.ask( 
     			new Tweet ("Sarkon","@MagicarpeShiny Combien as-tu de #statAttack #PP #Trempette ?")));
+    }
+    
+    @Test
+    public void testGoHeal() {
+    	pokeBot.testJPA().setOwner("Tenshi");
+    	pokeBot.testJPA().setNurse(null);
+    	pokeBot.testJPA().setFighting(null);
+        assertEquals("@InfirmiereTravis let's heal /cc @Tenshi #PokeBattle", pokeBot.ask(new Tweet("InfirmiereTravis","come in the #pokecenter /cc @Tenshi")));
+        assertEquals("InfirmiereTravis", pokeBot.testJPA().getNurse());
+    }
+    
+    @Test
+    public void testAlreadyHeal() {
+    	pokeBot.testJPA().setOwner("Tenshi");
+    	pokeBot.testJPA().setNurse("DolanNurse");
+    	pokeBot.testJPA().setFighting(null);
+    	assertEquals("@DolanPlz already in a #pokecenter /cc @Tenshi #PokeBattle", pokeBot.ask(new Tweet("DolanPlz","come in the #pokecenter /cc @Tenshi")));
+    	assertEquals("DolanNurse", pokeBot.testJPA().getNurse());
+    }
+    
+    @Test
+    public void testBattleNoHeal() {
+    	pokeBot.testJPA().setOwner("Tenshi");
+    	pokeBot.testJPA().setNurse(null);
+    	pokeBot.testJPA().setFighting("LilianeBettencourt");
+    	assertEquals("@Azerty only cowards flee from fight! /cc @Tenshi #PokeBattle", pokeBot.ask( new Tweet("Azerty","come in the #pokecenter /cc @Tenshi")));
+    	assertEquals(null, pokeBot.testJPA().getNurse());
+    }
+    
+    @Test
+	public void testNurseAttack() {
+    	pokeBot.testJPA().setOwner("Tenshi");
+    	pokeBot.testJPA().setNurse("InfirmiereTravis");
+		assertEquals("@Tenshi I am healing right now #PokeBattle", pokeBot.ask( new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals("@Tenshi I am healing right now #PokeBattle", pokeBot.ask( new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+	}
+    
+    @Test
+    public void testHealingDone() {
+    	pokeBot.testJPA().setOwner("Tenshi");
+    	pokeBot.testJPA().setNurse("MamaLuigi");
+    	pokeBot.testJPA().setFighting(null);
+    	pokeBot.testJPA().setPv(71);
+    	pokeBot.testJPA().setPvmax(100);
+       	assertEquals("@MamaLuigi I feel good! /cc @Tenshi #PokeBattle", pokeBot.ask( new Tweet("MamaLuigi","is restored to full health /cc @Tenshi")));
+       	assertEquals(null, pokeBot.testJPA().getNurse());
+       	assertEquals(100, pokeBot.testJPA().getPv());
+    }
+    
+    @Test
+    public void testHighNurse() {
+    	pokeBot.testJPA().setOwner("Tenshi");
+    	pokeBot.testJPA().setNurse("Medic");
+    	pokeBot.testJPA().setFighting(null);
+    	pokeBot.testJPA().setPv(71);
+    	pokeBot.testJPA().setPvmax(100);
+       	assertEquals("@ScoutIsSpy you cannot heal me /cc @Tenshi #PokeBattle", pokeBot.ask( new Tweet("ScoutIsSpy","is restored to full health /cc @Tenshi")));
+       	assertEquals("Medic", pokeBot.testJPA().getNurse());
+       	assertEquals(71, pokeBot.testJPA().getPv());
     }
     
     @Test

@@ -3,6 +3,7 @@ package fr.univaix.iut.pokebattle.bot;
 import javax.persistence.EntityManager;
 import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.smartcell.PokemonAttackCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonCenterCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonCriesCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonInterlocuteurNameCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonJudgeCell;
@@ -45,6 +46,7 @@ public class PokeBot implements Bot {
     private final SmartCell[] smartCells = new SmartCell[]
     {
     		new PokemonJudgeCell(),
+    		new PokemonCenterCell(),
     		new PokemonStatCell(),
     		new PokemonAttackCell(),
     		new PokemonPokeballCell(),

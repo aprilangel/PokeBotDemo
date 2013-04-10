@@ -88,6 +88,14 @@ public class PokemonAttackCellTest {
 	}
 	
 	@Test
+	public void testNurseAttack() {
+		bot.setOwner("Tenshi");
+		bot.setNurse("InfirmiereTravis");
+		assertEquals("@Tenshi I am healing right now", cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals("@Tenshi I am healing right now", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+	}
+	
+	@Test
     public void testNoMorePP() {
 		bot.setPp1(0);
 		bot.setOwner("Tenshi");

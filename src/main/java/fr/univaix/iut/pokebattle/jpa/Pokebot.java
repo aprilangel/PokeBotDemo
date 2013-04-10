@@ -21,6 +21,7 @@ public class Pokebot implements Serializable {
     private String espece;
     private String owner;
     private String judge;
+    private String nurse;
     private String fighting;
     private int pv;
     private int pvmax;
@@ -167,6 +168,14 @@ public class Pokebot implements Serializable {
 	public void setJudge(String judge) {
 		this.judge = judge;
 	}
+	
+	public String getNurse() {
+		return nurse;
+	}
+
+	public void setNurse(String nurse) {
+		this.nurse = nurse;
+	}
 
 	public int getPv() {
 		return pv;
@@ -207,6 +216,7 @@ public class Pokebot implements Serializable {
 		result = prime * result
 				+ ((fighting == null) ? 0 : fighting.hashCode());
 		result = prime * result + ((judge == null) ? 0 : judge.hashCode());
+		result = prime * result + ((nurse == null) ? 0 : nurse.hashCode());
 		result = prime * result + (int) (lastatk ^ (lastatk >>> kInt));
 		result = prime * result + level;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
@@ -303,6 +313,15 @@ public class Pokebot implements Serializable {
 			return false;
 		}
 		
+		if (nurse == null) {
+			if (other.nurse != null) {
+				return false;
+			}
+		} 
+		else if (!nurse.equals(other.nurse)) {
+			return false;
+		}
+
 		if (lastatk != other.lastatk) {
 			return false;
 		}
@@ -359,7 +378,7 @@ public class Pokebot implements Serializable {
 	@Override
 	public String toString() {
 		return "Pokebot [nom=" + nom + ", espece=" + espece + ", owner="
-				+ owner + ", judge=" + judge + ", fighting=" + fighting
+				+ owner + ", judge=" + judge + ", nurse=" + nurse + ", fighting=" + fighting
 				+ ", pv=" + pv + ", pvmax=" + pvmax + ", exp=" + exp
 				+ ", level=" + level + ", atk1=" + atk1 + ", atk2=" + atk2
 				+ ", atk3=" + atk3 + ", atk4=" + atk4 + ", pp1=" + pp1

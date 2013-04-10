@@ -17,6 +17,12 @@ public class PokemonAttackCell implements SmartCell {
 	    	if (question.getText().contains("#attack")) {
 
 	    		if(question.getScreenName().equals(bot.getOwner())) {
+
+	    			if (bot.getNurse() != null) {
+	    				return "@" + question.getScreenName() + " I am healing right now";
+	    			}
+	    			else {
+		    		
 	    			
 	    			// Extraction des différents mots
 	    			try {
@@ -92,8 +98,8 @@ public class PokemonAttackCell implements SmartCell {
 	    			}
 	    			
 	    		return  target+" #attack #"+skill+"! /cc "+toname+" @"+question.getScreenName()+" @"+bot.getJudge();
+	    			}
 	    		}
-   		
 	    		// Si le pokemon n'as pas d'owner
 	    		else if (bot.getOwner() == null) {
 	    			return "@" + question.getScreenName() + " I have no owner";
