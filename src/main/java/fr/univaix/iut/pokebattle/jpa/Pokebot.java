@@ -36,6 +36,9 @@ public class Pokebot implements Serializable {
     private int pp4;
     private long lastatk = 0;
     
+    //Constantes
+    private final int kInt = 32;
+    
     public long getLastAtk() {
     	return lastatk;
     }
@@ -204,7 +207,7 @@ public class Pokebot implements Serializable {
 		result = prime * result
 				+ ((fighting == null) ? 0 : fighting.hashCode());
 		result = prime * result + ((judge == null) ? 0 : judge.hashCode());
-		result = prime * result + (int) (lastatk ^ (lastatk >>> 32));
+		result = prime * result + (int) (lastatk ^ (lastatk >>> kInt));
 		result = prime * result + level;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
@@ -219,76 +222,137 @@ public class Pokebot implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
+		
 		Pokebot other = (Pokebot) obj;
+		
 		if (atk1 == null) {
-			if (other.atk1 != null)
+			if (other.atk1 != null) {
 				return false;
-		} else if (!atk1.equals(other.atk1))
+			}
+		} 
+		else if (!atk1.equals(other.atk1)) {
 			return false;
+		}
+		
 		if (atk2 == null) {
-			if (other.atk2 != null)
+			if (other.atk2 != null) {
 				return false;
-		} else if (!atk2.equals(other.atk2))
+			}
+		} 
+		else if (!atk2.equals(other.atk2)) {
 			return false;
+		}
+		
 		if (atk3 == null) {
-			if (other.atk3 != null)
+			if (other.atk3 != null) {
 				return false;
-		} else if (!atk3.equals(other.atk3))
+			}
+		} 
+		else if (!atk3.equals(other.atk3)) {
 			return false;
+		}
+		
 		if (atk4 == null) {
-			if (other.atk4 != null)
+			if (other.atk4 != null) {
 				return false;
-		} else if (!atk4.equals(other.atk4))
+			}
+		} 
+		else if (!atk4.equals(other.atk4)) {
 			return false;
+		}
+		
 		if (espece == null) {
-			if (other.espece != null)
+			if (other.espece != null) {
 				return false;
-		} else if (!espece.equals(other.espece))
+			}
+		} 
+		else if (!espece.equals(other.espece)) {
 			return false;
-		if (exp != other.exp)
+		}
+		
+		if (exp != other.exp) {
 			return false;
+		}
+		
 		if (fighting == null) {
-			if (other.fighting != null)
+			if (other.fighting != null) {
 				return false;
-		} else if (!fighting.equals(other.fighting))
+			}
+		} 
+		else if (!fighting.equals(other.fighting)) {
 			return false;
+		}
+		
 		if (judge == null) {
-			if (other.judge != null)
+			if (other.judge != null) {
 				return false;
-		} else if (!judge.equals(other.judge))
+			}
+		} 
+		else if (!judge.equals(other.judge)) {
 			return false;
-		if (lastatk != other.lastatk)
+		}
+		
+		if (lastatk != other.lastatk) {
 			return false;
-		if (level != other.level)
+		}
+		
+		if (level != other.level) {
 			return false;
+		}
+		
 		if (nom == null) {
-			if (other.nom != null)
+			if (other.nom != null) {
 				return false;
-		} else if (!nom.equals(other.nom))
+			}
+		} 
+		else if (!nom.equals(other.nom)) {
 			return false;
+		}
+		
 		if (owner == null) {
-			if (other.owner != null)
+			if (other.owner != null) {
 				return false;
-		} else if (!owner.equals(other.owner))
+			}
+		} 
+		else if (!owner.equals(other.owner)) {
 			return false;
-		if (pp1 != other.pp1)
+		}
+		
+		if (pp1 != other.pp1) {
 			return false;
-		if (pp2 != other.pp2)
+		}
+		
+		if (pp2 != other.pp2) {
 			return false;
-		if (pp3 != other.pp3)
+		}
+		
+		if (pp3 != other.pp3) {
 			return false;
-		if (pp4 != other.pp4)
+		}
+		
+		if (pp4 != other.pp4) {
 			return false;
-		if (pv != other.pv)
+		}
+		
+		if (pv != other.pv) {
 			return false;
-		if (pvmax != other.pvmax)
+		}
+		
+		if (pvmax != other.pvmax) {
 			return false;
+		}
+		
 		return true;
 	}
 

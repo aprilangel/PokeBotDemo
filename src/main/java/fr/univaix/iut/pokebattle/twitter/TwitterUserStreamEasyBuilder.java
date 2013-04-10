@@ -31,7 +31,7 @@ public class TwitterUserStreamEasyBuilder {
                 try {
                     processNewQuestion(status, bot);
                 } catch (TwitterException e) {
-                	System.err.println("Error in TwitterUserStreamEasyBuilder.java : \n"+e);
+                	logger.info("Error in TwitterUserStreamEasyBuilder.java : \n"+e);
                 }
             }
         };

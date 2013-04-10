@@ -77,6 +77,5 @@ public class PokemonOwnerNameCellTest {
     public void testOwner() {
     	bot.setOwner("albang_");
         assertEquals("@EpicSaxGuy my owner is @albang_", cell.ask(bot, new Tweet("EpicSaxGuy","Who is your owner?")));
-        assertEquals("@EpicSaxGuy my owner is @albang_", cell.ask(bot, new Tweet("EpicSaxGuy","Who is your Owner?")));
     }
 }
