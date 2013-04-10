@@ -76,16 +76,20 @@ public class PokemonAttackCellTest {
 	}
 	
 	@Test
-	public void testAttackUnknown() {	
+	public void testAttackWrongOwner() {	
 		bot.setOwner("Tenshi");
     	assertEquals("@Sarkon my owner is @Tenshi", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
+	}
+	
+	@Test
+	public void testAttackUnknown() {	
+		bot.setOwner("Tenshi");
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny", cell.ask(bot, new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 	}
 	
 	@Test
 	public void testAttackKnown() {	
 		bot.setOwner("Tenshi");
-    	assertEquals("@Sarkon my owner is @Tenshi", cell.ask(bot, new Tweet("Sarkon","#attack #foudre @bulbizare1")));
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
 	}
 

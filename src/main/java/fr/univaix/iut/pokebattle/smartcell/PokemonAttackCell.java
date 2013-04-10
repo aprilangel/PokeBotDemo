@@ -1,10 +1,7 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
-import javax.swing.Timer;
 import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -14,11 +11,7 @@ public class PokemonAttackCell implements SmartCell {
 		private String target;
 		private String toname;
 		
-		// Constante de divison pour la régen de pv (ici, 1/10 des PV Max)
-		private final int kREGEN = 10;
-		
-        
-	    public String ask(final JPAPokemon bot, Tweet question) {
+		public String ask(final JPAPokemon bot, Tweet question) {
     	
 	    	// Gerer les #attack
 	    	if (question.getText().contains("#attack")) {
