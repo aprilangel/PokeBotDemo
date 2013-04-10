@@ -58,7 +58,8 @@ public class DAOPokebotJPATest {
     @Test
     public void testFindAll() throws Exception {
         List<Pokebot> pokemons = dao.findAll();
-        assertThat(pokemons.size()).isEqualTo(2);
+        assertThat(pokemons.get(0).getNom()).isEqualTo("PikachuShiny");
+        assertThat(pokemons.get(1).getNom()).isEqualTo("MagicarpeShiny");
     } 
 
     @Test
