@@ -1,5 +1,8 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import fr.univaix.iut.pokebattle.jpa.JPAPokemon;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -13,9 +16,21 @@ public class PokemonJudgeCell implements SmartCell {
 	    		// Cas du #Win
 		    	if (question.getText().contains("#Win")) {
 		    		bot.setFighting(null);
-		    		return " ";
+		    		// Extraction des mots
+		        	Pattern p = Pattern.compile("#Win \\+([^ ]+)+xp");
+		        	Matcher m = p.matcher(question.getText());
+		        	
+		        	// Si le message contient #Win +[INSERT NUMBER HERE]xp
+		        	if(m.find())
+		        	{
+		        		// Extraction de la valeur d'xp
+		        		String ValeurXp = m.group(1);
+		        		
+		        		bot.setExp(bot.getExp()+Integer.parseInt(ValeurXp));
+		        		return " ";
+		        	}
+		        	return " ";
 		    	}
-	    		
 	    		// Autres messages que le Juge peux dire
 	    		try {
 	    			/*
@@ -69,8 +84,6 @@ public class PokemonJudgeCell implements SmartCell {
 	    	}
 	    	
 	    	// Ce n'est pas notre juge qui nous parle
-	    	return null;
+	    	return null;	
 	    }
-	    	
-
-}
+}   

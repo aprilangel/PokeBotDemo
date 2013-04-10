@@ -33,7 +33,7 @@ public class PokemonJudgeCellTest {
     @BeforeClass
     public static void initTestFixture() throws Exception {
         // Get the entity manager for the tests.
-        entityManagerFactory = Persistence.createEntityManagerFactory("pokebattlePU");
+        entityManagerFactory = Persistence.createEntityManagerFactory("pokebattlePUTest");
         entityManager = entityManagerFactory.createEntityManager();
 
         Connection connection = ((EntityManagerImpl) (entityManager.getDelegate())).getServerSession().getAccessor().getConnection();
@@ -117,5 +117,23 @@ public class PokemonJudgeCellTest {
 		cell.ask(bot, new Tweet("PhoenixWright","#Win"));
         assertEquals(null, bot.getFighting());
     }
+    
+	@Test
+	public void testXp() {
+		bot.setExp(0);
+		
+		bot.setJudge("PhoenixWright");
+    	
+    	assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","tu es trop fort tu as #Win +69xp")));
+    	
+    	assertEquals(69,bot.getExp());
+    	
+    	bot.setExp(0);
+    	
+    	assertEquals(null, cell.ask(bot, new Tweet("HubertVraimentFrais","olol tu l'as OS donc tu #Win +69xp")));
+    	
+    	assertEquals(0,bot.getExp());
+
+	}
 
 }

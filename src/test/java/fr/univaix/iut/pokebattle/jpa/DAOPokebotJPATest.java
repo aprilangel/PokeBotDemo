@@ -30,7 +30,7 @@ public class DAOPokebotJPATest {
     @BeforeClass
     public static void initTestFixture() throws Exception {
         // Get the entity manager for the tests.
-        entityManagerFactory = Persistence.createEntityManagerFactory("pokebattlePU");
+        entityManagerFactory = Persistence.createEntityManagerFactory("pokebattlePUTest");
         entityManager = entityManagerFactory.createEntityManager();
 
         Connection connection = ((EntityManagerImpl) (entityManager.getDelegate())).getServerSession().getAccessor().getConnection();
@@ -58,7 +58,8 @@ public class DAOPokebotJPATest {
     @Test
     public void testFindAll() throws Exception {
         List<Pokebot> pokemons = dao.findAll();
-        assertThat(pokemons.size()).isEqualTo(2);
+        assertThat(pokemons.get(0).getNom()).isEqualTo("PikachuShiny");
+        assertThat(pokemons.get(1).getNom()).isEqualTo("MagicarpeShiny");
     } 
 
     @Test
