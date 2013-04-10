@@ -14,7 +14,8 @@ public class JPAPokemon {
     private EntityManager em = null;
 	private Pokebot data;
 	private DAOPokebotJPA jpa = null;
-	final private int kREGEN = 10;
+	private final static int KREGEN = 10;
+	private final static int KHOUR = 3600000;
 	
 	public JPAPokemon (String nom)
 	{
@@ -99,20 +100,20 @@ public class JPAPokemon {
 		{
 			long last = data.getLastAtk();
 			long now = new Date().getTime();
-			long nbregen = (now - last)/3600000;
+			long nbregen = (now - last)/KHOUR;
 			
 			// Plus d'une heure avant la last attack
 			if ( nbregen > 0 )
 			{
-				data.setLastAtk(data.getLastAtk()+nbregen*(data.getPvmax()/kREGEN));
+				data.setLastAtk(data.getLastAtk()+nbregen*(data.getPvmax()/KREGEN));
 				
-				if (nbregen * (data.getPvmax()/kREGEN) >= data.getPvmax() - data.getPv() )
+				if (nbregen * (data.getPvmax()/KREGEN) >= data.getPvmax() - data.getPv() )
 				{
 					data.setPv(data.getPvmax());
 				}
 				else
 				{
-					data.setPv(data.getPv() + (data.getPvmax()/kREGEN));
+					data.setPv(data.getPv() + (data.getPvmax()/KREGEN));
 				}
 					
 				

@@ -24,9 +24,9 @@ public class PokemonJudgeCell implements SmartCell {
 		        	if(m.find())
 		        	{
 		        		// Extraction de la valeur d'xp
-		        		String ValeurXp = m.group(1);
+		        		String valeurXp = m.group(1);
 		        		
-		        		bot.setExp(bot.getExp()+Integer.parseInt(ValeurXp));
+		        		bot.setExp(bot.getExp()+Integer.parseInt(valeurXp));
 		        		return " ";
 		        	}
 		        	return " ";
