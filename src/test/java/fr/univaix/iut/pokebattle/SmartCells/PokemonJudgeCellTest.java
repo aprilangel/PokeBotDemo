@@ -117,5 +117,23 @@ public class PokemonJudgeCellTest {
 		cell.ask(bot, new Tweet("PhoenixWright","#Win"));
         assertEquals(null, bot.getFighting());
     }
+    
+	@Test
+	public void testXp() {
+		bot.setExp(0);
+		
+		bot.setJudge("PhoenixWright");
+    	
+    	assertEquals(" ", cell.ask(bot, new Tweet("PhoenixWright","#Win +69xp")));
+    	
+    	assertEquals(69,bot.getExp());
+    	
+    	bot.setExp(0);
+    	
+    	assertEquals(null, cell.ask(bot, new Tweet("HubertVraimentFrais","#Win +69xp")));
+    	
+    	assertEquals(0,bot.getExp());
+
+	}
 
 }
