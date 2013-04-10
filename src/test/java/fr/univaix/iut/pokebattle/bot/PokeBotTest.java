@@ -67,34 +67,103 @@ public class PokeBotTest {
     @Test
     public void testSalut() {
         assertEquals("Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("Salut")));
-        assertEquals("Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("This is not a question.")));
-   }
+    }
     
     @Test
     public void testInterlocuteur() {
-        assertEquals("Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("This is sparta !")));
         assertEquals("@sexmachine Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("sexmachine","Hello bitches")));
     }
     
     @Test
-    public void testOwner() {
-        assertEquals("Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("Cuillère")));
+    public void testNoOwner() {
         pokeBot.testJPA().setOwner(null);
         assertEquals("@jeanpierrecoffe I have no owner #PokeBattle", pokeBot.ask(new Tweet("jeanpierrecoffe","owner?")));
     }
     
     @Test
-    public void testPokeball() {
+    public void testYesOwner() {
+        pokeBot.testJPA().setOwner("jeanpierrecoffe");
+        assertEquals("@jeanpierrecoffe my owner is @jeanpierrecoffe #PokeBattle", pokeBot.ask(new Tweet("jeanpierrecoffe","owner?")));
+    }
+    
+    @Test
+    public void testPokeballNoOwner() {
     	pokeBot.testJPA().setOwner(null);
-        assertEquals("Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("Cuillère")));
+        assertEquals("@jeanpierrecoffe my owner is @jeanpierrecoffe #PokeBattle", pokeBot.ask(new Tweet("jeanpierrecoffe","Pokeball!")));
+    }
+    
+    @Test
+    public void testPokeballWithOwner() {
+    	pokeBot.testJPA().setOwner("jeanpierrecoffe");
+        assertEquals("@xXx_JacquesChirac_xXx my owner is @jeanpierrecoffe #PokeBattle", pokeBot.ask(new Tweet("xXx_JacquesChirac_xXx","Pokeball!")));
+    }
+    
+    @Test
+    public void testPokeballandOwner() {
+    	pokeBot.testJPA().setOwner(null);
         assertEquals("@jeanpierrecoffe I have no owner #PokeBattle", pokeBot.ask(new Tweet("jeanpierrecoffe","owner?")));
         assertEquals("@jeanpierrecoffe my owner is @jeanpierrecoffe #PokeBattle", pokeBot.ask(new Tweet("jeanpierrecoffe","Pokeball!")));
-        assertEquals("@jeanpierrecoffe my owner is @jeanpierrecoffe #PokeBattle", pokeBot.ask(new Tweet("jeanpierrecoffe","owner?")));
+        assertEquals("@xXx_JacquesChirac_xXx my owner is @jeanpierrecoffe #PokeBattle", pokeBot.ask(new Tweet("xXx_JacquesChirac_xXx","Owner?")));
         assertEquals("@xXx_JacquesChirac_xXx my owner is @jeanpierrecoffe #PokeBattle", pokeBot.ask(new Tweet("xXx_JacquesChirac_xXx","Pokeball!")));
-        assertEquals("@xXx_JacquesChirac_xXx my owner is @jeanpierrecoffe #PokeBattle", pokeBot.ask(new Tweet("xXx_JacquesChirac_xXx","owner?")));
     }
+    
     @Test
-    public void testAttack() {
+    public void testAttackNoOwner() {
+    	pokeBot.testJPA().setOwner(null);
+    	assertEquals("@Sarkon I have no owner #PokeBattle", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
+    }
+    
+    @Test
+    public void testAttackWrongOwner() {
+    	pokeBot.testJPA().setOwner("Tenshi");
+    	assertEquals("@Sarkon my owner is @Tenshi #PokeBattle", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
+    }
+    
+    @Test
+    public void testAttackOwner() {
+    	pokeBot.testJPA().setOwner("Tenshi");
+    	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+    }
+    
+	@Test
+	public void testAttackUnknown() {	
+		pokeBot.testJPA().setOwner("Tenshi");
+    	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+	}
+
+	@Test
+	public void testAttackKnown() {	
+		pokeBot.testJPA().setOwner("Tenshi");
+    	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+	}
+	
+	@Test
+    public void testNoMorePP() {
+		pokeBot.testJPA().setPp1(0);
+		pokeBot.testJPA().setOwner("Tenshi");
+		assertEquals(0, pokeBot.testJPA().getPp1());
+		assertEquals("#Trempette n'a plus de PP. @Tenshi #PokeBattle", pokeBot.ask( new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals(0, pokeBot.testJPA().getPp1());
+	}
+	
+	@Test
+	public void testPPReduction() {
+		pokeBot.testJPA().setPp1(12);
+		pokeBot.testJPA().setOwner("Tenshi");
+		assertEquals(12, pokeBot.testJPA().getPp1());
+		assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright #PokeBattle", pokeBot.ask( new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals(11, pokeBot.testJPA().getPp1());
+    }
+    	
+	@Test
+	public void testAttackJudge() {
+		pokeBot.testJPA().setOwner("Tenshi");
+    	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+    	assertEquals("PhoenixWright",pokeBot.testJPA().getJudge());
+	}
+	
+	@Test
+	public void testGlobalAttackPokeballOwner()	{
     	pokeBot.testJPA().setOwner(null);
     	pokeBot.testJPA().setJudge(null);
     	assertEquals("@Sarkon I have no owner #PokeBattle", pokeBot.ask(new Tweet("Sarkon","#attack #foudre @bulbizare1")));
@@ -103,11 +172,58 @@ public class PokeBotTest {
     	assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
     	assertEquals("@Tenshi o_O ? /cc @aStrangeCookie @PhoenixWright @NoctaliShiny #PokeBattle", pokeBot.ask(new Tweet("Tenshi","#attack #foudre @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
     	assertEquals("PhoenixWright",pokeBot.testJPA().getJudge());
-
-
     }
+    
 	@Test
-	public void testJudge() {
+	public void testJudgeDamage() {
+		pokeBot.testJPA().setJudge("PhoenixWright");
+		pokeBot.testJPA().setPv(100);
+		assertEquals(null, pokeBot.ask(new Tweet("PhoenixWright","-10pv /cc @Tenshi")));
+    	assertEquals(90,pokeBot.testJPA().getPv());
+	}
+	
+	@Test
+	public void testWrongJudgeDamage() {
+		pokeBot.testJPA().setJudge("PhoenixWright");
+		pokeBot.testJPA().setPv(100);
+		assertEquals("@PhoenixWrong Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("PhoenixWrong","-10pv /cc @Tenshi")));
+    	assertEquals(100,pokeBot.testJPA().getPv());
+	}
+	
+	@Test
+	public void testJudgeDumbthings() {
+		pokeBot.testJPA().setJudge("PhoenixWright");
+		assertEquals("@PhoenixWright Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("PhoenixWright","#ILikeTrains")));
+	}
+	
+	@Test
+	public void testJudgeKO() {
+		pokeBot.testJPA().setOwner("IAmGod");
+		pokeBot.testJPA().setFighting("@VilainMéchant");
+		pokeBot.testJPA().setJudge("PhoenixWright");
+		pokeBot.testJPA().setPv(100);
+		assertEquals("#KO /cc @PhoenixWright @VilainMéchant @IAmGod #PokeBattle", pokeBot.ask(new Tweet("PhoenixWright","-125pv /cc @Tenshi")));
+    	assertEquals(0,pokeBot.testJPA().getPv());
+	}
+	
+	@Test
+	public void testJudgeWin() {
+		pokeBot.testJPA().setFighting("@VilainMéchant");
+		pokeBot.testJPA().setJudge("PhoenixWright");
+		assertEquals(null, pokeBot.ask(new Tweet("PhoenixWright","#Win")));
+    	assertEquals(null,pokeBot.testJPA().getFighting());
+	}
+	
+	@Test
+	public void testNotJudgeWin() {
+		pokeBot.testJPA().setFighting("@VilainMéchant");
+		pokeBot.testJPA().setJudge("PhoenixWright");
+		assertEquals("@PhoenixWrong Carpe Carpe Magicarpe ! #PokeBattle", pokeBot.ask(new Tweet("PhoenixWrong","#Win")));
+    	assertEquals("@VilainMéchant",pokeBot.testJPA().getFighting());
+	}
+	
+	@Test
+	public void testJudgeFight() {
 		pokeBot.testJPA().setOwner(null);
 		pokeBot.testJPA().setJudge(null);
 		pokeBot.testJPA().setPv(100);
@@ -142,24 +258,44 @@ public class PokeBotTest {
 	@Test
 	public void testStatLevel() {
 		pokeBot.testJPA().setLevel(1);
-		assertEquals("1 #PokeBattle", pokeBot.ask( new Tweet ("@MagicarpeShiny Quel est ton #stat #level ?")));
+		assertEquals("@Sarkon Je suis niveau 1 #PokeBattle", pokeBot.ask( new Tweet ("Sarkon","@MagicarpeShiny Quel est ton #stat #level ?")));
 	}
 	
     @Test
     public void testStatXP() {
     	pokeBot.testJPA().setExp(0);
-    	assertEquals("0 #PokeBattle", pokeBot.ask( new Tweet ("@MagicarpeShiny Quel est ton #stat #XP ?")));
+    	assertEquals("@Sarkon J'ai 0 points d'experience #PokeBattle", pokeBot.ask( new Tweet ("Sarkon","@MagicarpeShiny Quel est ton #stat #XP ?")));
     }
     
     @Test
     public void testStatPV() {
     	pokeBot.testJPA().setPv(100);
     	pokeBot.testJPA().setPvmax(100);
-    	assertEquals("100/100 #PokeBattle", pokeBot.ask( new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PV ?")));
+    	assertEquals("@Sarkon PV : 100/100 #PokeBattle", pokeBot.ask( new Tweet ("Sarkon","@MagicarpeShiny Combien as-tu de #stat #PV ?")));
     }
     
     @Test
     public void testStatInconnu() {
-    	assertEquals("Magi Magi ? #PokeBattle", pokeBot.ask( new Tweet ("@MagicarpeShiny Combien as-tu de #stat #PP ?")));
+    	assertEquals("@Sarkon Magi Magi ? #PokeBattle", pokeBot.ask( new Tweet ("Sarkon","@MagicarpeShiny Combien as-tu de #stat #PP ?")));
     }
+    
+    @Test
+    public void testPP() {
+    	pokeBot.testJPA().setPp1(25);
+    	assertEquals("@Sarkon Trempette - PP : 25/40 #PokeBattle", pokeBot.ask( 
+    			new Tweet ("Sarkon","@MagicarpeShiny Combien as-tu de #statAttack #PP #Trempette ?")));
+    }
+    
+    @Test
+    public void testPuissance() {
+    	assertEquals("@Sarkon Trempette - Puissance : 35 #PokeBattle", pokeBot.ask( 
+    			new Tweet ("Sarkon","@MagicarpeShiny Combien as-tu de #statAttack #Puissance #Charge ?")));
+    }
+    
+    @Test
+    public void testPrecision() {
+    	assertEquals("@Sarkon Trempette - Precision : 95 #PokeBattle", pokeBot.ask( 
+    			new Tweet ("Sarkon","@MagicarpeShiny Combien as-tu de #statAttack #Precision #Charge ?")));
+    }
+    
 }

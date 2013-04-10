@@ -53,17 +53,17 @@ public class PokemonStatCell implements SmartCell {
     		String typeStat = m.group(1);
     		
     		if (typeStat.equals("level")) {
-    			return ""+bot.getLevel();
+    			return "@"+question.getScreenName()+" Je suis niveau "+bot.getLevel();
     		}
     		else if (typeStat.equals("XP")) {
-    			return ""+bot.getExp();
+    			return "@"+question.getScreenName()+" J'ai "+bot.getExp()+" points d'experience";
     		}
     		else if (typeStat.equals("PV")) {
-    			return bot.getPv() + "/" + bot.getPvmax();
+    			return "@"+question.getScreenName()+" PV : "+bot.getPv() + "/" + bot.getPvmax();
     		}
     		// Stat inconnue
     		else {
-    			return "Magi Magi ?";
+    			return "@"+question.getScreenName()+" Magi Magi ?";
     		}
     	}
     	Pattern p1 = Pattern.compile("#statAttack #([^ ]+) #([^ ]+)");
@@ -89,22 +89,22 @@ public class PokemonStatCell implements SmartCell {
 			}
 	    	if (typeStatattack.equals("PP"))
 	    	{
-		    	if(skill.equals(bot.getAtk1())) { return bot.getPp1() + "/" + ppmax; }
+		    	if(skill.equals(bot.getAtk1())) { return "@"+question.getScreenName()+" "+bot.getAtk1()+" - PP : "+bot.getPp1() + "/" + ppmax; }
 		    	
-		    	if(skill.equals(bot.getAtk2())) { return bot.getPp2() + "/" + ppmax; }
+		    	if(skill.equals(bot.getAtk2())) { return "@"+question.getScreenName()+" "+bot.getAtk2()+" - PP : "+bot.getPp2() + "/" + ppmax; }
 		    	
-		    	if(skill.equals(bot.getAtk3())) { return bot.getPp3() + "/" + ppmax; }
+		    	if(skill.equals(bot.getAtk3())) { return "@"+question.getScreenName()+" "+bot.getAtk3()+" - PP : "+bot.getPp3() + "/" + ppmax; }
 		        
-		    	if(skill.equals(bot.getAtk4())) { return bot.getPp4() + "/" + ppmax; }
+		    	if(skill.equals(bot.getAtk4())) { return "@"+question.getScreenName()+" "+bot.getAtk4()+" - PP : "+bot.getPp4() + "/" + ppmax; }
 	    	}
     		else if (typeStatattack.equals("Puissance")) {
-    			return puissance;
+    			return "@"+question.getScreenName()+" "+bot.getAtk1()+" - Puissance : "+puissance;
     		}
     		else if (typeStatattack.equals("Precision")) {
-    			return precision;
+    			return "@"+question.getScreenName()+" "+bot.getAtk1()+" - Precision : "+precision;
     		}
     		else {
-    			return "Magi Magi ?";
+    			return "@"+question.getScreenName()+" Magi Magi ?";
     		}
 	    		
 	}
