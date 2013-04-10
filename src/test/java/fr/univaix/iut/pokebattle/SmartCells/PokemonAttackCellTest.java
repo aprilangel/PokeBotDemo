@@ -102,4 +102,19 @@ public class PokemonAttackCellTest {
         assertEquals("@aStrangeCookie", bot.getFighting());
     }
 	
+	@Test
+    public void testPP() {
+		bot.setPp1(0);
+		assertEquals(0, bot.getPp1());
+		assertEquals("#Trempette n'a plus de PP. @Tenshi", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals(0, bot.getPp1());
+		
+		bot.setPp1(12);
+		assertEquals(12, bot.getPp1());
+		assertEquals("@NoctaliShiny #attack #Trempette! /cc @aStrangeCookie @Tenshi @PhoenixWright", cell.ask(bot, new Tweet("Tenshi","#attack #Trempette @NoctaliShiny /cc @aStrangeCookie @PhoenixWright")));
+		assertEquals(11, bot.getPp1());
+		
+		
+    }
+	
 }

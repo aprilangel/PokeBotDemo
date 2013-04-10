@@ -51,25 +51,46 @@ public class PokemonAttackCell implements SmartCell {
 	    			
 	    			// Vérification de l'existence de l'attaque
 	    			if(skill.equals(bot.getAtk1()))
-	    			{				
+	    			{	
+	    				if(bot.getPp1()<= 0)
+		    			{
+		    				return "#" + skill + " n'a plus de PP. @" + question.getScreenName();
+		    			}
 	    				bot.setPp1(bot.getPp1()-1);
+	    				
 	    			}
 	    			else if(skill.equals(bot.getAtk2()))
-	    			{				
+	    			{	
+	    				if(bot.getPp2()<= 0)
+		    			{
+		    				return "#" + skill + " n'a plus de PP. @" + question.getScreenName();
+		    			}
 	    				bot.setPp2(bot.getPp2()-1);
+	    				
 	    			}	    				
 	    			else if(skill.equals(bot.getAtk3()))
-	    			{				
+	    			{	
+	    				if(bot.getPp3()<= 0)
+		    			{
+		    				return "#" + skill + " n'a plus de PP. @" + question.getScreenName();
+		    			}
 	    				bot.setPp3(bot.getPp3()-1);
+	    				
 	    			}	    			
 	    			else if(skill.equals(bot.getAtk4()))
-	    			{				
+	    			{	
+	    				if(bot.getPp4()<= 0)
+		    			{
+		    				return "#" + skill + " n'a plus de PP. @" + question.getScreenName();
+		    			}
 	    				bot.setPp4(bot.getPp4()-1);
+	    				
 	    			}
 	    			else
 	    			{
-	    				return "@"+question.getScreenName()+" o_O ? /cc "+toname+" @"+bot.getJudge()+" "+target;
+	    			return "@"+question.getScreenName()+" o_O ? /cc "+toname+" @"+bot.getJudge()+" "+target;
 	    			}
+	    			
 	    		return  target+" #attack #"+skill+"! /cc "+toname+" @"+question.getScreenName()+" @"+bot.getJudge();
 	    		}
    		
